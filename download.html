@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Infovillela-Informatica</title>
+        <meta charset="utf-8">
+
+        <link rel="stylesheet" type="text/css" href="estilo.css">
+
+        
+<script>
+    function checkPassword() {
+        var done=0;
+  var userInput = document.getElementById("password").value;
+  
+  
+  if (userInput =="DRIVE") {  window.location.href = "https://drive.google.com/drive/folders/1rmbEVqVPUJIyRQSh5nT841bLBS5XkDOh";done=1} 
+  if (userInput =="BLENDER") {  window.location.href = "https://drive.google.com/drive/folders/1bXm4NGSVgQAaofV5zv5kdeOyEvNzaHH8";done=1} 
+  if (userInput =="MEGA") {  window.location.href = "https://mega.nz/folder/9cFFAbKA#k-H_IaXjMGbi_UEo0jClnw";done=1} 
+  if (userInput =="SOFTWARE") {  window.location.href = "https://drive.google.com/drive/folders/1r49hM92Ek1AqyTL04SVIk3B1f9WxXDhk";done=1} 
+  if (done==0) {document.getElementById("errorMessage").innerText = "Algo está errado! Tente novamente.";}
+  }
+  
+  document.getElementById("password").addEventListener("input", function() {
+  this.value = this.value.toUpperCase();
+  });
+  
+  </script>
+        
+
+</head>
+<body>
+
+	<div id="principal">
+              
+        <div id="menu">
+            <a href="index.html">Home</a> |
+            <a href="questionario.html">Questionários</a> |
+            <a href="teclado.html">Teclado</a> |
+            <a href="atividades.html">Atividades</a> |
+            <a href="videos.html">Vídeos</a> |
+            <a href="download.html">Download</a> |
+            <a href="jogos.html">Jogos</a>|
+            <a href="sites.html">Sites</a>
+
+        </div>
+        <hr>        
+ 
+        <header>
+            <h1>Arquivos para Aulas Informática <br>Prof: Tiago</h1>
+        </header>
+
+
+        <hr>
+
+            <div class="gallery">
+               
+
+                <div >
+                    <img src="imagens/software.jpg"/>
+                    <h2 >SOFTWARE</h2>
+                </div>
+
+                <div>
+                <img src="imagens/mega.jpg"/>
+                <h2 >MEGA</h2>
+                </div>
+
+                <div>
+                    <img src="imagens/blender.png"/>
+                    <h2 >BLENDER</h2>
+                    </div>
+
+                <div class="clear">
+
+                </div>
+          
+            </div>
+            
+            <div class="container">
+          
+                  <form id="passwordForm" onsubmit="checkPassword(); return false;">
+                      
+                      <input type="password" id="password" name="password" placeholder="Digite a senha aqui!!!"><br><br>
+                      <input type="submit" value="ACESSAR">
+                  </form>
+          
+                  <p id="errorMessage" class="error-message"></p>
+            </div>
+              
+            <div id="rodape">
+                <h4 >Todos os direitos reservados</h4>
+            </div>
+    </div>
+</body>
+</html>
+
