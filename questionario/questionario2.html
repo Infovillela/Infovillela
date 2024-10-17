@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+		<title>Exercício de Fixação 02</title>
+
+		<link rel="stylesheet" href="style.css">
+
+	</head>
+
+	<body>
+	
+	<h2>Questionário 02</h2>
+
+		<div id="quiz"></div>
+		<button id="submit">Finalizar</button>
+		<div id="results"></div>
+		<script>
+		var myQuestions = [
+	{
+		
+		question: "1- COMPUTADOR",
+		answers: {
+			a: ' é um grande aliado quando utilizamos o computador. Com ele é possível desenhar, abrir e fechar janelas e os programas.<br>',
+			b: ' podemos ver todas as informações que passamos para o computador.<br>',
+			c: ' tem formato de uma caixa e nele estão varias peças e circuitos que fazem o computador funcionar.<br>',
+			d: ' equipamento inventado pelo homem para facilitar nossa vida.'
+		},
+		correctAnswer: 'd'
+	},
+	{
+		question: "2- MONITOR",
+		answers: {
+			a: ' é um equipamento que tem a função de proteger os aparelhos eletrônicos das variações de tensão que recebe da rede elétrica<br>',
+			b: ' podemos ver todas as informações que passamos para o computador.<br>',
+			c: ' tem formato de uma caixa e nele estão varias peças e circuitos que fazem o computador funcionar.<br>',
+			d: ' é um grande aliado quando utilizamos o computador. Com ele é possível desenhar, abrir e fechar janelas e os programas.<br>'
+		},
+		correctAnswer: 'b'
+	},
+	{
+		question: "3- TECLADO",
+		answers: {
+			a: ' é um dispositivo que possui uma séries de botões e teclas, e utilizado para inserir dados no computador.<br>',
+			b: ' por meio dela você pode ouvir sons e musicas, seja do prórpio computador, das páginas da internet, de CD ou de mensagens recebidas.<br>',
+			c: ' é um dispositivo de memória flash que serve para você transportar dados de um micro para o outro.<br>',
+			d: ' é um computador portátil, leve, projetado para ser transportado e utilizado em diferentes lugares com facilidade.<br>'
+		},
+		correctAnswer: 'a'
+	},
+	{
+		question: "4- MOUSE",
+		answers: {
+			a: ' tem formato de uma caixa e nele estão varias peças e circuitos que fazem o computador funcionar.<br>',
+			b: ' é um grande aliado quando utilizamos o computador. Com ele é possível desenhar, abrir e fechar janelas e os programas.<br>',
+			c: ' equipamento inventado pelo homem para facilitar nossa vida.<br>',
+			d: ' é um dispositivo pessoal em formato de uma prancheta, que pode ser usadado para acesso à internet, entre outras coisas.<br>'
+		},
+		correctAnswer: 'b'
+	},
+	{
+		question: "5- GABINETE",
+		answers: {
+			a: ' é um equipamento que tem a função de proteger aparelhos eletrônicos das variações de tensão que recebe da rede elétrica.<br>',
+			b: ' é um grande aliado quando utilizamos o computador. Com ele é possível desenhar, abrir e fechar janelas e os programas.<br>',
+			c: ' equipamento inventado pelo homem para facilitar nossa vida.<br>',
+			d: ' tem formato de uma caixa e nele estão varias peças e circuitos que fazem o computador funcionar.<br>'
+		},
+		correctAnswer: 'd'
+	},
+	{
+		question: "6- WEB-CAM",
+		answers: {
+			a: ' é uma câmera de vídeo de baixo custo que capta imagens e as trasfere para um computador.<br>',
+			b: ' equipamento inventado pelo homem para facilitar nossa vida.<br>',
+			c: ' é um dispositivo de memória flash que serve para você transportar dados de um micro para o outro.<br>',
+			d: ' é um equipamento que tem a função de proteger aparelhos eletrônicos das variações de tensão que recebe da rede elétrica.<br>'
+		},
+		correctAnswer: 'a'
+	},
+	{
+		question: "7- PEN DRIVE",
+		answers: {
+			a: ' é um equipamento que tem a função de proteger aparelhos eletrônicos das variações de tensão que recebe da rede elétrica.<br>',
+			b: ' tem formato de uma caixa e nele estão varias peças e circuitos que fazem o computador funcionar.<br>',
+			c: ' é um dispositivo de memória flash que serve para você transportar dados de um micro para o outro.<br>',
+			d: ' é um grande aliado quando utilizamos o computador. Com ele é possível desenhar, abrir e fechar janelas e os programas.<br>'
+		},
+		correctAnswer: 'c'
+	},
+	{
+		question: "8- CAIXAS DE SOM",
+		answers: {
+			a: ' é um dispositivo que possui uma séries de botões e teclas, e utilizado para inserir dados no computador.<br>',
+			b: ' é um computador portátil, leve, projetado para ser transportado e utilizado em diferentes lugares com facilidade.<br>',
+			c: ' equipamento inventado pelo homem para facilitar nossa vida.<br>',
+			d: ' por meio dela você pode ouvir sons e musicas, seja do prórpio computador, das páginas da internet, de CD ou de mensagens recebidas.<br>'
+		},
+		correctAnswer: 'd'
+	},
+	{
+		question: "9- TABLET",
+		answers: {
+			a: ' equipamento inventado pelo homem para facilitar nossa vida.<br>',
+			b: ' é um dispositivo pessoal em formato de uma prancheta, que pode ser usadado para acesso à internet, entre outras coisas.<br>',
+			c: ' é um computador portátil, leve, projetado para ser transportado e utilizado em diferentes lugares com facilidade.<br>',
+			d: ' existem varios modelos, mas todos tem a mesma função: impressão de informações de dentro do computador para uma folha.<br>'
+		},
+		correctAnswer: 'b'
+	},
+	{
+		question: "10- NOTEBOOK",
+		answers: {
+			a: ' é um dispositivo que possui uma séries de botões e teclas, e utilizado para inserir dados no computador.<br>',
+			b: ' é um computador portátil, leve, projetado para ser transportado e utilizado em diferentes lugares com facilidade.<br>',
+			c: ' equipamento inventado pelo homem para facilitar nossa vida.<br>',
+			d: ' por meio dela você pode ouvir sons e musicas, seja do prórpio computador, das páginas da internet, de CD ou de mensagens recebidas.<br>'
+		},
+		correctAnswer: 'b'
+	},
+	{
+		question: "11- ESTABILIZADOR",
+		answers: {
+			a: ' é um equipamento que tem a função de proteger aparelhos eletrônicos das variações de tensão que recebe da rede elétrica.<br>',
+			b: ' é um grande aliado quando utilizamos o computador. Com ele é possível desenhar, abrir e fechar janelas e os programas.<br>',
+			c: ' tem formato de uma caixa e nele estão varias peças e circuitos que fazem o computador funcionar.<br>',
+			d: ' equipamento inventado pelo homem para facilitar nossa vida.<br>'
+		},
+		correctAnswer: 'a'
+	},
+	{
+		question: "12- HARD DISC",
+		answers: {
+			a: ' é um grande aliado quando utilizamos o computador. Com ele é possível desenhar, abrir e fechar janelas e os programas.<br>',
+			b: ' equipamento inventado pelo homem para facilitar nossa vida.<br>',
+			c: ' tem formato de uma caixa e nele estão varias peças e circuitos que fazem o computador funcionar.<br>',
+			d: ' é o dispositivo de armazenamento permanente de dados mais utilizados nos computadores.<br>'
+		},
+		correctAnswer: 'd'
+	},
+	
+	
+];
+
+var quizContainer = document.getElementById('quiz');
+var resultsContainer = document.getElementById('results');
+var submitButton = document.getElementById('submit');
+
+generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
+
+function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
+
+	function showQuestions(questions, quizContainer){
+		// precisaremos de um lugar para armazenar a saída e as opções de resposta
+		var output = [];
+		var answers; // poderia ter dado outro nome, alem do mais, eu mesmo me confundi :/
+
+		// para cada questão
+		for(var i=0; i<questions.length; i++){
+			
+			// mas, primeiro resetamos a lista de questões
+			answers = [];
+
+			// e aqui faremos para cada resposta na questão.
+			for(letter in questions[i].answers){
+
+				// Aqui será escrito para html para usar o Radio.
+				answers.push(
+					'<label>'
+						+ '<input type="radio" name="question'+i+'" value="'+letter+'">'
+					//	+ letter + ') ' vou deixar a letra comentada, porque achei melhor assim
+						+ questions[i].answers[letter]
+					+ '</label>'
+				);
+			}
+
+			// add this question and its answers to the output
+			output.push(
+				'<div class="question">' + questions[i].question + '</div>'
+				+ '<div class="answers">' + answers.join('') + '</div>'
+			);
+		}
+
+		// finally combine our output list into one string of html and put it on the page
+		quizContainer.innerHTML = output.join('');
+	}
+
+
+	function showResults(questions, quizContainer, resultsContainer){
+			
+		
+		var answerContainers = quizContainer.querySelectorAll('.answers');
+		
+		
+		var userAnswer = '';
+		var numCorrect = 0;
+		
+		
+		for(var i=0; i<questions.length; i++){
+
+			// agora ele vai virar a letra que esta marcada.
+			userAnswer = (answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value;
+			
+			
+			
+			if(userAnswer===questions[i].correctAnswer){
+				
+				numCorrect++;
+				
+				
+				answerContainers[i].style.color = 'lightgreen';
+			}
+			
+			else{
+				
+				answerContainers[i].style.color = 'red';
+			}
+		}
+
+			
+			resultsContainer.innerHTML = numCorrect + ' de ' + questions.length;
+		}
+
+	// show questions right away
+	showQuestions(questions, quizContainer);
+
+	// on submit, show results
+	
+	submitButton.onclick = function(){
+		showResults(questions, quizContainer, resultsContainer);
+		
+	}
+	
+}
+
+		</script>
+
+	</body>
+
+</html>

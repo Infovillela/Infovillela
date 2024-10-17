@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+		<title>Exercício Questionario</title>
+
+		<link rel="stylesheet" href="style.css">
+
+	</head>
+
+	<body>
+	
+	<h2>Questionário 04</h2>
+
+		<div id="quiz"></div>
+		<button id="submit">Finalizar</button>
+		<div id="results"></div>
+		<script>
+		var myQuestions = [
+	{
+		
+		question: "<img src='../imagens/monitor.jpg'><br><br>",
+		answers: {
+			a: ' MOUSE',
+			b: ' TABLET',
+			c: ' ESTABILIADOR',
+			d: ' MONITOR'
+		},
+		correctAnswer: 'd'
+	},
+	{
+		
+		question: "<img src='../imagens/gabinete.jpg'><br><br>",
+		answers: {
+			a: ' GABINTETE',
+			b: ' MONITOR',
+			c: ' NOTEBOOK',
+			d: ' MEMÓRIA'
+		},
+		correctAnswer: 'a'
+	},
+	{
+		
+		question: "<img src='../imagens/mouse1.jpg'>",
+		answers: {
+			a: ' COMPUTADOR',
+			b: ' TECLADO"> ',
+			c: ' GABINETE',
+			d: ' MOUSE'
+		},
+		correctAnswer: 'd'
+	},
+	{
+		
+		question: "<img src='../imagens/impressora.jpg'>",
+		answers: {
+			a: ' PEN DRIVE',
+			b: ' GABINETE',
+			c: ' IMPRESSORA',
+			d: ' TECLADO'
+		},
+		correctAnswer: 'c'
+	},
+	{
+		
+		question: "<img src='../imagens/teclado.jpg'>",
+		answers: {
+			a: ' COMPUTADOR',
+			b: ' TECLADO',
+			c: ' MONITOR',
+			d: ' NOTEBOOK'
+		},
+		correctAnswer: 'b'
+	},
+	{
+		
+		question: "<img src='../imagens/pendrive.jpg'>",
+		answers: {
+			a: ' GABINETE',
+			b: ' PLACA MÃE',
+			c: ' PEN DRIVE',
+			d: ' HARD DISC'
+		},
+		correctAnswer: 'c'
+	},
+	{
+		
+		question: "<img src='../imagens/computador.jpg'>",
+		answers: {
+			a: ' COMPUTADOR',
+			b: ' NOTEBOOK',
+			c: ' GABINETE',
+			d: ' TABLET'
+		},
+		correctAnswer: 'a'
+	},
+	{
+		
+		question: "<img src='../imagens/tablets.jpg'>",
+		answers: {
+			a: ' ESTABILIADOR',
+			b: ' NOTEBOOK',
+			c: ' TABLET',
+			d: ' MONITOR'
+		},
+		correctAnswer: 'c'
+	},
+	{
+		
+		question: "<img src='../imagens/note.jpg'>",
+		answers: {
+			a: ' PLACA MÃE',
+			b: ' PEN DRIVE',
+			c: ' NOTEBOOK',
+			d: ' MOUSE'
+		},
+		correctAnswer: 'c'
+	},
+	{
+		
+		question: "<img src='../imagens/webcam.jpg'>",
+		answers: {
+			a: ' ESTABILIZADOR',
+			b: ' WEB CAM',
+			c: ' TECLADO',
+			d: ' MONITOR'
+		},
+		correctAnswer: 'b'
+	},
+	{
+		
+		question: "<img src='../imagens/cxSom.jpg'>",
+		answers: {
+			a: ' CAIXA DE SOM',
+			b: ' TABLET',
+			c: ' ESTABILIZADOR',
+			d: ' GABINETE'
+		},
+		correctAnswer: 'a'
+	},
+	{
+		
+		question: "<img src='../imagens/nobreak.jpg'>",
+		answers: {
+			a: ' TABLET',
+			b: ' MONITOR',
+			c: ' PEN DRIVE',
+			d: ' NO-BREAK'
+		},
+		correctAnswer: 'd'
+	},
+	{
+		
+		question: "<img src='../imagens/estabilizador.jpg'>",
+		answers: {
+			a: ' ESTABILIZADOR',
+			b: ' MOUSE',
+			c: ' FONTE DE ENERGIA',
+			d: ' COMPUTADOR"> '
+		},
+		correctAnswer: 'a'
+	},
+	
+];
+
+var quizContainer = document.getElementById('quiz');
+var resultsContainer = document.getElementById('results');
+var submitButton = document.getElementById('submit');
+
+generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
+
+function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
+
+	function showQuestions(questions, quizContainer){
+		// precisaremos de um lugar para armazenar a saída e as opções de resposta
+		var output = [];
+		var answers; // poderia ter dado outro nome, alem do mais, eu mesmo me confundi :/
+
+		// para cada questão
+		for(var i=0; i<questions.length; i++){
+			
+			// mas, primeiro resetamos a lista de questões
+			answers = [];
+
+			// e aqui faremos para cada resposta na questão.
+			for(letter in questions[i].answers){
+
+				// Aqui será escrito para html para usar o Radio.
+				answers.push(
+					'<label>'
+						+ '<input type="radio" name="question'+i+'" value="'+letter+'">'
+					//	+ letter + ') ' vou deixar a letra comentada, porque achei melhor assim
+						+ questions[i].answers[letter]
+					+ '</label>'
+				);
+			}
+
+			// add this question and its answers to the output
+			output.push(
+				'<div class="question">' + questions[i].question + '</div>'
+				+ '<div class="answers">' + answers.join('') + '</div>'
+			);
+		}
+
+		// finally combine our output list into one string of html and put it on the page
+		quizContainer.innerHTML = output.join('');
+	}
+
+
+	function showResults(questions, quizContainer, resultsContainer){
+			
+		
+		var answerContainers = quizContainer.querySelectorAll('.answers');
+		
+		
+		var userAnswer = '';
+		var numCorrect = 0;
+		
+		
+		for(var i=0; i<questions.length; i++){
+
+			// agora ele vai virar a letra que esta marcada.
+			userAnswer = (answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value;
+			
+			
+			
+			if(userAnswer===questions[i].correctAnswer){
+				
+				numCorrect++;
+				
+				
+				answerContainers[i].style.color = 'lightgreen';
+			}
+			
+			else{
+				
+				answerContainers[i].style.color = 'red';
+			}
+		}
+
+			
+			resultsContainer.innerHTML = numCorrect + ' de ' + questions.length;
+		}
+
+	// show questions right away
+	showQuestions(questions, quizContainer);
+
+	// on submit, show results
+	
+	submitButton.onclick = function(){
+		showResults(questions, quizContainer, resultsContainer);
+		
+	}
+	
+}
+
+		</script>
+
+	</body>
+
+</html>
