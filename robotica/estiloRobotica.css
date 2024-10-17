@@ -1,0 +1,155 @@
+body{
+    background: #414040 url('../imagens/bg.png')  repeat;
+    background-size: 100%;
+    font:18px Arial, Helvetica, sans-serif;
+    padding: 20px;
+    
+    
+}
+
+#principal{
+    width:90%;
+    text-align: center;
+}
+
+#menu{
+    background: #b9b9b9c5;
+        padding:20px;
+        font:25px Arial, Helvetica, sans-serif;
+        
+}
+
+#conteudo{
+    background: #d4d4d4;
+    padding: 5px;
+    margin:10px
+}
+
+#rodape{
+    text-align: center;
+    color:#eeeeee;
+
+}
+
+a{
+    color: #ffffff;
+    text-decoration: none;
+    text-shadow: 2px 2px 3px #000000;
+    font-weight: bold;
+    padding: 3px;
+    }
+    
+    
+    
+h1{
+        color:#ffffff;
+        text-shadow: 2px 2px 3px #000000;
+        font-size: 2em;
+    }
+    
+h2{
+        color:#ffffff;
+        text-shadow: 2px 2px 3px #000000;
+        font-size: 1.5em;
+    }
+h3{
+        color:#ffffff;
+        text-shadow: 2px 2px 3px #000000;
+        font-size: 1em; 
+    }
+
+ 
+p{
+    color:#000000;
+    text-shadow: none;
+    font-size: .9em;
+    font:18px Arial, Helvetica, sans-serif;
+    padding: 20px;
+
+}
+
+header {
+    background-color: #0077ff;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+} 
+.centralizar{
+   text-align: center;
+    font-style:italic;
+    text-shadow: none;
+    padding-left:300px ;
+}
+
+.esquerda{
+    text-align: left;
+    padding: 20px;
+}
+
+.quadro{
+    background: url(imagens/quadro.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 2px solid #b9b9b9c5;
+    border-radius: 15px;
+    width: 260px;
+    height: 30px;
+    float:left;
+    padding: 35px 30px 30px 10px;
+    font-style: italic; 
+    margin: 1px; 
+    text-align: center;    
+}
+
+.quadro2{
+    background: #ffffff;
+    border: 2px solid #b9b9b9c5;
+    border-radius: 15px;
+    width: 150px;
+    height: 20px;
+    float:left;
+    padding: 20px 10px 100px 10px;
+    margin: 2px;     
+}
+
+.clear{
+    clear:both;
+}
+
+  
+  .code-box {
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    overflow: hidden;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    padding: 0px;
+
+}
+
+pre {
+    margin: 5;
+    overflow: auto;
+}
+
+code {
+    display: block;
+    white-space: pre;
+    padding: 0px;
+}
+
+button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    padding: 8px;
+    cursor: pointer;
+    background-color: #0044ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+

@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html>
+        <head>
+            <title>Projetos Arduino - Robótica CAC</title>
+            <meta charset="utf-8">
+
+            <link rel="stylesheet" type="text/css" href="estiloRobotica.css">
+
+        </head>
+
+    <body>
+      <div id="principal">
+                  
+        <div id="menu" class="cor">
+            <a href="../index.html">Home</a> |
+            <a href="../questionario.html">Questionários</a> |
+            <a href="../teclado.html">Teclado</a> |
+            <a href="../videos.html">Vídeos</a> |
+            <a href="../download.html">Download</a> |
+            <a href="../jogos.html">Jogos</a>|
+            <a href="../sites.html">Sites</a>
+
+        </div>
+
+
+    <div id="conteudo">
+
+        <header>
+
+          <h1 id="Topo">Projetos M1 - Robótica CAC</h1>
+        </header>
+        <hr>
+
+          <div class="quadro"><a href="#P1">Pisca Led-1</a></div>
+          <div class="quadro"><a href="#P2">Pisca Led-2</a></div>
+          <div class="quadro"><a href="#P3">Barra de Leds</a></div>
+          <div class="quadro"><a href="#P4">Led Saída PWM</a></div>
+          <div class="quadro"><a href="#P5">Led RGB 01</a></div>
+
+          <div class="clear"></div>
+
+          <div class="quadro"><a href="#P6">Led RGB 02</a></div>
+          <div class="quadro"><a href="#P7">Leds Botões</a></div>
+          <div class="quadro"><a href="#P8">Led Botão com Retenção</a></div>
+          <div class="quadro"><a href="#P9">Leds Botões Intercalando</a></div>
+          <div class="quadro"><a href="#P10">Semaforo Pedestre</a></div>
+
+          <div class="clear"></div>
+
+          <div class="quadro"><a href="#P11">Semáforo Pedestre</a></div>
+          <div class="quadro"><a href="#P12">Semáforo Interativo</a></div>
+          <div class="quadro"><a href="#P13">Led Monitor Serial</a></div>
+          <div class="quadro"><a href="#P14">Led Potenciomentro I</a></div>
+          <div class="quadro"><a href="#P15">Led Potenciomentro II</a></div>
+
+          <div class="clear"></div>
+
+          <div class="quadro"><a href="#P16">Sensor de Luminosidade I</a></div>
+          <div class="quadro"><a href="#P17">Sensor de Luminosidade II</a></div>
+          <div class="quadro"><a href="#P18">Servo Motor com Potenciômetro</a></div>
+          <div class="quadro"><a href="#P19">Sensor de Temperatura</a></div>
+          <div class="quadro"><a href="#P20">Buzzer</a></div>
+          <div class="clear"></div>
+
+
+          <div class="esquerda">
+          <h2 id="P1">Projeto Pisca Led-1</h2><br>
+         
+
+            <div class="quadro2">
+            <A HREF="javascript:popitup('imagens/led-1.png')"><img src="imagens/01.jpg"></a><br>
+            </div>
+            
+            <div class="code-box">
+                
+              <pre>
+                  <code id="codeContent">
+  void setup() {
+  pinMode(13, OUTPUT); 
+  }
+
+  void loop() {
+  digitalWrite(13, HIGH); 
+  delay(1000); 
+  digitalWrite(13, LOW); 
+  delay(1000); 
+  }
+        </code>
+      </pre>
+      <button onclick="copyCode()">Copiar Código</button>
+      </div>
+      
+      <div class="centralizar">
+          <a href="#Topo">Topo</a>
+        </div>
+          
+
+
+
+
+          <!--projeto 02-->
+          <h2 id="P2">Projeto Pisca Led-2</h2>
+
+          <div class="quadro2">
+          <A HREF="javascript:popitup(' imagens/led-2.png')"><img src=" imagens/02.jpg"></a><br>
+          </div>  
+
+            <div class="code-box">
+                
+              <pre>
+                  <code id="codeContent">
+   int led=4
+   void setup() {                   
+   pinMode(led, OUTPUT);                    
+  }
+            
+  void loop() {
+  digitalWrite(led, HIGH); 
+  delay(1000); 
+  digitalWrite(led, LOW); 
+  delay(1000); 
+  }
+        </code>
+      </pre>
+      <button onclick="copyCode()">Copiar Código</button>
+      </div>
+
+      
+      <div class="centralizar">
+          <a href="#Topo">Topo</a>
+</div>
+          <!--projeto 03-->
+          <h2 id="P3">Projeto Barra de Leds</h2>
+
+            <div class="quadro2">
+            <A HREF="javascript:popitup(' imagens/barra led.png')"><img src="imagens/03.jpg"></a><br>
+            </div>
+
+            <div class="code-box">
+                
+              <pre>
+                  <code id="codeContent">
+  int tempo = 300; 
+  void setup() {
+  for (int pinos = 2; pinos < 8; pinos++)	{
+  pinMode(pinos, OUTPUT);
+  } }
+  void loop() {
+  for (int pinos = 2; pinos < 8; pinos++) {
+  digitalWrite(pinos, HIGH);
+  delay(tempo);
+  digitalWrite(pinos, LOW);
+  }
+  delay(500);
+  for (int pinos = 7; pinos >= 2; pinos--) {
+  digitalWrite(pinos, HIGH);
+  delay(tempo);
+  digitalWrite(pinos, LOW);
+  }
+  delay(500);
+  }
+
+        </code>
+      </pre>
+      <button onclick="copyCode()">Copiar Código</button>
+      </div>
+
+          <div class="centralizar">
+          <a href="#Topo">Topo</a>
+</div>
+
+          <!--projeto 04-->
+          <h2 id="P4">Projeto Led Saída PWM</h2>
+
+          <div class="quadro2">
+          <A HREF="javascript:popitup(' imagens/led PWM.png')"><img src=" imagens/04.jpg"></a><br>
+            </div>
+            <div class="code-box">
+                
+              <pre>
+                  <code id="codeContent">
+  int led=3;
+  int brilho=0;
+  int lumin=5;
+
+  void setup()
+  {
+  pinMode(led, OUTPUT);
+  Serial.begin(9600);
+  }
+
+  void loop()
+  {
+  analogWrite(led, brilho);
+  brilho= brilho+lumin;
+              
+  if (brilho==0 || brilho==255) {
+              
+  lumin=-lumin;
+  }
+  delay(100);
+  Serial.println(brilho);
+  }
+
+        </code>
+      </pre>
+      <button onclick="copyCode()">Copiar Código</button>
+      </div>
+
+          <div class="centralizar">
+          <a href="#Topo">Topo</a>
+</div>
+
+          <!--projeto 05-->
+          <h2 id="P5">Projeto Led RGB 01</h2>
+
+          <div class="quadro2">
+          <A HREF="javascript:popitup(' imagens/led RGB 01.png')"><img src=" imagens/05.jpg"></a><br>
+            </div>
+
+            <div class="code-box">
+                
+              <pre>
+                  <code id="codeContent">
+  const int vermelho=3;
+  const int azul=2;
+  const int verde=1;
+
+  void setup() {
+  pinMode(vermelho, OUTPUT);
+  pinMode(azul, OUTPUT);
+  pinMode(verde, OUTPUT);
+  }
+  void loop() {
+  digitalWrite(azul,LOW);
+  digitalWrite(vermelho,LOW);
+  digitalWrite(verde,HIGH);
+  delay(2000);
+  digitalWrite(azul,LOW);
+  digitalWrite(vermelho,LOW);
+  digitalWrite(verde, LOW);
+  delay(1000);
+  digitalWrite(azul,HIGH);
+  digitalWrite(vermelho,LOW);
+  digitalWrite(verde, LOW);
+  delay(2000);
+  digitalWrite(azul,LOW);
+  digitalWrite(vermelho,LOW);
+  digitalWrite(verde, LOW);
+  delay(1000);
+  digitalWrite(azul,LOW);
+  digitalWrite(vermelho,HIGH);
+  digitalWrite(verde, LOW);
+  delay(2000);
+  digitalWrite(azul,LOW);
+  digitalWrite(vermelho,LOW);
+  digitalWrite(verde, LOW);
+  delay(3000);
+              
+  }
+
+              </code>
+            </pre>
+            <button onclick="copyCode()">Copiar Código</button>
+            </div>
+
+          <div class="centralizar">
+          <a href="#Topo">Topo</a>
+</div>
+
+          <!--projeto 06-->
+          <h2 id="P6">Projeto Led RGB 02</h2>
+
+          <div class="quadro2">
+          <A HREF="javascript:popitup(' imagens/led RGB 02.png')"><img src=" imagens/06.jpg"></a><br>
+            </div>
+
+            <div class="code-box">
+                
+              <pre>
+                  <code id="codeContent">
+  const int Cverde=9;
+  const int Cazul=10;
+  const int Cvermelho=11;
+  int tempo=500;
+
+  String cor;
+
+  void setup()
+  {
+  Serial.begin(9600);
+              
+  pinMode(Cazul, OUTPUT);
+  pinMode(Cverde, OUTPUT);
+  pinMode(Cvermelho, OUTPUT);
+              
+  }
+
+  void loop()
+  {
+  vermelho();
+  delay(tempo);
+  apaga ();
+  delay(tempo);
+  verde();
+  delay(tempo);
+  apaga ();
+  delay(tempo);
+  azul();
+  delay(tempo);
+  apaga ();
+  delay(tempo);
+  amarelo();
+  delay(tempo);
+  apaga ();
+  delay(tempo);
+  rosa();
+  delay(tempo);
+  apaga ();
+  delay(tempo+2500);
+  } 
+              
+              
+
+  void vermelho(){
+  digitalWrite(Cazul, LOW);
+  digitalWrite(Cverde, LOW);
+  digitalWrite(Cvermelho, HIGH);
+  }
+  void verde(){
+  digitalWrite(Cazul, LOW);
+  digitalWrite(Cverde, HIGH);
+  digitalWrite(Cvermelho, LOW);
+  }
+  void apaga (){
+  digitalWrite(Cazul, LOW);
+  digitalWrite(Cverde, LOW);
+  digitalWrite(Cvermelho, LOW); 
+  }
+
+  void azul (){
+  digitalWrite(Cazul, HIGH);
+  digitalWrite(Cverde, LOW);
+  digitalWrite(Cvermelho, LOW); 
+  }
+
+  void amarelo(){
+  digitalWrite(Cazul, LOW);
+  digitalWrite(Cverde, HIGH);
+  digitalWrite(Cvermelho, HIGH);
+  }
+
+  void rosa(){
+  digitalWrite(Cazul, HIGH);
+  digitalWrite(Cverde, LOW);
+  digitalWrite(Cvermelho, HIGH);
+  }
+
+          </code>
+      </pre>
+      <button onclick="copyCode()">Copiar Código</button>
+      </div>
+
+
+          <div class="centralizar">
+          <a href="#Topo">Topo</a>
+</div>
+
+          <!--projeto 07-->
+          <h2 id="P7">Projeto Leds Botões</h2>
+
+          <div class="quadro2">
+          <A HREF="javascript:popitup(' imagens/leds botoes.png')"><img src="imagens/07.jpg"></a><br>
+          </div>
+
+            <div class="code-box">
+                
+              <pre>
+                  <code id="codeContent">
+  int bt1=5;
+  int bt2=6;
+  int led1=9;
+  int led2=10;
+  int btEst1=0;
+  int btEst2=0;
+            
+  void setup() {
+  Serial.begin (9600); 
+  pinMode (led1, OUTPUT);
+  pinMode (led2, OUTPUT);
+  pinMode (bt1, INPUT);
+  pinMode (bt2, INPUT);
+  } 
+
+  void loop() {
+  btEst1=digitalRead(bt1);
+  if (btEst1==HIGH){
+  digitalWrite (led1,HIGH);
+  Serial.println ("Led1 on");
+  }
+  else{
+  digitalWrite (led1,LOW);
+  Serial.println ("Led1 off"); }
+
+            
+  btEst2=digitalRead(bt2);
+  if (btEst2==HIGH){
+  digitalWrite (led2,HIGH);
+  Serial.println ("Led2 on");
+  }
+  else{
+  digitalWrite (led2,LOW);
+  Serial.println ("Led2 off"); }
+
+
+  }
+
+        </code>
+      </pre>
+      <button onclick="copyCode()">Copiar Código</button>
+      </div>
+
+
+          <div class="centralizar">
+          <a href="#Topo">Topo</a>
+</div>
+
+          <!--projeto 08-->
+          <h2 id="P8">Projeto Led Botão com Retenção </h2>
+
+          <div class="quadro2">
+          <A HREF="javascript:popitup(' imagens/led botao retencao.png')"><img src=" imagens/08.jpg"></a><br>
+          </div>
+
+            <div class="code-box">
+                
+              <pre>
+                  <code id="codeContent">
+  // set pinos
+  const int buttonPin = 8; // número do pino pushbutton
+  const int ledPin = 5; // número do pino LED
+
+  int estado = 0; // variável para leitura do pushbutton
+  int guarda_estado = 0; // variável para armazenar valores do pushbutton
+            
+  void setup() {
+  // define o pino do Led como saída do Arduino
+  pinMode(ledPin, OUTPUT);
+  // define pino do pushbutton como entrada do Arduino:
+  pinMode(buttonPin, INPUT);
+  }
+            
+  void loop(){
+  // le o estado pushbutton: ligado (HIGH) ou desligado (LOW)
+  estado = digitalRead(buttonPin);
+            
+  // verifica se o botão (pushbutton) está pressionado
+  if (estado == HIGH) {
+  // inverte valor da variável variable_buttonEstado
+  guarda_estado = !guarda_estado;
+  //esperera o tempo de 500ms para evitar que haja várias vezes alterações
+  delay(200);
+  }
+            
+  if (guarda_estado == HIGH) {
+  // liga o led
+  digitalWrite(ledPin, HIGH);
+  }
+  else {
+  // desliga o led
+  digitalWrite(ledPin, LOW);
+  }
+  } 
+        </code>
+      </pre>
+      <button onclick="copyCode()">Copiar Código</button>
+      </div>
+          
+          <div class="centralizar">
+          <a href="#Topo">Topo</a>
+</div>
+
+          <!--projeto 09-->
+          <h2 id="P9">Projeto Leds Botões Intercalando</h2>
+
+          <div class="quadro2">
+          <A HREF="javascript:popitup(' imagens/leds botao intercalando.png')"><img src=" imagens/09.jpg"></a><br></div>
+
+            <div class="code-box">
+                
+              <pre>
+                  <code id="codeContent">
+  const int pinButton = 8;
+  int estado;
+  int seletor = 0;
+  int led;
+  int tempo = 200;
+  int in = 0;
+            
+  void setup(void) {
+  pinMode(2, OUTPUT); 
+  pinMode(12, OUTPUT); 
+  pinMode(pinButton, INPUT_PULLUP); 
+  }
+            
+  void loop(){
+  if (in==0) {
+  estado = digitalRead(pinButton); //Lê o botão se está HIGH ou LOW
+  if (!estado) {in=1;}
+  } else { 
+  //Push button função liga / desliga  
+  estado = digitalRead(pinButton); //Lê o botão se está HIGH ou LOW
+            
+  if (!estado) {
+  seletor = !seletor;
+  delay(300); //espera soltar o botão
+  }
+            
+  if (seletor == 1) {led =2;
+  } else {led = 12;} 
+            
+  digitalWrite(led, HIGH);
+  digitalWrite(led, LOW);
+  }
+  } 
+        </code>
+      </pre>
+      <button onclick="copyCode()">Copiar Código</button>
+      </div>
+
+
+          <div class="centralizar">
+          <a href="#Topo">Topo</a>
+</div>
+
+          <!--projeto 10-->
+          <h2 id="P10">Projeto Semáforo</h2>
+
+          <div class="quadro2">
+          <A HREF="javascript:popitup(' imagens/semaforo.png')"><img src=" imagens/10.jpg"></a><br></div>
+
+            <div class="code-box">
+                
+              <pre>
+                  <code id="codeContent">
+  int vermelhoPin = 10; 
+  int amareloPin = 5; 
+  int verdePin =2;
+
+  void setup() {
+
+  pinMode(vermelhoPin, OUTPUT);
+  pinMode(amareloPin, OUTPUT);
+  pinMode(verdePin, OUTPUT);
+  }
+
+            void loop() {
+  digitalWrite(verdePin, HIGH);
+  delay(5000); 
+              
+  digitalWrite(verdePin, LOW);
+  digitalWrite(amareloPin, HIGH);
+
+  delay(2000);
+  digitalWrite(amareloPin, LOW);
+  digitalWrite(vermelhoPin, HIGH);
+
+  delay(5000);
+  digitalWrite(vermelhoPin, LOW);
+  }
+          </code>
+      </pre>
+      <button onclick="copyCode()">Copiar Código</button>
+      </div>
+
+
+          <div class="centralizar">
+          <a href="#Topo">Topo</a>
+</div>
+
+          <!--projeto 11-->
+          <h2 id="P11">Projeto Semáforo Pedestre</h2>
+
+          <div class="quadro2">
+          <A HREF="javascript:popitup(' imagens/semaforo pedestre.png')"><img src=" imagens/11.jpg"></a><br></div>
+
+            <div class="code-box">
+                
+              <pre>
+                  <code id="codeContent">
+  int vermelhoCar = 13; 
+  int amareloCar = 12; 
+  int verdeCar =11;
+  int vermelhoPedestre=3;
+  int verdePedestre=2;
+
+  void setup() {
+
+  pinMode(vermelhoCar, OUTPUT);
+  pinMode(amareloCar, OUTPUT);
+  pinMode(verdeCar, OUTPUT);
+  pinMode(verdePedestre, OUTPUT);
+  pinMode(vermelhoPedestre, OUTPUT);
+  }
+
+  void loop() {
+  digitalWrite(verdeCar, HIGH);
+  digitalWrite(vermelhoPedestre, HIGH);
+  delay(5000); 
+              
+  digitalWrite(verdeCar, LOW);
+  digitalWrite(amareloCar, HIGH);
+
+  delay(2000);
+  digitalWrite(amareloCar, LOW);
+  digitalWrite(vermelhoPedestre,LOW);
+  digitalWrite(vermelhoCar, HIGH);
+  digitalWrite(verdePedestre, HIGH);
+
+  delay(5000);
+  digitalWrite(vermelhoCar, LOW);
+  digitalWrite(verdePedestre, LOW);
+  }
+
+          </code>
+      </pre>
+      <button onclick="copyCode()">Copiar Código</button>
+      </div>
+
+
+          <div class="centralizar">
+          <a href="#Topo">Topo</a>
+</div>
+
+          <!--projeto 12-->
+          <h2 id="P12">Projeto Semáforo Interativo</h2>
+
+          <div class="quadro2">
+          <A HREF="javascript:popitup(' imagens/semaforo interativo.png')"><img src=" imagens/12.jpg"></a><br></div>
+
+            <div class="code-box">
+                
+              <pre>
+                  <code id="codeContent">
+  int vermelhoPin = 13; 
+  int amareloPin = 12; 
+  int verdePin =11;
+  int vermelhoPedestre=3;
+  int verdePedestre=2;
+  int botao =7;
+  int tempo=5000;
+  unsigned long tempoCh;
+
+  void setup() {
+
+  pinMode(vermelhoPin, OUTPUT);
+  pinMode(amareloPin, OUTPUT);
+  pinMode(verdePin, OUTPUT);
+  pinMode(verdePedestre, OUTPUT);
+  pinMode(vermelhoPedestre, OUTPUT);
+  pinMode(botao, INPUT);
+              
+  digitalWrite(vermelhoPin, LOW);
+  digitalWrite(amareloPin, LOW);
+  digitalWrite(verdePin, HIGH);
+  digitalWrite(verdePedestre, LOW);
+  digitalWrite(vermelhoPedestre, HIGH);
+  }
+
+  void loop() {
+  int state= digitalRead(botao);
+              
+  if (state == HIGH && (millis() - tempoCh) > 5000) {
+
+  luzes();
+  }
+  }
+
+              
+  void luzes(){
+  digitalWrite(verdePin, LOW);
+  digitalWrite(amareloPin, HIGH);
+  delay(2000); 
+              
+  digitalWrite(amareloPin, LOW);
+  digitalWrite(vermelhoPin, HIGH);
+                
+  digitalWrite(vermelhoPedestre, LOW);
+  digitalWrite(verdePedestre, HIGH);
+
+  delay(tempo);
+                
+  for (int x=0; x@10; x++) {// subistituir o @ por '>'
+  digitalWrite(verdePedestre, LOW);
+  delay(100);
+  digitalWrite(verdePedestre, HIGH);
+  delay(100);
+  }
+
+  digitalWrite(verdePedestre,LOW);
+  digitalWrite(vermelhoPin, LOW);
+  digitalWrite(vermelhoPedestre,HIGH);
+  digitalWrite(verdePin, HIGH);
+
+  tempoCh=millis();
+  }
+              
+          </code>
+      </pre>
+      <button onclick="copyCode()">Copiar Código</button>
+      </div>
+
+
+          <div class="centralizar">
+          <a href="#Topo">Topo</a>
+</div>
+
+          <!--projeto 13-->
+          <h2 id="P13">Projeto Led Monitor Serial</h2>
+
+          <div class="quadro2">
+          <A HREF="javascript:popitup(' imagens/led monitor serial.png')"><img src=" imagens/13.jpg"></a><br></div>
+
+            <div class="code-box">
+                
+              <pre>
+                  <code id="codeContent">
+char leitura; 
+#define ledVermelho 5
+#define ledVerde 7 
+#define ledAmarelo 6 
+
+void setup() { 
+Serial.begin(9600); 
+pinMode(ledVermelho, OUTPUT); 
+pinMode(ledVerde, OUTPUT); 
+pinMode(ledAmarelo,OUTPUT); 
+digitalWrite (ledVermelho, LOW); 
+digitalWrite (ledVerde, LOW); 
+digitalWrite (ledAmarelo, LOW); 
+}
+
+void loop() {
+while (Serial.available() > 0) {
+leitura = Serial.read(); 
+if (leitura == 'r' || leitura =='R'){
+digitalWrite(ledVermelho,!digitalRead(ledVermelho)); } 
+
+else if (leitura == 'g' || leitura =='G'){ 
+digitalWrite(ledVerde,!digitalRead(ledVerde)); }
+
+else if (leitura == 'y' || leitura =='Y'){ 
+digitalWrite(ledAmarelo,!digitalRead(ledAmarelo)); } 
+
+else if (leitura == 'd' || leitura =='D'){ 
+digitalWrite (ledVermelho, LOW); 
+digitalWrite (ledVerde, LOW); 
+digitalWrite (ledAmarelo, LOW); }
+Serial.println(leitura); 
+} } 
+
+          </code>
+      </pre>
+      <button onclick="copyCode()">Copiar Código</button>
+      </div>
+
+
+          <div class="centralizar">
+          <a href="#Topo">Topo</a>
+</div>
+
+          <!--projeto 14-->
+          <h2 id="P14">Projeto Led Potenciomentro I</h2>
+
+          <div class="quadro2">
+          <A HREF="javascript:popitup(' imagens/led controle potenciometro.png')"><img src=" imagens/14.jpg"></a><br></div>
+
+            <div class="code-box">
+                
+              <pre>
+                  <code id="codeContent">
+  int sensorPin = A0;
+  int ledPin = 13;
+  int sensorValor = 0;
+
+  void setup() {
+  Serial.begin(9600);
+  pinMode(ledPin, OUTPUT);
+  }
+  void loop() {
+  sensorValor = analogRead(sensorPin);
+  Serial.println(sensorValor);
+  digitalWrite(ledPin, HIGH);
+  delay(sensorValor);
+  digitalWrite(ledPin, LOW);
+  delay(sensorValor);
+  }
+
+          </code>
+      </pre>
+      <button onclick="copyCode()">Copiar Código</button>
+      </div>
+
+
+          <div class="centralizar">
+          <a href="#Topo">Topo</a>
+</div>
+
+          <!--projeto 15-->
+          <h2 id="P15">Projeto Led Potenciomentro II</h2>
+
+          <div class="quadro2">
+          <A HREF="javascript:popitup(' imagens/led potenciometro.png')"><img src=" imagens/15.jpg"></a><br></div>
+
+            <div class="code-box">
+                
+              <pre>
+                  <code id="codeContent">
+  int led=3;
+  int pot=A0;
+  int valor =0;
+
+  void setup()
+  {
+  Serial.begin(9600);
+  }
+
+  void loop()
+  {
+  valor=analogRead(pot);
+  valor=map(valor,0,1023,0,255);
+  Serial.print("Potenciometro: ");
+  Serial.println(valor);
+  analogWrite(led, valor);
+  }
+
+          </code>
+      </pre>
+      <button onclick="copyCode()">Copiar Código</button>
+      </div>
+
+
+          <div class="centralizar">
+          <a href="#Topo">Topo</a>
+</div>
+
+          <!--projeto 16-->
+          <h2 id="P16">Projeto Sensor de Luminosidade I</h2>
+
+          <div class="quadro2">
+          <A HREF="javascript:popitup(' imagens/sensor luminosidade.png')"><img src=" imagens/16.jpg"></a><br></div>
+
+            <div class="code-box">
+                
+              <pre>
+                  <code id="codeContent">
+int led=10;
+int sensor=A0;
+int sensorValor=0;
+
+void setup (){
+Serial.begin(9600);
+pinMode(led, OUTPUT);
+}
+
+void loop(){
+sensorValor = analogRead(sensor);
+sensorValor = map(sensorValor, 0, 1023, 0, 255) ;
+Serial.println(sensorValor);
+analogWrite(led,sensorValor);
+delay(100);
+}
+
+          </code>
+      </pre>
+      <button onclick="copyCode()">Copiar Código</button>
+      </div>
+
+
+          <div class="centralizar">
+          <a href="#Topo">Topo</a>
+</div>
+
+          <!--projeto 17-->
+          <h2 id="P17">Projeto Sensor de Luminosidade II</h2>
+
+          <div class="quadro2">
+          <A HREF="javascript:popitup(' imagens/sensor luminosidade.png')"><img src=" imagens/16.jpg"></a><br></div>
+
+            <div class="code-box">
+                
+              <pre>
+                  <code id="codeContent">
+  int led=10;
+  int sensor=A0;
+  int sensorValor=0;
+
+  void setup (){
+  Serial.begin(9600);
+  pinMode(led, OUTPUT);
+  }
+
+  void loop(){
+  sensorValor = analogRead(sensor);
+  sensorValor = map(sensorValor, 0, 1023, 0, 255) ;
+  Serial.println(sensorValor);
+  if (sensorValor < 200){
+  digitalWrite(led,HIGH);
+  }else{
+  digitalWrite(led,LOW);
+  }
+                
+  delay(100);
+  }
+
+          </code>
+      </pre>
+      <button onclick="copyCode()">Copiar Código</button>
+      </div>
+
+
+          <div class="centralizar">
+          <a href="#Topo">Topo</a>
+</div>
+
+          <!--projeto 18-->
+          <h2 id="P18">Projeto Servo Motor com Potenciômetro</h2>
+
+          <div class="quadro2">
+          <A HREF="javascript:popitup(' imagens/servo potenciometro.png')"><img src=" imagens/18.jpg"></a><br></div>
+
+            <div class="code-box">
+                
+              <pre>
+                  <code id="codeContent">
+
+  #include < Servo.h>
+
+  Servo servo1;
+
+  void setup(){
+  servo1.attach(10);
+  }
+
+  void loop(){
+  int angulo=analogRead(0);
+  angulo=map(angulo, 0,1023, 0,180);
+  servo1.write(angulo);
+  delay(20);
+  }
+
+        </code>
+      </pre>
+      <button onclick="copyCode()">Copiar Código</button>
+      </div>
+
+
+          <div class="centralizar">
+          <a href="#Topo">Topo</a>
+</div>
+
+          <!--projeto 19-->
+          <h2 id="P19">Projeto Sensor de Temperatura</h2>
+
+          <div class="quadro2">
+          <A HREF="javascript:popitup(' imagens/sensor temperatura.png')"><img src=" imagens/19.jpg"></a><br></div>
+
+          <div class="code-box">
+                
+              <pre>
+                  <code id="codeContent">
+  const int sensorPin = A2;
+  float temperatura = 0;
+                          
+  void setup(){
+  Serial.begin(9600);
+  }
+
+  void loop(){
+  temperatura = (analogRead(sensorPin) * 0.0048828125 * 10);
+  Serial.print("Temperatura = ");
+  Serial.print(temperatura);
+  Serial.println(" C");
+  delay(2000);
+  }
+
+          </code>
+      </pre>
+      <button onclick="copyCode()">Copiar Código</button>
+      </div>
+
+
+          <div class="centralizar">
+          <a href="#Topo">Topo</a>
+</div>
+
+          <!--projeto 20-->
+          <h2 id="P20">Projeto Buzzer</h2>
+
+          <div class="quadro2">
+          <A HREF="javascript:popitup(' imagens/buzzer.png')"><img src=" imagens/20.jpg"></a><br></div>
+
+            <div class="code-box">
+                
+              <pre>
+                  <code id="codeContent">
+  float sinVal;
+  int toneVal;
+
+  void setup() {
+
+  }
+
+  void loop() {
+  alarme();
+  }
+
+  void alarme(){
+  for (int x=0; x@180; x++) { // subistituir o @ por '<''
+  sinVal = (sin(x*(3.1416/180)));
+  toneVal = 2000+(int(sinVal*1000));
+  tone(11, toneVal);
+  delay(2); 
+  }}
+
+          </code>
+      </pre>
+      <button onclick="copyCode()">Copiar Código</button>
+      </div>
+
+
+          <div class="centralizar">
+          <a href="#Topo">Topo</a>
+</div>
+
+          </div>
+        
+        </div>
+      </div>
+      <script src="script.js"></script>
+
+        <p>Contato: infovillela.cp@gmail.com</p>
+  </body>
+</html> 
