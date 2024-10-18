@@ -1,0 +1,5 @@
+
+Hardware, 
+Hardware, circuitaria, material ou ferramental é a parte física do computador, ou seja, é
+o conjunto de componentes eletrônicos, circuitos integrados e placas, que se comunicam
+através de barramentos.

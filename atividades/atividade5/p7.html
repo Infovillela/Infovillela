@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Digitação</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function checkPassword() {
+    var userInput = document.getElementById("password").value;
+    var titleText = document.querySelector("h1").innerText;
+
+    if (userInput === titleText) {
+        window.location.href = "p8.html";  // Substitua 'outra_pagina.html' pelo nome da sua outra página
+    } else {
+        document.getElementById("errorMessage").innerText = "Algo está errado! Tente novamente.";
+    }
+}
+
+document.getElementById("password").addEventListener("input", function() {
+    this.value = this.value.toUpperCase();
+});
+
+    </script>
+
+</head>
+<body>
+
+    <div class="container">
+        <img src="A6.jpg">
+        <h1>CAIXAS DE SOM</h1>
+        <h4>POR MEIO DELA VOCÊ PODE OUVIR SONS E MÚSICAS</h4>
+        
+        <p>
+            <button type="button">CAIXAS DE SOM</button><button type="button">MONITOR</button><button type="button">ESTABILIZADOR</button><button type="button">MOUSE</button>
+            <button type="button">TECLADO</button><button type="button">WEBCAM</button><button type="button">HD</button><button type="button">PEN DRIVE</button>
+        </p>
+    
+        <P><br></P>
+
+        <form id="passwordForm" onsubmit="checkPassword(); return false;">
+            
+            <input type="" id="password" name="password" placeholder="Digite a Frase!">
+            <input type="submit" value="Próximo">
+        </form>
+
+        <p id="errorMessage" class="error-message"></p>
+    </div>
+
+   
+</body>
+</html>
