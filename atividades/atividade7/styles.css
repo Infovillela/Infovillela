@@ -1,0 +1,62 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+ user-select: none;
+}
+
+.imagem{
+    background:#ffffff;
+    padding-left: auto;
+    float:center;
+    
+}
+.esquerda{
+    text-align: left;
+    padding-left: 20px;
+}
+.justificar{
+    text-align: justify;
+    font-size: 20px;
+    padding: 5px 50px;
+}
+
+.container {
+    text-align: center;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #696969;
+    width: 800px;
+}
+
+label {
+    display: block;
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 55px;
+    width: 100%;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+}
+
+h1{
+    color:#ffffff;
+}
+
+h2{
+    font-size: 35PX;
+}
