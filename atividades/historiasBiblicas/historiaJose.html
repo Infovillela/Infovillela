@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Digitação</title>
+    <link rel="stylesheet" href="styles.css">
+    
+
+</head>
+<body>
+
+    <div class="container">
+              
+        <h2>JOSÉ DO EGITO</h2>
+
+        
+
+        
+        <h2>Preencha os nomes dos personagens da História:</h2>
+        
+        <!--
+            <div class="gallery1"> <br>
+                <br>
+                    <input type="text" id="nome3"><br>
+                    <input type="text" id="nome4"><br>
+                    <img src="sol.jpg"> <input type="text" id="nome5"><br>
+                    <img src="lua.jpg"> <input type="text" id="nome6"><br>
+                    <img src="estrela.jpg"> <input type="text" id="nome7"><br>
+                    <img src="animais.jpg"> <input type="text" id="nome8"><br>
+                </div>
+            -->
+            
+            
+            <div class="gallery1">
+            
+            
+                <div class="gallery2" title='JOSÉ'  >
+                    <img src="jose.jpg"> 
+                    <input type="text" id="nome1">
+                   </div>
+                
+                   <div class="gallery2" title='JACÓ' >
+                    <img src="jaco.jpg">
+                    <input type="text" id="nome2">
+
+                   </div>
+                
+                <div class="gallery2" title='TÚNICA'>
+                    <img src="tunica.jpg"> <br>
+                    <input type="" id="nome3" name="nome3" >
+                </div>
+                
+                <div class="gallery2" title='COMIDA'  >
+                     <img src="comida.jpg"><br>
+                    <input type="" id="nome4" name="nome4" >
+                </div>
+                
+                <div class="gallery2" title='FILHOS' >
+                    <img src="filhos.jpg"><br>
+                    <input type="" id="nome5" name="nome5" >
+                </div>
+                
+                <div class="gallery2" title='EGITO'>
+                    <img src="egito.jpg"><br>
+                    <input type="" id="nome6" name="nome6" >
+                </div>
+                
+                <div class="gallery2" title='FARAÓ' >
+                    <img src="farao.jpg"><br>
+                    <input type="" id="nome7" name="nome7" >
+                </div>
+
+                <div class="clear"></div>
+       
+               
+                
+           
+</div> 
+ <div class="gallery1">
+
+                    <button onclick="checkWords()">Verificar</button>
+                </div>
+
+</div>
+    <script>
+        function checkWords() {
+    var nome1 = document.getElementById("nome1").value.toLowerCase();
+    var nome2 = document.getElementById("nome2").value.toLowerCase();
+    var nome3 = document.getElementById("nome3").value.toLowerCase();
+    var nome4 = document.getElementById("nome4").value.toLowerCase();
+    var nome5 = document.getElementById("nome5").value.toLowerCase();
+    var nome6 = document.getElementById("nome6").value.toLowerCase();
+    var nome7 = document.getElementById("nome7").value.toLowerCase();
+    
+
+    if (nome1 === "josé" && nome2 === "jacó" && nome3 === "túnica" && nome4 === "comida" && nome5 === "filhos" && nome6 === "egito"  && nome7 === "faraó") {
+        window.location.href = "historiaJoseA.html"; // Substitua 'outra_pagina.html' pelo nome da sua próxima página
+    } else {
+        alert("Palavras incorretas! Tente novamente.");
+    }
+}
+    </script>
+
+       
+    </body>
+</html>

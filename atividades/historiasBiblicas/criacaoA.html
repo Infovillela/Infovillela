@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Digitação</title>
+    <link rel="stylesheet" href="styles.css">
+    
+
+</head>
+<body>
+
+    <div class="containerS">
+        <img src="1.jpg" alt="Criação" width="604" height="428">
+    </div>
+
+
+    <div class="container">
+
+        
+        <h2>A CRIAÇÃO</h2>
+
+        <div class="efeito">
+            
+            <label for="password"></label>
+            <h2 id="outputText">Digite 'Criação' para iniciar!</h2>
+            <input type="" id="password" placeholder="Digite a palavra acima" oninput="checkPassword()" width="300">
+            
+            
+        </div>
+        <div class="gallery1">
+            
+            <button onclick="limparCampoInput()">Limpar</button>
+        </div>
+
+</div>
+    <script>
+/*
+No início, não havia nada: Deus ordenou
+que houvesse luz, e a luz surgiu. Deus fez
+a (BD) e a encheu de sie
+
+Ele criou o E d ea >) e encheu
+
+o céu de A Deus criou um homem
+chamado e e uma mulher chamada
+a; Ele colocou os dois na É para
+viver. Depois, Deus descansou.
+*/
+
+const correctPasswords = ["Criação","No início,","não havia nada:","Deus ordenou","que houvesse luz,","e a luz surgiu.","Deus fez a Terra","e a encheu de","plantas e animais.","Ele criou o Céu d e a Lua,","e encheu o céu de Estrelas.","Deus criou um homem chamado Adão,","e uma mulher chamada Eva.","Ele colocou os dois na Terra para viver.","Depois, Deus descansou.☺"]; // Adicione suas senhas corretas aqui
+const phrases = ["No início,","não havia nada:","Deus ordenou","que houvesse luz,","e a luz surgiu.","Deus fez a Terra","e a encheu de","plantas e animais.","Ele criou o Céu d e a Lua,","e encheu o céu de Estrelas.","Deus criou um homem chamado Adão,","e uma mulher chamada Eva.","Ele colocou os dois na Terra para viver.","Depois, Deus descansou.","Criação"];
+
+function checkPassword() {
+    var passwordInput = document.getElementById("password").value;
+
+    if (correctPasswords.includes(passwordInput)) {
+        updateText();
+    }
+}
+
+function updateText() {
+       var outputText = document.getElementById("outputText");
+    var currentPasswordIndex = correctPasswords.indexOf(document.getElementById("password").value);
+
+    if (currentPasswordIndex !== -1) {
+        outputText.innerText = phrases[currentPasswordIndex];
+        var campoInput = document.getElementById("password");
+        campoInput.value = ""; 
+    } else {
+        outputText.innerText = "Bem-vindo!";
+    }
+}
+//funçao para limpar campo de password
+
+function limparCampoInput() {
+    var campoInput = document.getElementById("password");
+    campoInput.value = ""; 
+}
+
+    </script>
+
+       
+    </body>
+</html>

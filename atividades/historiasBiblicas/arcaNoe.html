@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Digitação</title>
+    <link rel="stylesheet" href="styles.css">
+    
+
+</head>
+<body>
+
+    <div class="container">
+              
+        <h2>A Arca de Noé</h2>
+
+        
+
+        
+        <h2>Preencha os nomes dos personagens da História:</h2>
+        
+        <div class="gallery1">
+            
+            
+                <div class="gallery2" title='CHUVA'  >
+                    <img src="chuva.jpg"> 
+                    <input type="text" id="nome1">
+                   </div>
+                
+                   <div class="gallery2" title='DILÚVIO'>
+                    <img src="diluvio.jpg">
+                    <input type="text" id="nome2">
+
+                   </div>
+                
+                <div class="gallery2" title='ANIMAL'>
+                    <img src="animal.jpg"> <br>
+                    <input type="" id="nome3" name="nome3" >
+                </div>
+                
+                <div class="gallery2" title='ARCA'  >
+                     <img src="arca.jpg"><br>
+                    <input type="" id="nome4" name="nome4" >
+                </div>
+                
+                <div class="gallery2" title='NOÉ' >
+                    <img src="noe.jpg"><br>
+                    <input type="" id="nome5" name="nome5" >
+                </div>
+                
+                <div class="clear"></div>
+       
+               
+                
+           
+</div> 
+ <div class="gallery1">
+
+                    <button onclick="checkWords()">Verificar</button>
+                </div>
+
+</div>
+    <script>
+        function checkWords() {
+    var nome1 = document.getElementById("nome1").value.toLowerCase();
+    var nome2 = document.getElementById("nome2").value.toLowerCase();
+    var nome3 = document.getElementById("nome3").value.toLowerCase();
+    var nome4 = document.getElementById("nome4").value.toLowerCase();
+    var nome5 = document.getElementById("nome5").value.toLowerCase();
+    
+
+    if (nome1 === "chuva" && nome2 === "dilúvio" && nome3 === "animal" && nome4 === "arca" && nome5 === "noé") {
+        window.location.href = "arcaNoeA.html"; // Substitua 'outra_pagina.html' pelo nome da sua próxima página
+    } else {
+        alert("Palavras incorretas! Tente novamente.");
+    }
+}
+    </script>
+
+       
+    </body>
+</html>

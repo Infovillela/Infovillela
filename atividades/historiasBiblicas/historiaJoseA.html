@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Digitação</title>
+    <link rel="stylesheet" href="styles.css">
+    
+
+</head>
+<body>
+
+    <div class="containerS">
+        <img src="3.jpg" alt="Criação" width="604" height="428">
+    </div>
+
+
+    <div class="container">
+
+        
+        <h2>A HISTÓRIA DE JOSÉ</h2>
+
+        <div class="efeito">
+            
+            <label for="password"></label>
+            <h2 id="outputText">Digite 'Egito' para iniciar!</h2>
+            <input type="" id="password" placeholder="Digite a palavra acima" oninput="checkPassword()" width="300">
+            
+            
+        </div>
+        <div class="gallery1">
+            
+            <button onclick="limparCampoInput()">Limpar</button>
+        </div>
+
+</div>
+    <script>
+
+
+const correctPasswords = ["Egito","Jacó tinha 12 filhos e José era seu preferido.","Jacó deu uma túnica colorida para José.","Os outros filhos ficaram com ciúmes","e venderam José para alguns mercadores.","Um dia, o Faraó sonhou que o povo","do Egito ficaria sem comida.","José ajudou o Faraó","a entender o sonho.","O Faraó agradeceu a ajuda","e José passou a governar o Egito.☺"]; // Adicione suas senhas corretas aqui
+const phrases = ["Jacó tinha 12 filhos e José era seu preferido.","Jacó deu uma túnica colorida para José.","Os outros filhos ficaram com ciúmes","e venderam José para alguns mercadores.","Um dia, o Faraó sonhou que o povo","do Egito ficaria sem comida.","José ajudou o Faraó","a entender o sonho.","O Faraó agradeceu a ajuda ","e José passou a governar o Egito.","Egito"];
+
+function checkPassword() {
+    var passwordInput = document.getElementById("password").value;
+
+    if (correctPasswords.includes(passwordInput)) {
+        updateText();
+    }
+}
+
+function updateText() {
+       var outputText = document.getElementById("outputText");
+    var currentPasswordIndex = correctPasswords.indexOf(document.getElementById("password").value);
+
+    if (currentPasswordIndex !== -1) {
+        outputText.innerText = phrases[currentPasswordIndex];
+        var campoInput = document.getElementById("password");
+        campoInput.value = ""; 
+    } else {
+        outputText.innerText = "Bem-vindo!";
+    }
+}
+//funçao para limpar campo de password
+
+function limparCampoInput() {
+    var campoInput = document.getElementById("password");
+    campoInput.value = ""; 
+}
+
+    </script>
+
+       
+    </body>
+</html>

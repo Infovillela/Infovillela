@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Digitação</title>
+    <link rel="stylesheet" href="styles.css">
+    
+
+</head>
+<body>
+
+    <div class="containerS">
+        <img src="2.jpg" alt="Criação" width="604" height="428">
+    </div>
+
+
+    <div class="container">
+
+        
+        <h2>A ARCA DE NOÉ</h2>
+
+        <div class="efeito">
+            
+            <label for="password"></label>
+            <h2 id="outputText">Digite 'Arca' para iniciar!</h2>
+            <input type="" id="password" placeholder="Digite a palavra acima" oninput="checkPassword()" width="300">
+            
+            
+        </div>
+        <div class="gallery1">
+            
+            <button onclick="limparCampoInput()">Limpar</button>
+        </div>
+
+</div>
+    <script>
+/*
+Deus enviou um dilúvio para a Terra
+
+para acabar com o mal. fa era um
+homem bom, então Deus disse para Fã.
+construir uma == e colocar nela um
+casal de cada 68, - A Re caiu por
+
+40 dias e 40 noites. À água cobriu tudo,
+mas todos estavam a salvo na = Então,
+Deus pôs um mA no céu e prometeu
+que nunca mais haveria outro e
+
+
+
+*/
+
+const correctPasswords = ["Arca","Deus enviou um dilúvio para a Terra","para acabar com o mal.","Noé era um homem bom,","então Deus disse para Noé.","construir uma Arca","e colocar nela um casal de cada animal.","A chuva caiu por 40 dias e 40 noites.","À água cobriu tudo,","mas todos estavam a salvo na Arca.","Então, Deus pôs um Arco Íris no céu","e prometeu que nunca mais haveria outro dilúvio.☺"]; 
+const phrases = ["Deus enviou um dilúvio para a Terra","para acabar com o mal.","Noé era um homem bom,","então Deus disse para Noé.","construir uma Arca","e colocar nela um casal de cada animal.","A chuva caiu por 40 dias e 40 noites.","À água cobriu tudo,","mas todos estavam a salvo na Arca.","Então, Deus pôs um Arco Íris no céu","e prometeu que nunca mais haveria outro dilúvio.","Arca"];
+
+function checkPassword() {
+    var passwordInput = document.getElementById("password").value;
+
+    if (correctPasswords.includes(passwordInput)) {
+        updateText();
+    }
+}
+
+function updateText() {
+       var outputText = document.getElementById("outputText");
+    var currentPasswordIndex = correctPasswords.indexOf(document.getElementById("password").value);
+
+    if (currentPasswordIndex !== -1) {
+        outputText.innerText = phrases[currentPasswordIndex];
+        var campoInput = document.getElementById("password");
+        campoInput.value = ""; 
+    } else {
+        outputText.innerText = "Bem-vindo!";
+    }
+}
+//funçao para limpar campo de password
+
+function limparCampoInput() {
+    var campoInput = document.getElementById("password");
+    campoInput.value = ""; 
+}
+
+    </script>
+
+       
+    </body>
+</html>

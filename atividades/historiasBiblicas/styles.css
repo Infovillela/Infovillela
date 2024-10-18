@@ -1,0 +1,184 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 10px;
+    padding: 0;
+    /*display: flex;*/
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+ user-select: none;
+}
+
+#principal{
+    width:90%;
+    background: #b9b9b9c5;
+    padding: 10px;
+    
+}
+
+#menu{
+    background: #b9b9b9c5;
+        padding:20px;
+        font:25px Arial, Helvetica, sans-serif;
+        
+        
+}
+
+
+
+.conteudo{
+    margin: 2px;
+    
+    border: 1px solid #000000;
+
+}
+
+.conteudo img{
+    width: 200px;
+}
+
+.clear{
+    clear:both;
+}
+
+.container {
+    margin: 10px auto;
+    width: 1000px;
+    text-align: center;
+    padding: 5px;
+    background-color: #4897b5;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+       
+}
+
+.containerS{
+		
+    margin: 10px auto;
+    width: 1000px;
+    text-align: center;
+    padding: 5px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+}
+
+header {
+    background-color: #0077ff;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input {
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 100px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.centralizar{
+    text-align: center;
+    
+}
+
+
+
+.error-message {
+    color: red;
+    font-weight: bold;
+}
+
+
+h1{
+    color: #000000;
+    font-size: 20px;
+}
+
+h2{
+    color: #ffffff; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 35px;
+   
+}
+
+h3{
+    color: #ffffff; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 15px;
+    
+}
+
+button {
+    float:left;
+    border: 2px solid #000000;
+    margin-left: 30px;
+    padding: 5px;
+    border-radius: 8px;
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif;
+     
+  }
+
+  .gallery1 {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+    margin: 5px;
+    
+    
+}
+
+.gallery1 img {
+    max-width: 90px;
+    height: 80px;
+    width: 80px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery1 a:hover img {
+    transform: scale(2.1);
+    border-color: #0077ff;
+}
+
+.gallery1 img:hover {
+    transform: scale(2.1);
+    border-color: #0077ff;
+}
+
+.gallery2 img:hover {
+    transform: scale(1.1);
+    border-color: #0077ff;
+}
+
+.efeito input{
+    
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 800px;
+    font-size: 20px;
+    text-align: center;
+
+}
+
+.efeito img:hover{
+    transform: scale(1.1);
+    border-color: #0077ff;
+
+}
+
+
+
+ 

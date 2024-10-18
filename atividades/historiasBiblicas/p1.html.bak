@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Digitação</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function checkPassword() {
+    var userInput = document.getElementById("password").value;
+    var titleText = document.querySelector("h1").innerText;
+
+    if (userInput === titleText) {
+        window.location.href = "p2.html";  // Substitua 'outra_pagina.html' pelo nome da sua outra página
+    } else {
+        document.getElementById("errorMessage").innerText = "Algo está errado! Tente novamente.";
+    }
+}
+
+document.getElementById("password").addEventListener("input", function() {
+    this.value = this.value.toUpperCase();
+});
+
+    </script>
+
+<link rel="stylesheet" href="../../estilo.css">
+
+</head>
+<body>
+
+    <div id="principal">
+
+        
+
+        <div id="menu">
+            <a href="../../index.html">Home</a> |
+            <a href="../../../questionario.html">Questionários</a> |
+            <a href="../../../teclado.html">Teclado</a> |
+            <a href="../../atividades.html">Atividades</a> |
+            <a href="../../../videos.html">Vídeos</a> |
+            <a href="../../download.html">Download</a> |
+            <a href="../../../jogos.html">Jogos</a>|
+            <a href="../../../sites.html">Sites</a>
+
+        </div>
+
+
+        <hr>
+        
+        <header>
+            <h1>Escolha uma das Histórias para aprender e treinar digitação.</h1>
+            
+        </header>
+        
+
+        <hr>
+        <img src="inicio.jpg" width="300">
+        
+            <div class="gallery1">
+                                    
+                
+                        
+                <h3>A CRIAÇÃO</h3>       
+                <a href="criacao.html" target="_blank"><img src="1.jpg" alt="Foto 1" ></a>
+
+                <h3>A ARCA DE NOÉ</h3>
+                <a href="arcaNoe.html" target="_blank"><img src="2.jpg" alt="Foto 1"></a>
+                
+                <h3>A HISTÓRIA DE JOSÉ</h3>
+                <a href="historiaJose.html" target="_blank"><img src="3.jpg" alt="Foto 1"></a>
+                
+                <h3>MOISÉS</h3>    
+                <a href="moises.html" target="_blank"><img src="4.jpg" alt="Foto 1"></a>   
+
+                <h3>DAVI E GOLIAS</h3>    
+                <a href="daviGolias.html" target="_blank"><img src="5.jpg" alt="Foto 1"></a> 
+                        
+                    </div>
+                    
+                 <hr>
+                    
+                 <div class="gallery1">
+                                    
+                
+                        
+                    <h3>DANIEL E OS LEÕES</h3>       
+                    <a href="p7.html" target="_blank"><img src="6.jpg" alt="Foto 1" ></a>
+    
+                    <h3>JESUS NASCEU</h3>
+                    <a href="p8.html" target="_blank"><img src="7.jpg" alt="Foto 1"></a>
+                    
+                    <h3>OS PASTORES E OS REIS MAGOS</h3>
+                    <a href="p9.html" target="_blank"><img src="8.jpg" alt="Foto 1"></a>
+                    
+                    <h3>O MILAGRE DA MULTI- PLICAÇÃO</h3>    
+                    <a href="p10.html" target="_blank"><img src="9.jpg" alt="Foto 1"></a>   
+    
+                    <h3>A PÁSCOA</h3>    
+                    <a href="p11.html" target="_blank"><img src="10.jpg" alt="Foto 1"></a> 
+                            
+                        </div>
+                    
+                <hr>
+                
+                
+                
+                
+    </div>
+ </body>
+</html>
+            
