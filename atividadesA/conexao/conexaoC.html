@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo de Conexão</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background: #f0f0f0;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(8, 90px);
+            gap: 4px;
+            padding: 16px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .cell {
+            width: 90px;
+            height: 90px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background: white;
+            transition: background-color 0.3s;
+            overflow: hidden;
+        }
+
+        .cell img {
+            width: 70px;
+            height:70px;
+            object-fit: contain;
+        }
+
+        .cell:hover {
+            background: #f5f5f5;
+        }
+
+        .cell.selected {
+            background: #e3f2fd;
+            border-color: #2196f3;
+        }
+
+        .cell.matched {
+            background: #e8f5e9;
+            border-color: #4caf50;
+            opacity: 0.7;
+        }
+
+        .stats {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .line {
+            position: absolute;
+            height: 4px;
+            background: #2196f3;
+            transform-origin: left center;
+            pointer-events: none;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            background: #2196f3;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1976d2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Jogo de Conexão</h1>
+        <p>Conecte os pares de imagens iguais!</p>
+    </div>
+    <div id="game-board" class="game-board"></div>
+    <div class="stats">
+        <p>Pares encontrados: <span id="pairs">0</span> / <span id="total-pairs">0</span></p>
+        <p>Tempo: <span id="timer">0:00</span></p>
+    </div>
+    <button id="new-game">Novo Jogo</button>
+
+    <script>
+        class ConnectGame {
+            constructor() {
+                this.board = document.getElementById('game-board');
+                this.pairsFound = 0;
+                this.totalPairs = 0;
+                this.selected = null;
+                this.cells = [];
+                this.lines = [];
+                this.startTime = null;
+                this.timerInterval = null;
+                
+                // Array de imagens usando o placeholder API
+                this.images = Array.from({ length: 32 }, (_, i) => `./img/g${i + 1}.png`);
+
+               this.images=[
+                '../clicar/iconesA/iconesA (1).png',
+                '../clicar/iconesA/iconesA (2).png',
+                '../clicar/iconesA/iconesA (3).png',
+                '../clicar/iconesA/iconesA (4).png',
+                '../clicar/iconesA/iconesA (5).png',
+                '../clicar/iconesA/iconesA (6).png',
+                '../clicar/iconesA/iconesA (7).png',
+                '../clicar/iconesA/iconesA (8).png',
+                '../clicar/iconesA/iconesA (9).png',
+                '../clicar/iconesA/iconesA (10).png',
+                '../clicar/iconesA/iconesA (11).png',
+                '../clicar/iconesA/iconesA (12).png',
+                '../clicar/iconesA/iconesA (13).png',
+                '../clicar/iconesA/iconesA (14).png',
+                '../clicar/iconesA/iconesA (15).png',
+                '../clicar/iconesA/iconesA (16).png',
+                '../clicar/iconesA/iconesA (17).png',
+                '../clicar/iconesA/iconesA (18).png',
+                '../clicar/iconesA/iconesA (19).png',
+                '../clicar/iconesB/iconesB (1).png',
+                '../clicar/iconesB/iconesB (2).png',
+                '../clicar/iconesB/iconesB (3).png',
+                '../clicar/iconesB/iconesB (4).png',
+                '../clicar/iconesB/iconesB (5).png',
+                '../clicar/iconesB/iconesB (6).png',
+                '../clicar/iconesB/iconesB (7).png',
+                '../clicar/iconesB/iconesB (8).png',
+                '../clicar/iconesB/iconesB (9).png',
+                '../clicar/iconesB/iconesB (10).png',
+                '../clicar/iconesB/iconesB (11).png',
+                '../clicar/iconesB/iconesB (12).png',
+                '../clicar/iconesB/iconesB (13).png',
+
+               ]
+
+                document.getElementById('new-game').addEventListener('click', () => this.startNewGame());
+            }
+
+            startNewGame() {
+                this.clearBoard();
+                this.pairsFound = 0;
+                this.selected = null;
+                this.updateStats();
+                
+                // Criar tabuleiro 8x8
+                const shuffledImages = [...this.images, ...this.images].sort(() => Math.random() - 0.5);
+                this.totalPairs = this.images.length;
+                
+                for (let i = 0; i < 64; i++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'cell';
+                    
+                    const img = document.createElement('img');
+                    img.src = shuffledImages[i];
+                    img.alt = 'Imagem ${i}';
+                    
+                    cell.appendChild(img);
+                    cell.addEventListener('click', () => this.handleCellClick(cell, i));
+                    this.board.appendChild(cell);
+                    this.cells.push(cell);
+                }
+
+                // Iniciar timer
+                this.startTime = Date.now();
+                if (this.timerInterval) clearInterval(this.timerInterval);
+                this.timerInterval = setInterval(() => this.updateTimer(), 1000);
+            }
+
+            clearBoard() {
+                while (this.board.firstChild) {
+                    this.board.removeChild(this.board.firstChild);
+                }
+                this.cells = [];
+                this.lines.forEach(line => line.remove());
+                this.lines = [];
+            }
+
+            handleCellClick(cell, index) {
+                if (cell.classList.contains('matched')) return;
+                
+                if (this.selected === null) {
+                    cell.classList.add('selected');
+                    this.selected = { cell, index };
+                } else if (this.selected.cell !== cell) {
+                    const selectedImg = this.selected.cell.querySelector('img').src;
+                    const currentImg = cell.querySelector('img').src;
+                    
+                    if (selectedImg === currentImg) {
+                        this.connectCells(this.selected.cell, cell);
+                        cell.classList.add('matched');
+                        this.selected.cell.classList.add('matched');
+                        this.selected.cell.classList.remove('selected');
+                        this.pairsFound++;
+                        this.updateStats();
+                        
+                        if (this.pairsFound === this.totalPairs) {
+                            clearInterval(this.timerInterval);
+                            setTimeout(() => alert('Parabéns! Você venceu!'), 500);
+                        }
+                    } else {
+                        cell.classList.add('selected');
+                        setTimeout(() => {
+                            cell.classList.remove('selected');
+                            this.selected.cell.classList.remove('selected');
+                        }, 500);
+                    }
+                    this.selected = null;
+                }
+            }
+
+            connectCells(cell1, cell2) {
+                const rect1 = cell1.getBoundingClientRect();
+                const rect2 = cell2.getBoundingClientRect();
+                
+                const x1 = rect1.left + rect1.width / 2;
+                const y1 = rect1.top + rect1.height / 2;
+                const x2 = rect2.left + rect2.width / 2;
+                const y2 = rect2.top + rect2.height / 2;
+                
+                const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+                const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+                
+                const line = document.createElement('div');
+                line.className = 'line';
+                line.style.width = `${length}px`;
+                line.style.left = `${x1}px`;
+                line.style.top = `${y1}px`;
+                line.style.transform = `rotate(${angle}deg)`;
+                
+                document.body.appendChild(line);
+                this.lines.push(line);
+            }
+
+            updateStats() {
+                document.getElementById('pairs').textContent = this.pairsFound;
+                document.getElementById('total-pairs').textContent = this.totalPairs;
+            }
+
+            updateTimer() {
+                const elapsed = Math.floor((Date.now() - this.startTime) / 1000);
+                const minutes = Math.floor(elapsed / 60);
+                const seconds = elapsed % 60;
+                document.getElementById('timer').textContent = 
+                    `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            }
+        }
+
+        const game = new ConnectGame();
+        game.startNewGame();
+    </script>
+</body>
+</html>
