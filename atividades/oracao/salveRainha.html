@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oração</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="principal">
+
+        <div class="container">
+            <img src="salveRainha.jpg">
+        </div>
+        
+        <div class="container">
+            <div>
+                
+                <label for="password"></label>
+                <h3 id="outputText">Digite '*' para iniciar!</h3>
+                <input type="" id="password" placeholder="Digite a palavra acima" oninput="checkPassword()">
+                <button onclick="limparCampoInput()">Limpar</button>
+                
+            </div>
+            
+        </div>
+        
+    </div><!--Fim div principal-->
+
+
+        <!--**************************************************************************
+            Abaixo esta o script para fazer a troca dos texto para o exercicio
+        *******************************************************************************
+   SALVE RAINHA, MÃE DE MISERICÓRDIA, VIDA E DOÇURA ESPERANÇA NOSSA SALVE!
+A VÓS BRADAMOS DEGREDADOS FILHO DE EVA.
+A VÓS SUSPIRAMOS GEMENDO E CHORANDO NESTE VALE DE LÁGRIMAS.
+EIA POIS ADVOGADA NOSSA, ESSES VOSSOS OLHOS MISERICORDIOSOS A NÓS VOLVEI,
+E DEPOIS DESTE DESTERRO, MOSTRAI-NOS JESUS, BENDITO FRUTO DO VOSSO VENTRE,
+Ó CLEMENTE, Ó PIEDOSA Ó DOCE E SEMPRE VIRGEM MARIA.
+ROGAI POR NÓS SANTA MÃE DE DEUS, PARA QUE SEJAMOS DIGNOS DA PROMESSA DE CRISTO. AMÉM
+
+
+
+    -->
+
+
+<script>
+const correctPasswords = ["*","SALVE RAINHA,","MÃE DE MISERICÓRDIA,","VIDA E DOÇURA","ESPERANÇA NOSSA SALVE!","A VÓS BRADAMOS","DEGREDADOS FILHO DE EVA.","A VÓS SUSPIRAMOS","GEMENDO E CHORANDO","NESTE VALE DE LÁGRIMAS.","EIA POIS ADVOGADA NOSSA,","ESSES VOSSOS OLHOS MISERICORDIOSOS","A NÓS VOLVEI,","E DEPOIS DESTE DESTERRO,","MOSTRAI-NOS JESUS,","BENDITO FRUTO DO VOSSO VENTRE,","Ó CLEMENTE, Ó PIEDOSA","Ó DOCE E SEMPRE VIRGEM MARIA.","ROGAI POR NÓS SANTA MÃE DE DEUS,","PARA QUE SEJAMOS DIGNOS","DA PROMESSA DE CRISTO. AMÉM"]; // Adicione suas senhas corretas aqui
+const phrases = ["SALVE ______,","______ DE MISERICÓRDIA,","VIDA E ______","ESPERANÇA ______ SALVE!","A VÓS ______","DEGREDADOS FILHO DE ______.","A VÓS SUSPIRAMOS","GEMENDO E ______","NESTE VALE DE ______.","EIA POIS ______ NOSSA,","ESSES VOSSOS ______ MISERICORDIOSOS","A NÓS VOLVEI,","E DEPOIS DESTE ______,","MOSTRAI-NOS ______,","BENDITO FRUTO DO VOSSO ______,","Ó CLEMENTE, Ó ______","Ó DOCE E SEMPRE ______ MARIA.","ROGAI POR NÓS SANTA ______ DE ______,","PARA QUE SEJAMOS DIGNOS","DA PROMESSA DE ______. AMÉM","*"];
+
+function checkPassword() {
+    var passwordInput = document.getElementById("password").value;
+
+    if (correctPasswords.includes(passwordInput)) {
+        updateText();
+    }
+}
+
+function updateText() {
+    var outputText = document.getElementById("outputText");
+    var currentPasswordIndex = correctPasswords.indexOf(document.getElementById("password").value);
+
+    if (currentPasswordIndex !== -1) {
+        outputText.innerText = phrases[currentPasswordIndex];
+        var campoInput = document.getElementById("password");
+        campoInput.value = ""; 
+    } else {
+        outputText.innerText = "Bem-vindo!";
+    }
+}
+//funçao para limpar campo de password
+
+function limparCampoInput() {
+    var campoInput = document.getElementById("password");
+    campoInput.value = ""; 
+}
+
+
+    </script>
+</body>
+</html>

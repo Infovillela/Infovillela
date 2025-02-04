@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oração</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="principal">
+
+        <div class="container">
+            <img src="charadas.jpg">
+        </div>
+        
+        <div class="container">
+            <div>
+                
+                <label for="password"></label>
+                <h3 id="outputText">Digite '*' para iniciar!</h3>
+                <input type="" id="password" placeholder="Digite a palavra acima" oninput="checkPassword()">
+                <button onclick="limparCampoInput()">Limpar</button>
+                
+            </div>
+            
+        </div>
+        
+    </div><!--Fim div principal-->
+
+<script>
+const correctPasswords = ["*","CALDO","A REDE","O QUEIJO RALADO","VAMOS DAR UMA VOLTA"]; // Adicione suas senhas corretas aqui
+const phrases = ["O QUE DETESTAMOS NA PRAIA E ADORAMOS NO PRATO?","NA TELEVISÃO COBRE UM PAÍS, NO FUTEBOL, ATRAI A BOLA, EM CASA INCENTIVA O LAZER. O QUE É?","QUAL É O QUEIJO QUE MAIS SOFRE?","O QUE A FECHADURA DISSE PRA CHAVE?","*"];
+
+function checkPassword() {
+    var passwordInput = document.getElementById("password").value;
+
+    if (correctPasswords.includes(passwordInput)) {
+        updateText();
+    }
+}
+
+function updateText() {
+    var outputText = document.getElementById("outputText");
+    var currentPasswordIndex = correctPasswords.indexOf(document.getElementById("password").value);
+
+    if (currentPasswordIndex !== -1) {
+        outputText.innerText = phrases[currentPasswordIndex];
+        var campoInput = document.getElementById("password");
+        campoInput.value = ""; 
+    } else {
+        outputText.innerText = "Bem-vindo!";
+    }
+}
+//funçao para limpar campo de password
+
+function limparCampoInput() {
+    var campoInput = document.getElementById("password");
+    campoInput.value = ""; 
+}
+
+
+    </script>
+</body>
+</html>
