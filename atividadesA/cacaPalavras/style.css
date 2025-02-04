@@ -1,0 +1,96 @@
+/* style.css */
+  .color-button {
+	width: 35px;
+	height: 35px;
+	border: 1px solid;
+	border-radius: 20%;
+	border-color: #2600ff;
+	background-color: #ffffff0e;
+	color: #020202;
+	font-size: 10px;
+	font-weight: bold;
+	cursor: pointer;
+  }
+
+   
+  .color-button.clicked {
+	background-color: #ffffff0e;
+	box-shadow: 0 0 10px #2600ff
+  }
+  
+
+  .container {
+	width: 900px;
+	margin: 10px 20px;
+	padding: 10px;
+	border: 10px solid #000000;
+	border-radius: 15px;
+	box-shadow: 0 0 20px #020202
+  }
+  
+  .row {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 2px ;
+	margin-left: 5%;
+		
+  }
+  
+
+  .coluna-1 {
+	  width: 785px;
+	height: 740px;
+	padding: 3px 2px;
+	border: 5px solid #2f00ff;
+	border-radius: 5px;
+	background-color: #ffffff;
+	background-image: url("cacaPalavra1.jpg");
+	background-repeat: no-repeat;
+  }
+
+  .coluna-2 {
+	width: 785px;
+  height: 740px;
+  padding: 3px 2px;
+  border: 5px solid #ff0000;
+  border-radius: 5px;
+  background-color: #ffffff;
+  background-image: url("cacaPalavra2.jpg");
+  background-repeat: no-repeat;
+}
+
+.coluna-3 {
+	width: 390px;
+  height: 400Px;
+  padding: 2px;
+  margin-left: 200px;
+  border: 5px solid #13cf5b;
+  border-radius: 5px;
+  background-color: #ffffff;
+  background-image: url("cacaPalavra3.jpg");
+  background-repeat: no-repeat;
+}
+
+.coluna-4 {
+	width: 590px;
+  height: 600Px;
+  padding: 2px;
+  border: 5px solid #fae100;
+  border-radius: 5px;
+  background-color: #ffffff;
+  background-image: url("cacaPalavra4.jpg");
+  background-repeat: no-repeat;
+}
+
+ .palavras{
+	width: 900px;
+	color:#000000;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-size: 16px;
+	border:8px solid #000000;
+	border-radius: 15px;
+	padding: 1px 1px;
+	margin-left: 25px;
+	text-align: center;
+	
+ }

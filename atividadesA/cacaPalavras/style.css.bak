@@ -1,0 +1,52 @@
+/* style.css */
+
+
+  .color-button {
+	width: 35px;
+	height: 35px;
+	border: 1px solid;
+	border-radius: 20%;
+	background-color: #ffffff0e;
+	color: #020202;
+	font-size: 10px;
+	font-weight: bold;
+	cursor: pointer;
+  }
+
+   
+  .color-button.clicked {
+	background-color: #ffffff0e;
+	box-shadow: 0 0 10px rgba(255, 0, 0, 0.918);
+  }
+  
+
+  .container {
+	width: 1000px;
+	margin: 10px auto;
+	padding: 20px;
+	border: 1px solid #000000;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .row {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+	
+  }
+  
+
+  .coluna-1 {
+	  width: 800px;
+	height: 800px;
+	padding: 5px;
+	border: 1px solid #000000;
+	border-radius: 1px;
+	background-color: #f9f9f9;
+	background-color: #2f00ff;
+	background-image: url("cacaPalavra1.jpg");
+	background-repeat: no-repeat;
+  }
+
+ 
