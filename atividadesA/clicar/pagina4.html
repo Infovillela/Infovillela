@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade de Ícones</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <header>
+        <div id="opening">
+            <div>
+                <h1>Bem-vindo ao Caça a Imagem</h1>
+        <h2>Para seguir para próxima página basta fazer 10 pontos</h2>
+        <h2>Clicando na imagem correspondente que está no quadro ao lado.</h2>
+                <button id="startButton">Iniciar</button>
+            </div>
+        </div>
+        <div id="mainContent">
+            <header>
+                <h1>Grade de Imagens com Temporizador</h1>
+            </header>
+            <div id="timer">Tempo: 0s</div>
+            <div id="score">Pontuação: 0</div>
+            <audio id="correctSound" src="acerto.mp3"></audio>
+            <audio id="wrongSound" src="erro.mp3"></audio>
+            <div class="container">
+                <div class="grid" id="grid">
+                    <!-- Imagens serão geradas aqui -->
+                </div>
+                <div class="highlight">
+                    <h2>Imagem Destaque</h2>
+                    <img src="" alt="Imagem Destaque" id="highlightImage">
+                </div>
+            </div>
+        
+    <script>
+        const images = [
+        "iconesC/iconesC (1).gif",
+            "iconesC/iconesC (2).gif",
+            "iconesC/iconesC (3).gif",
+            "iconesC/iconesC (4).gif",
+            "iconesC/iconesC (5).gif",
+            "iconesC/iconesC (6).gif",
+            "iconesC/iconesC (7).gif",
+            "iconesC/iconesC (8).gif",
+            "iconesC/iconesC (9).gif",
+            "iconesC/iconesC (10).gif",
+            "iconesC/iconesC (11).gif",
+            "iconesC/iconesC (12).gif",
+            "iconesC/iconesC (13).gif",
+            "iconesC/iconesC (14).gif",
+            "iconesC/iconesC (15).gif",
+            "iconesC/iconesC (16).gif",
+        ];
+
+        let score = 0;
+
+    function updateScore() {
+        const scoreElement = document.getElementById("score");
+        scoreElement.textContent = `Pontuação: ${score}`;
+        if (score >= 10) {
+            window.location.href = "pagina5.html";
+        }
+    }
+    
+        function getRandomImage() {
+            return images[Math.floor(Math.random() * images.length)];
+        }
+    
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function playSound(soundId) {
+            const sound = document.getElementById(soundId);
+            sound.play();
+        }
+    
+    
+        function createGrid() {
+            const grid = document.getElementById("grid");
+            grid.innerHTML = ''; // Limpar a grade existente
+    
+            // Criar um array de imagens aleatórias
+            let gridImages = [];
+            for (let i = 0; i < 16; i++) {
+                gridImages.push(images[i % images.length]);
+            }
+            shuffleArray(gridImages); // Embaralhar as imagens
+    
+            for (let i = 0; i < 16; i++) {
+                const image = gridImages[i];
+                const div = document.createElement("div");
+                const img = document.createElement("img");
+                img.src = image;
+                img.onload = () => {
+                    div.appendChild(img);
+                    div.onclick = () => {
+                        if (img.src === document.getElementById("highlightImage").src) {
+                            /*changeHighlightImage();*/createGrid();
+                            playSound("correctSound");
+                            score++;
+                            updateScore();
+                        
+                        }else {
+                        playSound("wrongSound");    
+                            
+                        alert("Imagem errada! Tente novamente.");
+                    }
+                    
+                        
+                    };
+                };
+                img.onerror = () => {
+                    console.error(`Erro ao carregar a imagem: ${image}`);
+                };
+                grid.appendChild(div);
+            }
+        }
+    
+        function changeHighlightImage() {
+            const highlightElement = document.getElementById("highlightImage");
+            highlightElement.src = getRandomImage();
+        }
+    
+        function startTimer() {
+            let seconds = 0;
+            const timerElement = document.getElementById("timer");
+            setInterval(() => {
+                seconds++;
+                timerElement.textContent = `Tempo: ${seconds}s`;
+            }, 1000);
+        }
+    
+        function setInitialHighlightImage() {
+            const highlightElement = document.getElementById("highlightImage");
+            highlightElement.src = getRandomImage();
+        }
+    
+        function startGridTimer() {
+            setInterval(() => {
+                createGrid(); // Atualizar a grade a cada 15 segundos
+                
+            }, 15000); // 15000ms = 15 segundos
+        }
+        document.getElementById("startButton").onclick = () => {
+            document.getElementById("opening").style.display = "none";
+            document.getElementById("mainContent").style.display = "block";
+            setInitialHighlightImage();
+            createGrid();
+            startTimer();
+            startGridTimer();
+        };
+       /* setInitialHighlightImage();
+        createGrid();
+        startTimer();
+        startGridTimer();*/
+    </script>
+    
+    
+        
+</body>
+</html>
