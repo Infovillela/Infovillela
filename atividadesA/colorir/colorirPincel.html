@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página para Colorir</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .tools {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .color-picker {
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .brush-size {
+            width: 100px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .canvas-container {
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            max-width: 100%;
+        }
+
+        canvas {
+            background-color: white;
+            cursor: crosshair;
+        }
+
+        .palette {
+            display: flex;
+            gap: 5px;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+            cursor: pointer;
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+
+        .active {
+            border: 2px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Página para Colorir com Pincel</h1>
+        <div class="tools">
+            <input type="color" id="colorPicker" class="color-picker">
+            <input type="range" id="brushSize" class="brush-size" min="1" max="50" value="5">
+            <span id="brushSizeLabel">5px</span>
+            <button id="eraser">Borracha</button>
+            <button id="clear">Limpar Tudo</button>
+            <button id="save">Salvar Imagem</button>
+        </div>
+        <div class="palette">
+            <div class="color-option active" style="background-color: #000000"></div>
+            <div class="color-option" style="background-color: #FFFFFF"></div>
+            <div class="color-option" style="background-color: #FFE5B5"></div>
+            <div class="color-option" style="background-color: #FFA07A"></div>
+            <div class="color-option" style="background-color: #FF69B4"></div>
+            <div class="color-option" style="background-color: #FF0000"></div>
+            <div class="color-option" style="background-color: #FF4500"></div>
+            <div class="color-option" style="background-color: #FF8C00"></div>
+            <div class="color-option" style="background-color: #FFD700"></div>
+            <div class="color-option" style="background-color: #FFFF00"></div>
+            <div class="color-option" style="background-color: #9ACD32"></div>
+            <div class="color-option" style="background-color: #32CD32"></div>
+            <div class="color-option" style="background-color: #00FF00"></div>
+            <div class="color-option" style="background-color: #008000"></div>
+            <div class="color-option" style="background-color: #006400"></div>
+            <div class="color-option" style="background-color: #00FFFF"></div>
+            <div class="color-option" style="background-color: #00CED1"></div>
+            <div class="color-option" style="background-color: #1E90FF"></div>
+            <div class="color-option" style="background-color: #0000FF"></div>
+            <div class="color-option" style="background-color: #000080"></div>
+            <div class="color-option" style="background-color: #4B0082"></div>
+            <div class="color-option" style="background-color: #8A2BE2"></div>
+            <div class="color-option" style="background-color: #9400D3"></div>
+            <div class="color-option" style="background-color: #9932CC"></div>
+            <div class="color-option" style="background-color: #BA55D3"></div>
+            <div class="color-option" style="background-color: #800080"></div>
+            <div class="color-option" style="background-color: #4A0404"></div>
+            <div class="color-option" style="background-color: #8B4513"></div>
+            <div class="color-option" style="background-color: #A0522D"></div>
+            <div class="color-option" style="background-color: #D2691E"></div>
+            <div class="color-option" style="background-color: #CD853F"></div>
+            <div class="color-option" style="background-color: #DEB887"></div>
+            <div class="color-option" style="background-color: #F4A460"></div>
+            <div class="color-option" style="background-color: #DAA520"></div>
+            <div class="color-option" style="background-color: #808080"></div>
+            <div class="color-option" style="background-color: #A9A9A9"></div>
+            <div class="color-option" style="background-color: #D3D3D3"></div>
+            <div class="color-option" style="background-color: #BC8F8F"></div>
+            <div class="color-option" style="background-color: #F08080"></div>
+            <div class="color-option" style="background-color: #CD5C5C"></div>
+            <div class="color-option" style="background-color: #8B0000"></div>
+            <div class="color-option" style="background-color: #FA8072"></div>
+            <div class="color-option" style="background-color: #E9967A"></div>
+            <div class="color-option" style="background-color: #FFA07A"></div>
+            <div class="color-option" style="background-color: #DC143C"></div>
+            <div class="color-option" style="background-color: #FF1493"></div>
+            <div class="color-option" style="background-color: #FF69B4"></div>
+            <div class="color-option" style="background-color: #FFB6C1"></div>
+        </div>
+        <div class="canvas-container">
+            <canvas id="canvas"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const colorPicker = document.getElementById('colorPicker');
+        const brushSize = document.getElementById('brushSize');
+        const brushSizeLabel = document.getElementById('brushSizeLabel');
+        const eraserBtn = document.getElementById('eraser');
+        const clearBtn = document.getElementById('clear');
+        const saveBtn = document.getElementById('save');
+        const colorOptions = document.querySelectorAll('.color-option');
+
+        // Configurar tamanho do canvas
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = window.innerHeight * 0.6;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Variáveis de desenho
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+        let currentColor = '#000000';
+        let isEraser = false;
+
+        // Eventos do mouse
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+
+        // Eventos touch
+        canvas.addEventListener('touchstart', handleTouchStart);
+        canvas.addEventListener('touchmove', handleTouchMove);
+        canvas.addEventListener('touchend', stopDrawing);
+
+        function handleTouchStart(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const rect = canvas.getBoundingClientRect();
+            lastX = touch.clientX - rect.left;
+            lastY = touch.clientY - rect.top;
+            isDrawing = true;
+        }
+
+        function handleTouchMove(e) {
+            e.preventDefault();
+            if (!isDrawing) return;
+            const touch = e.touches[0];
+            const rect = canvas.getBoundingClientRect();
+            const x = touch.clientX - rect.left;
+            const y = touch.clientY - rect.top;
+            drawLine(lastX, lastY, x, y);
+            lastX = x;
+            lastY = y;
+        }
+
+        function startDrawing(e) {
+            isDrawing = true;
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            drawLine(lastX, lastY, e.offsetX, e.offsetY);
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        }
+
+        function drawLine(fromX, fromY, toX, toY) {
+            ctx.beginPath();
+            ctx.moveTo(fromX, fromY);
+            ctx.lineTo(toX, toY);
+            ctx.strokeStyle = isEraser ? '#ffffff' : currentColor;
+            ctx.lineWidth = brushSize.value;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+        }
+
+        function stopDrawing() {
+            isDrawing = false;
+        }
+
+        // Eventos dos controles
+        colorPicker.addEventListener('change', (e) => {
+            currentColor = e.target.value;
+            isEraser = false;
+            updateActiveColor(e.target.value);
+        });
+
+        brushSize.addEventListener('input', (e) => {
+            brushSizeLabel.textContent = `${e.target.value}px`;
+        });
+
+        eraserBtn.addEventListener('click', () => {
+            isEraser = !isEraser;
+            eraserBtn.style.backgroundColor = isEraser ? '#ff0000' : '#4CAF50';
+        });
+
+        clearBtn.addEventListener('click', () => {
+            if (confirm('Tem certeza que deseja limpar todo o desenho?')) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        });
+
+        saveBtn.addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.download = 'meu-desenho.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+
+        // Paleta de cores
+        colorOptions.forEach(color => {
+            color.addEventListener('click', () => {
+                const bgColor = window.getComputedStyle(color).backgroundColor;
+                currentColor = rgbToHex(bgColor);
+                colorPicker.value = currentColor;
+                isEraser = false;
+                updateActiveColor(currentColor);
+            });
+        });
+
+        function updateActiveColor(color) {
+            colorOptions.forEach(option => {
+                option.classList.remove('active');
+                if (rgbToHex(window.getComputedStyle(option).backgroundColor) === color) {
+                    option.classList.add('active');
+                }
+            });
+        }
+
+        function rgbToHex(rgb) {
+            const match = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+            if (!match) return rgb;
+            const r = parseInt(match[1]);
+            const g = parseInt(match[2]);
+            const b = parseInt(match[3]);
+            return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+        }
+    </script>
+</body>
+</html>
