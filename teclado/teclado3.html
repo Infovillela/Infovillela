@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teclado 03</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="principal">
+
+        <div>
+            <h2>
+                Exercício de digitação para treinar os caracteres especiais.<br>
+                Obs: Para conseguir os caracteres especiais basta combinar com a tecla 'AltGr'.
+            </h2>
+        </div>
+        
+        <div class="container">
+            <div>
+                
+                <label for="password"></label>
+                <h3 id="outputText">Digite '*' para iniciar!</h3>
+                <input type="" id="password" placeholder="Digite a palavra acima" oninput="checkPassword()">
+                <button onclick="limparCampoInput()">Limpar</button>
+                
+            </div>
+            
+        </div>
+        
+    </div><!--Fim div principal-->
+
+
+        <!--**************************************************************************
+            Abaixo esta o script para fazer a troca dos texto para o exercicio
+        *******************************************************************************-->
+
+
+<script>
+const correctPasswords = ["*","1¹2²3³","{{{(>_<)}}}","[ª]º/°₢",":-X","=^.^=","d(-_-)b","0:)",":-D",";)","(@)[#]{%}",":-*","@}-;--"]; // Adicione suas senhas corretas aqui
+const phrases = ["1¹2²3³","{{{(>_<)}}}","[ª]º/°₢",":-X","=^.^=","d(-_-)b","0:)",":-D",";)","(@)[#]{%}",":-*","@}-;--","*"];
+
+
+
+function checkPassword() {
+    var passwordInput = document.getElementById("password").value;
+
+    if (correctPasswords.includes(passwordInput)) {
+        updateText();
+    }
+}
+
+function updateText() {
+    var outputText = document.getElementById("outputText");
+    var currentPasswordIndex = correctPasswords.indexOf(document.getElementById("password").value);
+
+    if (currentPasswordIndex !== -1) {
+        outputText.innerText = phrases[currentPasswordIndex];
+        var campoInput = document.getElementById("password");
+        campoInput.value = ""; 
+    } else {
+        outputText.innerText = "Bem-vindo!";
+    }
+}
+//funçao para limpar campo de password
+
+function limparCampoInput() {
+    var campoInput = document.getElementById("password");
+    campoInput.value = ""; 
+}
+
+
+    </script>
+</body>
+</html>

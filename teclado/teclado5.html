@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teclado 01</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .principal {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        #outputText {
+            font-size: 24px;
+            margin: 20px 0;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+        }
+        
+        #password {
+            padding: 10px;
+            font-size: 18px;
+            width: 300px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        .exercise-image {
+            max-width: 400px;
+            max-height: 200px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="principal">
+
+        <div>
+            <h2>
+                Exercício de digitação dos componentes do Computador.<br>
+                Obs: Todas as palavras em MAIÚSCULAS.<br>
+                Use a tecla Fixa (CapsLock).
+            </h2>
+        </div>
+        
+        <div class="container">
+            <div>
+                
+                <label for="password"></label>
+                <h3 id="outputText">Digite '*' para iniciar!</h3>
+                <input type="" id="password" placeholder="Digite a palavra acima ou descreva a imagem" oninput="checkPassword()">
+                <button onclick="limparCampoInput()">Limpar</button>
+                
+            </div>
+            
+        </div>
+        
+    </div><!--Fim div principal-->
+
+
+        <!--**************************************************************************
+            Abaixo esta o script para fazer a troca dos texto para o exercicio
+        *******************************************************************************-->
+
+
+<script>
+// Use IMG: como prefixo para indicar que deve mostrar uma imagem
+const correctPasswords = ["*","TECLADO","MOUSE","GABINETE","NOTEBOOK","COMPUTADOR","TABLET","HARDWARE","SOFTWARE","IMPRESSORA","CAIXA DE SOM","PEN DRIVE"];
+
+const phrases = [
+    "IMG:_TECLADO", // Será substituído por uma imagem
+    "IMG:_MOUSE",
+    "IMG:_GABINETE",
+    "IMG:_NOTEBOOK",
+    "IMG:_COMPUTADOR",
+    "IMG:_TABLET",
+    "IMG:_HARWARE",
+    "IMG:_SOFTWARE",
+    "IMG:_IMPRESSORA",
+    "IMG:_CAIXA_DE_SOM",
+    "IMG:_PEN_DRIVE",
+    "*"
+];
+
+// Mapeamento de códigos de imagem para URLs das imagens
+const imageMap = {
+    "IMG:_TECLADO": "01.jpg", // Substitua pela URL da sua imagem
+    "IMG:_MOUSE": "02.jpg",
+    "IMG:_GABINETE": "03.jpg",
+    "IMG:_NOTEBOOK": "05.jpg",
+    "IMG:_COMPUTADOR": "06.jpg",
+    "IMG:_TABLET": "07.jpg",
+    "IMG:_HARWARE": "08.jpg",
+    "IMG:_SOFTWARE": "09.jpg",
+    "IMG:_IMPRESSORA": "10.jpg",
+    "IMG:_CAIXA_DE_SOM": "11.jpg",
+    "IMG:_PEN_DRIVE": "12.jpg"
+};
+
+// Mapeamento de imagens para texto esperado (o que o usuário deve digitar)
+const imageToText = {
+    "IMG:_TECLADO": "TECLADO",
+    "IMG:_MOUSE": "MOUSE"
+
+};
+
+function checkPassword() {
+    var passwordInput = document.getElementById("password").value;
+    var outputText = document.getElementById("outputText");
+    var currentText = outputText.textContent || outputText.innerText;
+
+    // Verifica se a tela atual mostra uma imagem e se o usuário digitou o texto correto
+    for (let imageCode in imageToText) {
+        if (currentText === "" && outputText.querySelector('img') && outputText.querySelector('img').src === imageMap[imageCode]) {
+            if (passwordInput === imageToText[imageCode]) {
+                updateText();
+                return;
+            }
+        }
+    }
+
+    // Verifica senhas normais
+    if (correctPasswords.includes(passwordInput)) {
+        updateText();
+    }
+}
+
+function updateText() {
+    var outputText = document.getElementById("outputText");
+    var passwordInput = document.getElementById("password").value;
+    var currentPasswordIndex = -1;
+
+    // Encontra o índice atual baseado na entrada do usuário
+    if (correctPasswords.includes(passwordInput)) {
+        currentPasswordIndex = correctPasswords.indexOf(passwordInput);
+    } else {
+        // Verifica se é uma resposta para imagem
+        for (let imageCode in imageToText) {
+            if (passwordInput === imageToText[imageCode]) {
+                currentPasswordIndex = correctPasswords.indexOf(imageCode);
+                break;
+            }
+        }
+    }
+
+    if (currentPasswordIndex !== -1 && currentPasswordIndex < phrases.length) {
+        var nextPhrase = phrases[currentPasswordIndex];
+        
+        // Verifica se é uma imagem
+        if (nextPhrase.startsWith("IMG:")) {
+            outputText.innerHTML = `<img src="${imageMap[nextPhrase]}" alt="Imagem do exercício" class="exercise-image">`;
+        } else {
+            outputText.innerText = nextPhrase;
+        }
+        
+        var campoInput = document.getElementById("password");
+        campoInput.value = ""; 
+    } else {
+        outputText.innerText = "Bem-vindo!";
+    }
+}
+
+//função para limpar campo de password
+function limparCampoInput() {
+    var campoInput = document.getElementById("password");
+    campoInput.value = ""; 
+}
+
+</script>
+</body>
+</html>
