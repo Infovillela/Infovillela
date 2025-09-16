@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogos Educacionais Interativos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Jogos Educacionais Interativos</h1>
+        <p class="subtitle">Clique na imagem e depois no nome correspondente!</p>
+        
+        <div class="score">
+            <span>Pontuação: <span id="score">0</span></span>
+            <span>Acertos: <span id="matches">0</span>/10</span>
+        </div>
+
+        <div class="game-area">
+            <div class="images-section">
+                <h3 class="section-title">🖼️ Imagens</h3>
+                <div class="images-grid" id="imagesGrid">
+                    <div class="image-card" data-item="gato">✏️</div>
+                    <div class="image-card" data-item="casa">📚</div>
+                    <div class="image-card" data-item="arvore">📐</div>
+                    <div class="image-card" data-item="sol">📏</div>
+                    <div class="image-card" data-item="flor">✂️</div>
+                    <div class="image-card" data-item="carro">🖍️</div>
+                    <div class="image-card" data-item="livro">📝</div>
+                    <div class="image-card" data-item="bola">📒</div>
+                    <div class="image-card" data-item="coracao">📎</div>
+                    <div class="image-card" data-item="estrela">📊</div>
+                </div>
+            </div>
+
+            <div class="names-section">
+                <h3 class="section-title">📝 Nomes</h3>
+                <div class="names-list" id="namesList">
+                    <div class="name-card" data-item="gato">LÁPIS</div>
+                    <div class="name-card" data-item="casa">LIVRO</div>
+                    <div class="name-card" data-item="arvore">RÉGUA TRIANGULAR</div>
+                    <div class="name-card" data-item="sol">RÉGUA</div>
+                    <div class="name-card" data-item="flor">TESOURA</div>
+                    <div class="name-card" data-item="carro">GIZ DE CERA</div>
+                    <div class="name-card" data-item="livro">BLOCO DE NOTAS</div>
+                    <div class="name-card" data-item="bola">CADERNO</div>
+                    <div class="name-card" data-item="coracao">CLIP</div>
+                    <div class="name-card" data-item="estrela">GRÁFICO</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="message" id="message"></div>
+
+        <div class="controls">
+            <button class="btn" onclick="resetGame()">🔄 Novo Jogo</button>
+            <button class="btn" onclick="shuffleItems(); shuffleImages();">🔀 Embaralhar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+  
+</body>
+</html>

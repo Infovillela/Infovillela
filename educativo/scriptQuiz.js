@@ -1,0 +1,181 @@
+const questions = [
+            {
+                question: "Qual alimento começou a história brincando no Cestinho Encantado?",
+                options: ["🍎 Maçã", "🍉 Melão", "🍫 Chocolate"],
+                correct: 0
+            },
+            {
+                question: "Quem era sorridente?",
+                options: ["🍋 Limão", "🍌 Banana", "🍓 Morango"],
+                correct: 1
+            },
+            {
+                question: "Quem gostava de se balançar?",
+                options: ["🍇 Uva", "🥕 Cenoura", "🍞 Pão"],
+                correct: 0
+            },
+            {
+                question: "Quem chamou os amigos para o piquenique no bosque?",
+                options: ["🍍 Abacaxi", "🍓 Morango", "🥛 Leite"],
+                correct: 1
+            },
+            {
+                question: "Qual fruta levou sua coroa dourada para enfeitar a mesa?",
+                options: ["🍉 Melão", "🍍 Abacaxi", "🍎 Maçã"],
+                correct: 1
+            },
+            {
+                question: "Quem dançava sem parar?",
+                options: ["🥕 Cenoura", "🍌 Banana", "🍋 Limão"],
+                correct: 2
+            },
+            {
+                question: "O que o pão disse que poderia ser?",
+                options: ["Bolo", "Sanduíche", "Suco"],
+                correct: 1
+            },
+            {
+                question: "Quem apareceu dentro de uma caixa de presente?",
+                options: ["🍫 Chocolate", "🥛 Leite", "🍇 Uva"],
+                correct: 0
+            },
+            {
+                question: "Quem refrescou todo mundo com fatias geladinhas?",
+                options: ["🍉 Melão", "🍌 Banana", "🍍 Abacaxi"],
+                correct: 0
+            },
+            {
+                question: "O que o copinho de leite disse que iria acompanhar?",
+                options: ["O pão", "O suco", "O bolo"],
+                correct: 2
+            },
+            {
+                question: "Quem fazia caretas engraçadas oferecendo suco azedinho?",
+                options: ["🍋 Limão", "🍎 Maçã", "🍫 Chocolate"],
+                correct: 0
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let correctAnswers = 0;
+        let wrongAnswers = 0;
+        let answered = false;
+
+        function displayQuestion() {
+            const container = document.getElementById('quizContainer');
+            const question = questions[currentQuestionIndex];
+            
+            container.innerHTML = `
+                <div class="question-card">
+                    <div class="question-number">Pergunta ${currentQuestionIndex + 1} de ${questions.length}</div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="answers-grid">
+                        ${question.options.map((option, index) => `
+                            <div class="answer-option" onclick="selectAnswer(${index})">
+                                ${String.fromCharCode(97 + index)}) ${option}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            updateProgress();
+            updateScores();
+            answered = false;
+            document.getElementById('nextBtn').style.display = 'none';
+            document.getElementById('message').innerHTML = '';
+        }
+
+        function selectAnswer(selectedIndex) {
+            if (answered) return;
+            
+            answered = true;
+            const question = questions[currentQuestionIndex];
+            const options = document.querySelectorAll('.answer-option');
+            const messageEl = document.getElementById('message');
+            
+            // Desabilita todas as opções
+            options.forEach(option => option.classList.add('disabled'));
+            
+            if (selectedIndex === question.correct) {
+                correctAnswers++;
+                options[selectedIndex].classList.add('correct');
+                messageEl.innerHTML = '<div class="message success">🎉 Parabéns! Resposta correta!</div>';
+            } else {
+                wrongAnswers++;
+                options[selectedIndex].classList.add('incorrect');
+                options[question.correct].classList.add('correct');
+                messageEl.innerHTML = '<div class="message error">❌ Resposta incorreta. A resposta correta está destacada em verde.</div>';
+            }
+
+            updateScores();
+            
+            // Mostra o botão próxima pergunta após 1.5 segundos
+            setTimeout(() => {
+                if (currentQuestionIndex < questions.length - 1) {
+                    document.getElementById('nextBtn').style.display = 'inline-block';
+                } else {
+                    showFinalScreen();
+                }
+            }, 1500);
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+            displayQuestion();
+        }
+
+        function updateScores() {
+            document.getElementById('correctAnswers').textContent = correctAnswers;
+            document.getElementById('wrongAnswers').textContent = wrongAnswers;
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        function showFinalScreen() {
+            const container = document.getElementById('quizContainer');
+            const percentage = Math.round((correctAnswers / questions.length) * 100);
+            let message = '';
+            
+            if (percentage >= 90) {
+                message = '🌟 Excelente! Você conhece muito bem a história!';
+            } else if (percentage >= 70) {
+                message = '👏 Muito bem! Você se lembra da maioria dos detalhes!';
+            } else if (percentage >= 50) {
+                message = '😊 Bom trabalho! Que tal ler a história novamente?';
+            } else {
+                message = '📚 Continue estudando! A prática leva à perfeição!';
+            }
+            
+            container.innerHTML = `
+                <div class="final-screen">
+                    <h2>🎯 Quiz Concluído!</h2>
+                    <div class="final-score">${percentage}%</div>
+                    <p>${message}</p>
+                    <div style="margin: 30px 0; font-size: 1.2em;">
+                        <div>✅ Acertos: ${correctAnswers}</div>
+                        <div>❌ Erros: ${wrongAnswers}</div>
+                        <div>📊 Total: ${questions.length} perguntas</div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('message').innerHTML = '';
+            document.getElementById('nextBtn').style.display = 'none';
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            correctAnswers = 0;
+            wrongAnswers = 0;
+            answered = false;
+            document.getElementById('currentQuestion').textContent = '1';
+            displayQuestion();
+        }
+
+        // Inicializa o quiz
+        displayQuestion();
