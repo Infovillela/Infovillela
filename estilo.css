@@ -59,7 +59,7 @@ h1{
 h2{
         color:#ffffff;
         text-shadow: 2px 2px 3px #000000;
-        font-size: 1.5em;
+        font-size: 0.8em;
     }
 h3{
         color:#ffffff;
@@ -144,9 +144,9 @@ input {
 
   
 .gallery {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(10, 1fr);
-    gap: 5px;
+    gap: 2px;
     margin: 10px;
     
 }
@@ -163,7 +163,7 @@ input {
     height: 80px;
     width: 80px;
     border: 2px solid #ddd;
-    border-radius: 10px;
+    border-radius: 5px;
     transition: transform 0.3s ease-in-out;
 }
 
@@ -175,6 +175,10 @@ input {
 .gallery img:hover {
     transform: scale(2.1);
     border-color: #0077ff;
+}
+
+.gallery h3{
+    color: #ffffff
 }
 
 
