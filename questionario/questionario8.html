@@ -2,155 +2,96 @@
 <html>
     <head>
         <meta charset="utf-8">
-		<title>Questionário 2 - Múltipla Escolha</title>
+		<title>Questionário 8 - Múltipla Escolha</title>
 
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="styleTxt.css">
 
 	</head>
 
 	<body>
 	
-	<h2>Questionário 02</h2>
-	<hr>
+	<h2>Questionário 08</h2><br>
 
-		<div id="quiz" class="alinhamento"></div>
+		<div id="quiz"></div><br>
 		<button id="submit">Finalizar</button>
 		<div id="results"></div>
 		<script>
 		var myQuestions = [
 	{
 		
-		question: "<img src='../imagens/monitor.jpg'><br><br>",
+		question: "1- Responsável por processar dados e instruções no computador. <br>",
 		answers: {
-			a: ' MOUSE<br>',
-			b: ' TABLET<br>',
-			c: ' ESTABILIADOR<br>',
-			d: ' MONITOR'
-		},
-		correctAnswer: 'd'
-	},
-	{
-		
-		question: "<img src='../imagens/gabinete.jpg'><br><br>",
-		answers: {
-			a: ' GABINETE<br>',
-			b: ' MONITOR<br>',
-			c: ' NOTEBOOK<br>',
-			d: ' MEMÓRIA'
-		},
-		correctAnswer: 'a'
-	},
-	{
-		
-		question: "<img src='../imagens/mouse1.jpg'>",
-		answers: {
-			a: ' COMPUTADOR<br>',
-			b: ' TECLADO<br>',
-			c: ' GABINETE<br>',
-			d: ' MOUSE'
-		},
-		correctAnswer: 'd'
-	},
-	{
-		
-		question: "<img src='../imagens/impressora.jpg'>",
-		answers: {
-			a: ' PEN DRIVE<br>',
-			b: ' GABINETE<br>',
-			c: ' IMPRESSORA<br>',
-			d: ' TECLADO'
-		},
-		correctAnswer: 'c'
-	},
-	{
-		
-		question: "<img src='../imagens/teclado.jpg'>",
-		answers: {
-			a: ' COMPUTADOR<br>',
-			b: ' TECLADO<br>',
-			c: ' MONITOR<br>',
-			d: ' NOTEBOOK'
+			a: ' Impressora.<br>',
+			b: ' Processador (CPU)<br>',
+			c: ' Disco Rígido (HD).<br>',
+			d: ' Teclado.'
+
 		},
 		correctAnswer: 'b'
-	},
-	{
-		
-		question: "<img src='../imagens/pendrive.jpg'>",
-		answers: {
-			a: ' GABINETE<br>',
-			b: ' PLACA MÃE<br>',
-			c: ' PEN DRIVE<br>',
-			d: ' HARD DISC'
-		},
-		correctAnswer: 'c'
-	},
-	{
-		
-		question: "<img src='../imagens/computador.jpg'>",
-		answers: {
-			a: ' COMPUTADOR<br>',
-			b: ' NOTEBOOK<br>',
-			c: ' GABINETE<br>',
-			d: ' TABLET'
-		},
-		correctAnswer: 'a'
-	},
-	{
-		
-		question: "<img src='../imagens/tablets.jpg'>",
-		answers: {
-			a: ' ESTABILIADOR<br>',
-			b: ' NOTEBOOK<br>',
-			c: ' TABLET<br>',
-			d: ' MONITOR'
-		},
-		correctAnswer: 'c'
-	},
-	{
-		
-		question: "<img src='../imagens/note.jpg'>",
-		answers: {
-			a: ' PLACA MÃE<br>',
-			b: ' PEN DRIVE<br>',
-			c: ' NOTEBOOK<br>',
-			d: ' MOUSE'
-		},
-		correctAnswer: 'c'
-	},
-	{
-		
-		question: "<img src='../imagens/webcam.jpg'>",
-		answers: {
-			a: ' ESTABILIZADOR<br>',
-			b: ' WEB CAM<br>',
-			c: ' TECLADO<br>',
-			d: ' MONITOR'
-		},
-		correctAnswer: 'b'
-	},
-	{
-		
-		question: "<img src='../imagens/cxSom.jpg'>",
-		answers: {
-			a: ' CAIXA DE SOM<br>',
-			b: ' TABLET<br>',
-			c: ' ESTABILIZADOR<br>',
-			d: ' GABINETE<br>'
-		},
-		correctAnswer: 'a'
 	},
 	
 	{
 		
-		question: "<img src='../imagens/estabilizador.jpg'>",
+		question: "2- Responsável por armazenar temporariamente dados e informações que o computador está usando ativamente.",
 		answers: {
-			a: ' ESTABILIZADOR<br>',
-			b: ' MOUSE<br>',
-			c: ' FONTE DE ENERGIA<br>',
-			d: ' COMPUTADOR<br>'
+			a: ' Placa de vídeo<br>',
+			b: ' Memória RAM<br>',
+			c: ' Disco SSD<br>',
+			d: ' Placa-mãe'
+
+		},
+		correctAnswer: 'b'
+	},
+	{
+		
+		question: "3- É usado para armazenar dados permanentemente no computador?",
+		answers: {
+			a: ' Memória RAM<br>',
+			b: ' Placa gráfica<br>',
+			c: ' Disco rígido (HD)<br>', 
+			d: ' Fonte de alimentação',
+
+
+		},
+		correctAnswer: 'c'
+	},
+	{
+		
+		question: "4- É considerada o coração do computador, onde os outros componentes estão conectados. ",
+		answers: {
+			a: ' Processador<br>',
+			b: ' Placa-mãe<br>',
+			c: ' Memória RAM<br>',
+			d: ' Placa de som'
+
+		},
+		correctAnswer: 'b'
+	},
+	{
+		
+		question: "5- Qual dispositivo serve para processar e renderizar todas as imagens, vídeos e gráficos que aparecem na tela?",
+		answers: {
+			a: ' Placa gráfica (GPU)<br>',
+			b: ' Memória RAM<br>',
+			c: ' Placa-mãe<br>',
+			d: ' Processador (CPU)'
+
 		},
 		correctAnswer: 'a'
 	},
+	{
+		
+		question: "6- Qual dispositivo que converte a energia da tomada (Corrente Alternada - AC) em voltagens de Corrente Contínua (DC) estáveis e adequadas para alimentar o processador, placa-mãe, placa de vídeo e outros componentes.",
+		answers: {
+			a: ' Processador<br>',
+			b: ' Placa-mãe<br>',
+			c: ' Memória RAM<br>',
+			d: ' Fonte de alimentação'
+
+		},
+		correctAnswer: 'd'
+	},
+	
 	
 ];
 
@@ -244,36 +185,6 @@ function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
 	}
 	
 }
-
-function buildQuiz() {
-  let output = [];
-
-  myQuestions.forEach((q, index) => {
-    let answers = [];
-
-    for (let letter in q.answers) {
-      answers.push(`
-        <label>
-          <input type="radio" name="question${index}" value="${letter}">
-          ${q.answers[letter]}
-        </label>
-      `);
-    }
-
-    output.push(`
-      <div class="quiz-item">
-        <div class="question-img">${q.question}</div>
-        <div class="answers">
-          ${answers.join("")}
-        </div>
-      </div>
-    `);
-  });
-
-  quizContainer.innerHTML = output.join("");
-}
-
-buildQuiz();
 
 		</script>
 

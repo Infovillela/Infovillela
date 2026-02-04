@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-		<title>Questionário 2 - Múltipla Escolha</title>
+		<title>Exercício de Fixação 07</title>
 
 		<link rel="stylesheet" href="style.css">
 
@@ -10,147 +10,86 @@
 
 	<body>
 	
-	<h2>Questionário 02</h2>
+	<h2>Questionário 07</h2>
 	<hr>
 
-		<div id="quiz" class="alinhamento"></div>
+		<div id="quiz"></div>
 		<button id="submit">Finalizar</button>
 		<div id="results"></div>
 		<script>
 		var myQuestions = [
-	{
-		
-		question: "<img src='../imagens/monitor.jpg'><br><br>",
+	{		
+		question: "<img src='imagens/processador.jpg'> <br><br>",
 		answers: {
-			a: ' MOUSE<br>',
-			b: ' TABLET<br>',
-			c: ' ESTABILIADOR<br>',
-			d: ' MONITOR'
+			a: ' Impressora.<br>',
+			b: ' Processador (CPU)<br>',
+			c: ' Disco Rígido (HD).<br>',
+			d: ' Teclado.'
+
 		},
-		correctAnswer: 'd'
+		correctAnswer: 'b'
 	},
-	{
-		
-		question: "<img src='../imagens/gabinete.jpg'><br><br>",
+	{		
+		question: "<img src='imagens/memoriaQ.jpg'><br><br>",
 		answers: {
-			a: ' GABINETE<br>',
-			b: ' MONITOR<br>',
-			c: ' NOTEBOOK<br>',
-			d: ' MEMÓRIA'
-		},
-		correctAnswer: 'a'
-	},
-	{
-		
-		question: "<img src='../imagens/mouse1.jpg'>",
-		answers: {
-			a: ' COMPUTADOR<br>',
-			b: ' TECLADO<br>',
-			c: ' GABINETE<br>',
-			d: ' MOUSE'
-		},
-		correctAnswer: 'd'
-	},
-	{
-		
-		question: "<img src='../imagens/impressora.jpg'>",
-		answers: {
-			a: ' PEN DRIVE<br>',
-			b: ' GABINETE<br>',
-			c: ' IMPRESSORA<br>',
-			d: ' TECLADO'
-		},
-		correctAnswer: 'c'
-	},
-	{
-		
-		question: "<img src='../imagens/teclado.jpg'>",
-		answers: {
-			a: ' COMPUTADOR<br>',
-			b: ' TECLADO<br>',
-			c: ' MONITOR<br>',
-			d: ' NOTEBOOK'
+			a: ' Placa de vídeo<br>',
+			b: ' Memória RAM<br>',
+			c: ' Disco SSD<br>',
+			d: ' Placa-mãe'
+
 		},
 		correctAnswer: 'b'
 	},
 	{
 		
-		question: "<img src='../imagens/pendrive.jpg'>",
+		question: "<img src='imagens/hdQ.jpg'><br>",
 		answers: {
-			a: ' GABINETE<br>',
-			b: ' PLACA MÃE<br>',
-			c: ' PEN DRIVE<br>',
-			d: ' HARD DISC'
+			a: ' Memória RAM<br>',
+			b: ' Placa gráfica<br>',
+			c: ' Disco rígido (HD)<br>', 
+			d: ' Fonte de alimentação',
+
+
 		},
 		correctAnswer: 'c'
 	},
 	{
 		
-		question: "<img src='../imagens/computador.jpg'>",
+		question: "<img src='imagens/placaQ.jpg'>",
 		answers: {
-			a: ' COMPUTADOR<br>',
-			b: ' NOTEBOOK<br>',
-			c: ' GABINETE<br>',
-			d: ' TABLET'
-		},
-		correctAnswer: 'a'
-	},
-	{
-		
-		question: "<img src='../imagens/tablets.jpg'>",
-		answers: {
-			a: ' ESTABILIADOR<br>',
-			b: ' NOTEBOOK<br>',
-			c: ' TABLET<br>',
-			d: ' MONITOR'
-		},
-		correctAnswer: 'c'
-	},
-	{
-		
-		question: "<img src='../imagens/note.jpg'>",
-		answers: {
-			a: ' PLACA MÃE<br>',
-			b: ' PEN DRIVE<br>',
-			c: ' NOTEBOOK<br>',
-			d: ' MOUSE'
-		},
-		correctAnswer: 'c'
-	},
-	{
-		
-		question: "<img src='../imagens/webcam.jpg'>",
-		answers: {
-			a: ' ESTABILIZADOR<br>',
-			b: ' WEB CAM<br>',
-			c: ' TECLADO<br>',
-			d: ' MONITOR'
+			a: ' Processador<br>',
+			b: ' Placa-mãe<br>',
+			c: ' Memória RAM<br>',
+			d: ' Placa de som'
+
 		},
 		correctAnswer: 'b'
 	},
 	{
 		
-		question: "<img src='../imagens/cxSom.jpg'>",
+		question: "<img src='imagens/placaVideo.jpg'><br>5- Qual é o nome dessa peça?",
 		answers: {
-			a: ' CAIXA DE SOM<br>',
-			b: ' TABLET<br>',
-			c: ' ESTABILIZADOR<br>',
-			d: ' GABINETE<br>'
+			a: ' Placa gráfica (GPU)<br>',
+			b: ' Memória RAM<br>',
+			c: ' Placa-mãe<br>',
+			d: ' Processador (CPU)'
+
 		},
 		correctAnswer: 'a'
+	},
+	{
+		
+		question: "<img src='imagens/fonteQ.jpg'><br>6- Qual é o nome dessa peça?",
+		answers: {
+			a: ' Processador<br>',
+			b: ' Placa-mãe<br>',
+			c: ' Memória RAM<br>',
+			d: ' Fonte de alimentação'
+
+		},
+		correctAnswer: 'd'
 	},
 	
-	{
-		
-		question: "<img src='../imagens/estabilizador.jpg'>",
-		answers: {
-			a: ' ESTABILIZADOR<br>',
-			b: ' MOUSE<br>',
-			c: ' FONTE DE ENERGIA<br>',
-			d: ' COMPUTADOR<br>'
-		},
-		correctAnswer: 'a'
-	},
 	
 ];
 
@@ -230,7 +169,7 @@ function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
 		}
 
 			
-			resultsContainer.innerHTML = 'Você acertou ' + numCorrect + ' de ' + questions.length;
+			resultsContainer.innerHTML = numCorrect + ' de ' + questions.length;
 		}
 
 	// show questions right away

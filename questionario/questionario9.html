@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+		<title>Questionário 9 - Múltipla Escolha</title>
+
+		<link rel="stylesheet" href="styleTxt.css">
+
+	</head>
+
+	<body>
+	
+	<h2>Questionário 09</h2>
+
+		<div id="quiz"></div>
+		<button id="submit">Finalizar</button>
+		<div id="results"></div>
+		<script>
+		var myQuestions = [
+	{
+		
+		question: "1. Qual peça do computador mostra as imagens e os textos que usamos?",
+			answers:{
+			a: ' Teclado<br>',
+			b: ' Monitor<br>',
+			c: ' Mouse'
+			},
+			correctAnswer:'b'
+			},
+{
+			question:"2. Qual é a peça que usamos para digitar palavras?",
+			answers:{
+			a: ' Teclado<br>',
+			b: ' CPU<br>',
+			c: ' Caixa de som<br>',
+			},
+			correctAnswer:'a'
+			},
+
+{
+			question:"3. Qual peça usamos para clicar e arrastar coisas na tela?",
+			answers:{
+			a: ' Impressora<br>',
+			b: ' Mouse<br>',
+			c: ' Placa-mãe'
+			},
+			correctAnswer:'b'
+			},
+{
+			question:"4. Qual parte do computador guarda os jogos e arquivos para usar depois?",
+			answers:{
+			a: ' Memória RAM<br>',
+			b: ' HD (Disco Rígido)<br>',
+			c: ' Monitor'
+			},
+			correctAnswer:'b'
+			},
+{
+			question:"5. Qual peça faz o computador pensar e resolver problemas?",
+			answers:{
+			a: ' CPU (Unidade Central de Processamento)<br>',
+			b: ' Teclado<br>',
+			c: ' Monitor'
+			},
+			correctAnswer:'a'
+			},
+{
+			question:"6. Qual peça faz o som sair para a gente ouvir músicas ou filmes?",
+			answers:{
+			a: ' Placa de vídeo<br>',
+			b: ' Caixa de som<br>',
+			c: ' Impressora'
+			},
+			correctAnswer:'b'
+			},
+{
+			question:"7. Qual é a peça que liga o computador na tomada para ele ter energia?",
+			answers:{
+			a: ' Fonte de energia<br>',
+			b: ' Placa-mãe<br>',
+			c: ' Mouse'
+			},
+			correctAnswer:'a'
+			},
+{
+			question:"8. Qual peça conecta todas as outras dentro do computador?",
+			answers:{
+			a: ' Monitor<br>',
+			b: ' Placa-mãe<br>',
+			c: ' Teclado'
+			},
+			correctAnswer:'b'
+			},
+{
+			question:"9. Qual peça usamos para imprimir no papel as coisas do computador?",
+			answers:{
+			a: ' Teclado<br>',
+			b: ' Impressora<br>',
+			c: ' Mouse'
+			},
+			correctAnswer:'b'
+			},
+{
+			question:"10. Qual peça faz o computador ser mais rápido enquanto está ligado?",
+			answers:{
+			a: ' Memória RAM<br>',
+			b: ' Caixa de som<br>',
+			c: ' Monitor'
+			},
+			correctAnswer:'a'
+},
+	
+	
+];
+
+var quizContainer = document.getElementById('quiz');
+var resultsContainer = document.getElementById('results');
+var submitButton = document.getElementById('submit');
+
+generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
+
+function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
+
+	function showQuestions(questions, quizContainer){
+		// precisaremos de um lugar para armazenar a saída e as opções de resposta
+		var output = [];
+		var answers; // poderia ter dado outro nome, alem do mais, eu mesmo me confundi :/
+
+		// para cada questão
+		for(var i=0; i<questions.length; i++){
+			
+			// mas, primeiro resetamos a lista de questões
+			answers = [];
+
+			// e aqui faremos para cada resposta na questão.
+			for(letter in questions[i].answers){
+
+				// Aqui será escrito para html para usar o Radio.
+				answers.push(
+					'<label>'
+						+ '<input type="radio" name="question'+i+'" value="'+letter+'">'
+					//	+ letter + ') ' vou deixar a letra comentada, porque achei melhor assim
+						+ questions[i].answers[letter]
+					+ '</label>'
+				);
+			}
+
+			// add this question and its answers to the output
+			output.push(
+				'<div class="question">' + questions[i].question + '</div>'
+				+ '<div class="answers">' + answers.join('') + '</div>'
+			);
+		}
+
+		// finally combine our output list into one string of html and put it on the page
+		quizContainer.innerHTML = output.join('');
+	}
+
+
+	function showResults(questions, quizContainer, resultsContainer){
+			
+		
+		var answerContainers = quizContainer.querySelectorAll('.answers');
+		
+		
+		var userAnswer = '';
+		var numCorrect = 0;
+		
+		
+		for(var i=0; i<questions.length; i++){
+
+			// agora ele vai virar a letra que esta marcada.
+			userAnswer = (answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value;
+			
+			
+			
+			if(userAnswer===questions[i].correctAnswer){
+				
+				numCorrect++;
+				
+				
+				answerContainers[i].style.color = 'lightgreen';
+			}
+			
+			else{
+				
+				answerContainers[i].style.color = 'red';
+			}
+		}
+
+			
+			resultsContainer.innerHTML = 'Você acertou ' + numCorrect + ' de ' + questions.length;
+		}
+
+	// show questions right away
+	showQuestions(questions, quizContainer);
+
+	// on submit, show results
+	
+	submitButton.onclick = function(){
+		showResults(questions, quizContainer, resultsContainer);
+		
+	}
+	
+}
+
+		</script>
+
+	</body>
+
+</html>

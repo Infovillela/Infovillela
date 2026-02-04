@@ -2,154 +2,126 @@
 <html>
     <head>
         <meta charset="utf-8">
-		<title>Questionário 2 - Múltipla Escolha</title>
+		<title>Questionário 6 - Múltipla Escolha</title>
 
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="styleTxt.css">
 
 	</head>
 
 	<body>
 	
-	<h2>Questionário 02</h2>
-	<hr>
+	<h2>Questionário 06</h2>
 
-		<div id="quiz" class="alinhamento"></div>
+		<div id="quiz"></div>
 		<button id="submit">Finalizar</button>
 		<div id="results"></div>
 		<script>
 		var myQuestions = [
 	{
 		
-		question: "<img src='../imagens/monitor.jpg'><br><br>",
+		question: "1- O que é hardware?",
 		answers: {
-			a: ' MOUSE<br>',
-			b: ' TABLET<br>',
-			c: ' ESTABILIADOR<br>',
-			d: ' MONITOR'
+			a: ' Programas utilizados para realizar tarefas específicas em um computador.<br>',
+			b: ' A parte física de um computador, como componentes e dispositivos.<br>',
+			c: ' Um tipo de rede local.<br>',
+			d: ' Um sistema operacional.'
+
 		},
-		correctAnswer: 'd'
+		correctAnswer: 'b'
 	},
-	{
-		
-		question: "<img src='../imagens/gabinete.jpg'><br><br>",
+	{		
+		question: "2- Qual dos itens abaixo é considerado um hardware de armazenamento?",
 		answers: {
-			a: ' GABINETE<br>',
-			b: ' MONITOR<br>',
-			c: ' NOTEBOOK<br>',
-			d: ' MEMÓRIA'
-		},
-		correctAnswer: 'a'
-	},
-	{
-		
-		question: "<img src='../imagens/mouse1.jpg'>",
-		answers: {
-			a: ' COMPUTADOR<br>',
-			b: ' TECLADO<br>',
-			c: ' GABINETE<br>',
-			d: ' MOUSE'
-		},
-		correctAnswer: 'd'
-	},
-	{
-		
-		question: "<img src='../imagens/impressora.jpg'>",
-		answers: {
-			a: ' PEN DRIVE<br>',
-			b: ' GABINETE<br>',
-			c: ' IMPRESSORA<br>',
-			d: ' TECLADO'
+			a: ' Impressora.<br>',
+			b: ' Memória RAM.<br>',
+			c: ' Disco Rígido (HD).<br>',
+			d: ' Teclado.'
+
 		},
 		correctAnswer: 'c'
 	},
-	{
-		
-		question: "<img src='../imagens/teclado.jpg'>",
+	{		
+		question: "3- O que é software?",
 		answers: {
-			a: ' COMPUTADOR<br>',
-			b: ' TECLADO<br>',
-			c: ' MONITOR<br>',
-			d: ' NOTEBOOK'
+			a: ' A parte física de um computador.<br>',
+			b: ' Um programa ou conjunto de instruções que orienta o hardware a realizar tarefas específicas.<br>',
+			c: ' Qualquer dispositivo externo conectado ao computador.<br>',
+			d: ' Um sistema para conectar redes locais.'
+
 		},
 		correctAnswer: 'b'
 	},
 	{
-		
-		question: "<img src='../imagens/pendrive.jpg'>",
+		question: "4- Qual dos itens abaixo é um exemplo de hardware de saída?",
 		answers: {
-			a: ' GABINETE<br>',
-			b: ' PLACA MÃE<br>',
-			c: ' PEN DRIVE<br>',
-			d: ' HARD DISC'
+			a: ' Mouse<br>',
+			b: ' Teclado<br>',
+			c: ' Monitor<br>',
+			d: ' Pen Drive'
 		},
 		correctAnswer: 'c'
 	},
-	{
-		
-		question: "<img src='../imagens/computador.jpg'>",
+	{		
+		question: "5- Qual é a diferença principal entre hardware e software?",
 		answers: {
-			a: ' COMPUTADOR<br>',
-			b: ' NOTEBOOK<br>',
-			c: ' GABINETE<br>',
-			d: ' TABLET'
-		},
-		correctAnswer: 'a'
-	},
-	{
-		
-		question: "<img src='../imagens/tablets.jpg'>",
-		answers: {
-			a: ' ESTABILIADOR<br>',
-			b: ' NOTEBOOK<br>',
-			c: ' TABLET<br>',
-			d: ' MONITOR'
-		},
-		correctAnswer: 'c'
-	},
-	{
-		
-		question: "<img src='../imagens/note.jpg'>",
-		answers: {
-			a: ' PLACA MÃE<br>',
-			b: ' PEN DRIVE<br>',
-			c: ' NOTEBOOK<br>',
-			d: ' MOUSE'
-		},
-		correctAnswer: 'c'
-	},
-	{
-		
-		question: "<img src='../imagens/webcam.jpg'>",
-		answers: {
-			a: ' ESTABILIZADOR<br>',
-			b: ' WEB CAM<br>',
-			c: ' TECLADO<br>',
-			d: ' MONITOR'
+			a: ' Hardware é físico e palpável, enquanto software é intangível e consiste em programas.<br>',
+			b: ' Software é a parte física, enquanto hardware são os programas.<br>',
+			c: ' Ambos são apenas partes físicas do computador.<br>',
+			d: ' Não existe diferença, pois ambos têm a mesma função.'
 		},
 		correctAnswer: 'b'
 	},
-	{
-		
-		question: "<img src='../imagens/cxSom.jpg'>",
+	{		
+		question: "6- Qual é um exemplo de software de sistema?",
 		answers: {
-			a: ' CAIXA DE SOM<br>',
-			b: ' TABLET<br>',
-			c: ' ESTABILIZADOR<br>',
-			d: ' GABINETE<br>'
+			a: ' Google Chrome.<br>',
+			b: ' Microsoft Word.<br>',
+			c: ' Windows 10.<br>',
+			d: ' Impressora HP.'
 		},
-		correctAnswer: 'a'
+		correctAnswer: 'c'
 	},
-	
-	{
-		
-		question: "<img src='../imagens/estabilizador.jpg'>",
+	{		
+		question: "7- Qual dos dispositivos abaixo é um exemplo de hardware de entrada?",
 		answers: {
-			a: ' ESTABILIZADOR<br>',
-			b: ' MOUSE<br>',
-			c: ' FONTE DE ENERGIA<br>',
-			d: ' COMPUTADOR<br>'
+			a: ' Monitor.<br>',
+			b: ' Scanner.<br>',
+			c: ' Placa-mãe.<br>',
+			d: ' Caixa de som.'
 		},
-		correctAnswer: 'a'
+		correctAnswer: 'b'
+	},
+	{		
+		question: "8- O que é firmware?",
+		answers: {
+			a: ' Um dispositivo de entrada conectado ao computador.<br>',
+			b: ' Uma memória externa conectada ao hardware.<br>',
+			c: ' Um sistema operacional usado em computadores de grande porte.<br>',
+			d: ' Um software armazenado em um hardware que controla suas funções básicas.',
+
+		},
+		correctAnswer: 'd'
+	},
+	{		
+		question: "9- Qual dos itens a seguir é um exemplo de software de aplicação?",
+		answers: {
+			a: ' Memória RAM.<br>',
+			b: ' Microsoft Excel.<br>',
+			c: ' Sistema Operacional Linux.<br>',
+			d: ' Processador Intel Core i5.'
+
+		},
+		correctAnswer: 'b'
+	},
+	{		
+		question: "10- O que é necessário para o funcionamento de um computador?",
+		answers: {
+			a: ' Apenas hardware.<br>',
+			b: ' Apenas software.<br>',
+			c: ' Hardware e software, funcionando de forma integrada.<br>',
+			d: ' Apenas um sistema operacional.'
+		},
+		correctAnswer: 'c'
 	},
 	
 ];
@@ -230,7 +202,7 @@ function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
 		}
 
 			
-			resultsContainer.innerHTML = 'Você acertou ' + numCorrect + ' de ' + questions.length;
+			resultsContainer.innerHTML = numCorrect + ' de ' + questions.length;
 		}
 
 	// show questions right away
@@ -244,36 +216,6 @@ function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
 	}
 	
 }
-
-function buildQuiz() {
-  let output = [];
-
-  myQuestions.forEach((q, index) => {
-    let answers = [];
-
-    for (let letter in q.answers) {
-      answers.push(`
-        <label>
-          <input type="radio" name="question${index}" value="${letter}">
-          ${q.answers[letter]}
-        </label>
-      `);
-    }
-
-    output.push(`
-      <div class="quiz-item">
-        <div class="question-img">${q.question}</div>
-        <div class="answers">
-          ${answers.join("")}
-        </div>
-      </div>
-    `);
-  });
-
-  quizContainer.innerHTML = output.join("");
-}
-
-buildQuiz();
 
 		</script>
 

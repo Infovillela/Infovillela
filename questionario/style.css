@@ -1,27 +1,73 @@
 body{
 	font-size: 14px;
 	font-family: sans-serif;
-	color: #333;
-	text-align: left;
-	padding-left: 40px;
+	color: #1a1a1a;
+	text-align: center;
+	display: inline-block;
+    justify-content: center;
+    align-items: center;
+	padding: 10px;
 }
+
 .question{
-	font-weight: 600;
+	align-items: center;
+	padding: 10px;
+	border: 2px solid #ccc;
+	border-radius: 10px;
+	
 }
+
 .answers {
-    margin-bottom: 40px;
+	margin-bottom: 10px;
+	font-size: 18px;
+	padding: 10px;
+	border-radius: 10px;
+	height: 200px;
+	display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  
 }
+
 #submit{
 	font-family: sans-serif;
-	font-size: 14px;
-	background-color: #297;
+	font-size: 22px;
+	background-color: #0b0ec0;
 	color: #fff;
 	border: 0px;
-	border-radius: 3px;
+	border-radius: 5px;
 	padding: 20px;
-	cursor: pointer;
-	margin-bottom: 20px;
+	margin-top: 20px;
 }
+
 #submit:hover{
 	background-color: #3a8;
+}
+
+.quiz-item {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 15px;
+  background: #fff;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.answers label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border: 2px solid #2b12b8;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.answers label:hover {
+  background: #f0f0f0;
+}
+
+.answers input {
+  transform: scale(1.3);
 }

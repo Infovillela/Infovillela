@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+		<title>Questionário 6 - Múltipla Escolha</title>
+
+		<link rel="stylesheet" href="styleTxt.css">
+
+	</head>
+
+	<body>
+	
+	<h2>Questionário 06</h2>
+
+		<div id="quiz"></div>
+		<button id="submit">Finalizar</button>
+		<div id="results"></div>
+		<script>
+		var myQuestions = [
+	{
+		
+		question: "1. O que é a Internet?",
+		answers: {
+			a: ' Um programa usado para acessar e-mails.<br>',
+			b: ' Um sistema interligado de redes de computadores que permite a troca de informações em escala global.<br>',
+			c: ' Um software de edição de vídeos.<br>',
+			d: ' Um tipo específico de hardware usado em redes locais.'
+
+
+		},
+		correctAnswer: 'b'
+	},
+	{		
+		question: "2. Qual é a função de um navegador de internet (browser)?",
+		answers: {
+			a: ' Proteger o computador contra vírus.<br>',
+			b: ' raduzir os endereços digitados em informações exibidas na tela.<br>',
+			c: ' Garantir a conexão à Internet.<br>',
+			d: ' Configurar o hardware do computador.'
+
+
+		},
+		correctAnswer: 'b'
+	},
+	{		
+		question: "3. Qual dos exemplos abaixo é um navegador de Internet?",
+		answers: {
+			a: ' Windows 10.<br>',
+			b: ' Google Chrome.<br>',
+			c: ' Microsoft Word.<br>',
+			d: ' WhatsApp.'
+
+
+		},
+		correctAnswer: 'b'
+	},
+	{
+		question: "4. O que significa o termo (URL)?",
+		answers: {
+			a: ' Unidade de Rede Local.<br>',
+			b: ' Unidade de Resolução Local.<br>',
+			c: ' Localizador Uniforme de Recursos.<br>',
+			d: ' Linguagem Universal de Redes.'
+
+		},
+		correctAnswer: 'c'
+	},
+	{		
+		question: "5. Qual é a função do protocolo HTTP?",
+		answers: {
+			a: ' Proteger o computador contra ameaças externas.<br>',
+			b: ' Transferir arquivos de um computador para outro.<br>',
+			c: ' Estabelecer a comunicação entre navegadores e servidores para acessar páginas da web.<br>',
+			d: ' Gerenciar dispositivos de hardware.'
+
+		},
+		correctAnswer: 'c'
+	},
+	{		
+		question: "6. O que é um endereço IP?",
+		answers: {
+			a: ' Um número que identifica um dispositivo em uma rede.<br>',
+			b: ' Um software que conecta dispositivos à Internet.<br>',
+			c: ' Um protocolo de transferência de arquivos.<br>',
+			d: ' Um navegador de internet.'
+
+		},
+		correctAnswer: 'a'
+	},
+	{		
+		question: "7. Qual é a diferença entre a Internet e a World Wide Web (WWW)?",
+		answers: {
+			a: ' Não há diferença; ambos os termos significam a mesma coisa.<br>',
+			b: ' A Internet é a infraestrutura física, enquanto a WWW é um sistema de documentos interligados acessados pela Internet.<br>',
+			c: ' A WWW é a infraestrutura física, enquanto a Internet é usada para navegação.<br>',
+			d: ' A Internet é usada apenas para comunicação, enquanto a WWW é usada para streaming.'
+
+		},
+		correctAnswer: 'b'
+	},
+	{		
+		question: "8. O que significa o termo (Wi-Fi)?",
+		answers: {
+			a: ' Conexão direta via cabo.<br>',
+			b: ' Uma tecnologia que permite conexão sem fio a redes locais.<br>',
+			c: ' Um navegador usado para acessar a Internet.<br>',
+			d: ' Um programa de edição de texto.'
+
+
+		},
+		correctAnswer: 'b'
+	},
+	{		
+		question: "9. Qual é a função do DNS (Domain Name System)?",
+		answers: {
+			a: ' Armazenar dados de páginas da web.<br>',
+			b: ' Traduzir nomes de domínio em endereços IP.<br>',
+			c: ' Monitorar o tráfego de dados na Internet.<br>',
+			d: ' Garantir a segurança de redes sem fio.'
+
+
+		},
+		correctAnswer: 'b'
+	},
+	{		
+		question: "10. O que é uma conexão VPN (Virtual Private Network)?",
+		answers: {
+			a: ' Um tipo de navegador exclusivo para redes locais.<br>',
+			b: ' Um software que melhora a velocidade de conexão.<br>',
+			c: ' Uma conexão segura que cria um túnel criptografado para proteger dados transmitidos na Internet.<br>',
+			d: ' Uma tecnologia para conectar dispositivos via cabo.'
+		},
+		correctAnswer: 'c'
+	},
+	
+];
+
+var quizContainer = document.getElementById('quiz');
+var resultsContainer = document.getElementById('results');
+var submitButton = document.getElementById('submit');
+
+generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
+
+function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
+
+	function showQuestions(questions, quizContainer){
+		// precisaremos de um lugar para armazenar a saída e as opções de resposta
+		var output = [];
+		var answers; // poderia ter dado outro nome, alem do mais, eu mesmo me confundi :/
+
+		// para cada questão
+		for(var i=0; i<questions.length; i++){
+			
+			// mas, primeiro resetamos a lista de questões
+			answers = [];
+
+			// e aqui faremos para cada resposta na questão.
+			for(letter in questions[i].answers){
+
+				// Aqui será escrito para html para usar o Radio.
+				answers.push(
+					'<label>'
+						+ '<input type="radio" name="question'+i+'" value="'+letter+'">'
+					//	+ letter + ') ' vou deixar a letra comentada, porque achei melhor assim
+						+ questions[i].answers[letter]
+					+ '</label>'
+				);
+			}
+
+			// add this question and its answers to the output
+			output.push(
+				'<div class="question">' + questions[i].question + '</div>'
+				+ '<div class="answers">' + answers.join('') + '</div>'
+			);
+		}
+
+		// finally combine our output list into one string of html and put it on the page
+		quizContainer.innerHTML = output.join('');
+	}
+
+
+	function showResults(questions, quizContainer, resultsContainer){
+			
+		
+		var answerContainers = quizContainer.querySelectorAll('.answers');
+		
+		
+		var userAnswer = '';
+		var numCorrect = 0;
+		
+		
+		for(var i=0; i<questions.length; i++){
+
+			// agora ele vai virar a letra que esta marcada.
+			userAnswer = (answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value;
+			
+			
+			
+			if(userAnswer===questions[i].correctAnswer){
+				
+				numCorrect++;
+				
+				
+				answerContainers[i].style.color = 'lightgreen';
+			}
+			
+			else{
+				
+				answerContainers[i].style.color = 'red';
+			}
+		}
+
+			
+			resultsContainer.innerHTML = numCorrect + ' de ' + questions.length;
+		}
+
+	// show questions right away
+	showQuestions(questions, quizContainer);
+
+	// on submit, show results
+	
+	submitButton.onclick = function(){
+		showResults(questions, quizContainer, resultsContainer);
+		
+	}
+	
+}
+
+		</script>
+
+	</body>
+
+</html>

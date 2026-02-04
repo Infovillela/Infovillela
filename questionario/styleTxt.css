@@ -1,0 +1,38 @@
+body{
+	font-size: 14px;
+	font-family: sans-serif;
+	color: #3a3a3a;
+	padding: 20px;
+}
+
+.answers {
+	margin-bottom: 10px;
+	font-size: 18px;
+	padding: 10px;
+	
+ 
+}
+
+.question{
+	padding: 15px;
+	border: 2px solid #dfdfdf;
+	border-radius: 10px;
+	font-size: 24px;
+	color:#0b0ec0;
+	background-color: #dfdfdf;
+}
+
+#submit{
+	font-family: sans-serif;
+	font-size: 22px;
+	background-color: #2c0bc0;
+	color: #fff;
+	border: 0px;
+	border-radius: 5px;
+	padding: 20px;
+	margin-top: 20px;
+}
+
+#submit:hover{
+	background-color: #287ff1;
+}

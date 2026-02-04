@@ -1,261 +1,401 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-		<title>Exercício Questionario</title>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Questionário 3 - Múltipla Escolha</title>
 
-		<link rel="stylesheet" href="style.css">
-
-	</head>
-
-	<body>
-	
-	<h2>Questionário 03</h2>
-
-		<div id="quiz"></div>
-		<button id="submit">Finalizar</button>
-		<div id="results"></div>
-		<script>
-		var myQuestions = [
-	{
-		
-		question: "1- Onde podemos ver todas as informações que passamos para o computador?",
-		answers: {
-			a: ' #<img src="../imagens/mouse.jpg"> &nbsp;&nbsp;&nbsp;',
-			b: ' #<img src="../imagens/tablets.jpg"> ',
-			c: ' #<img src="../imagens/estabilizador.jpg"> &nbsp;&nbsp;&nbsp;',
-			d: ' #<img src="../imagens/monitor.jpg"><br><br> '
-		},
-		correctAnswer: 'd'
-	},
-	{
-		
-		question: "2- Oque tem o formato de uma caixa e nele estão vários peças e circuitos que fazem o computador funcionar?",
-		answers: {
-			a: ' #<img src="../imagens/gabinete.jpg"> &nbsp;&nbsp;&nbsp;',
-			b: ' #<img src="../imagens/monitor.jpg"> ',
-			c: ' #<img src="../imagens/note.jpg"> &nbsp;&nbsp;&nbsp;',
-			d: ' #<img src="../imagens/memoria.jpg"><br><br> '
-		},
-		correctAnswer: 'a'
-	},
-	{
-		
-		question: "3- Com ele é possível desenhar, abrir e fechar as janelas e os programas!",
-		answers: {
-			a: ' #<img src="../imagens/computador1.jpg"> &nbsp;&nbsp;&nbsp;',
-			b: ' #<img src="../imagens/teclado.jpg"> ',
-			c: ' #<img src="../imagens/gabinete.jpg"> &nbsp;&nbsp;&nbsp;',
-			d: ' #<img src="../imagens/mouse1.jpg"><br><br> '
-		},
-		correctAnswer: 'd'
-	},
-	{
-		
-		question: "4- Existem vários modelos, mas todos têm a mesma função: a impressão de informações de dentro do computador.",
-		answers: {
-			a: ' #<img src="../imagens/pendrive.jpg"> &nbsp;&nbsp;&nbsp;',
-			b: ' #<img src="../imagens/gabinete.jpg"> ',
-			c: ' #<img src="../imagens/impressora.jpg"> &nbsp;&nbsp;&nbsp;',
-			d: ' #<img src="../imagens/mouse.jpg"> <br><br>'
-		},
-		correctAnswer: 'c'
-	},
-	{
-		
-		question: "5- É um dispositivo que possui uma série de botões e teclas.",
-		answers: {
-			a: ' #<img src="../imagens/computador1.jpg"> &nbsp;&nbsp;&nbsp;',
-			b: ' #<img src="../imagens/teclado.jpg"> ',
-			c: ' #<img src="../imagens/monitor.jpg"> &nbsp;&nbsp;&nbsp;',
-			d: ' #<img src="../imagens/note.jpg"><br><br> '
-		},
-		correctAnswer: 'b'
-	},
-	{
-		
-		question: "6- É um dispositivo de memória flash que serve para você transformar dados de um micro para o outro!",
-		answers: {
-			a: ' #<img src="../imagens/gabinete.jpg"> &nbsp;&nbsp;&nbsp;',
-			b: ' #<img src="../imagens/placa.jpg"> ',
-			c: ' #<img src="../imagens/pendrive.jpg"> &nbsp;&nbsp;&nbsp;',
-			d: ' #<img src="../imagens/hd.jpg"> <br><br>'
-		},
-		correctAnswer: 'c'
-	},
-	{
-		
-		question: "7- É um equipamento inventado pelo homem para facilitar nossa vida.",
-		answers: {
-			a: ' #<img src="../imagens/computador.jpg"> &nbsp;&nbsp;&nbsp;',
-			b: ' #<img src="../imagens/note.jpg"> ',
-			c: ' #<img src="../imagens/gabinete.jpg"> &nbsp;&nbsp;&nbsp;',
-			d: ' #<img src="../imagens/hd.jpg"><br><br> '
-		},
-		correctAnswer: 'a'
-	},
-	{
-		
-		question: "8- É um dispositivo pessoal em formato de uma prancheta que pode ser usado para acesso à Internet.",
-		answers: {
-			a: ' #<img src="../imagens/gabinete.jpg"> &nbsp;&nbsp;&nbsp;',
-			b: ' #<img src="../imagens/tablets.jpg"> ',
-			c: ' #<img src="../imagens/memoria.jpg"> &nbsp;&nbsp;&nbsp;',
-			d: ' #<img src="../imagens/monitor.jpg"><br><br> '
-		},
-		correctAnswer: 'b'
-	},
-	{
-		
-		question: "9- É um computador portátil, leve, projetado para ser transportado e utilizado em diferentes lugares.",
-		answers: {
-			a: ' #<img src="../imagens/placa.jpg"> &nbsp;&nbsp;&nbsp;',
-			b: ' #<img src="../imagens/pendrive.jpg"> ',
-			c: ' #<img src="../imagens/note.jpg"> &nbsp;&nbsp;&nbsp;',
-			d: ' #<img src="../imagens/mouse1.jpg"> <br><br>'
-		},
-		correctAnswer: 'c'
-	},
-	{
-		
-		question: "10- É uma câmera de vídeo de baixo custo que capta imagens e as transfere para um computador.",
-		answers: {
-			a: ' #<img src="../imagens/estabilizador.jpg"> &nbsp;&nbsp;&nbsp;',
-			b: ' #<img src="../imagens/webcam.jpg">',
-			c: ' #<img src="../imagens/teclado.jpg"> &nbsp;&nbsp;&nbsp;',
-			d: ' #<img src="../imagens/monitor.jpg"><br><br> '
-		},
-		correctAnswer: 'b'
-	},
-	{
-		
-		question: "11- Por meio dela você pode ouvir sons e músicas.",
-		answers: {
-			a: ' #<img src="../imagens/cxSom.jpg"> &nbsp;&nbsp;&nbsp;',
-			b: ' #<img src="../imagens/tablets.jpg">',
-			c: ' #<img src="../imagens/estabilizador.jpg"> &nbsp;&nbsp;&nbsp;',
-			d: ' #<img src="../imagens/gabinete.jpg"><br><br>'
-		},
-		correctAnswer: 'a'
-	},
-	{
-		
-		question: "12- Qual destes aparelhos protege o computador da rede elétrica e não desliga quando acaba a energia?",
-		answers: {
-			a: ' #<img src="../imagens/estabilizador.jpg"> &nbsp;&nbsp;&nbsp;',
-			b: ' #<img src="../imagens/monitor.jpg"> ',
-			c: ' #<img src="../imagens/pendrive.jpg"> &nbsp;&nbsp;&nbsp;',
-			d: ' #<img src="../imagens/nobreak.jpg"><br><br> '
-		},
-		correctAnswer: 'd'
-	},
-	{
-		
-		question: "13- Qual equipamento protege o computador na rede elétrica?",
-		answers: {
-			a: ' #<img src="../imagens/estabilizador.jpg"> &nbsp;&nbsp;&nbsp;',
-			b: ' #<img src="../imagens/mouse.jpg"> ',
-			c: ' #<img src="../imagens/monitor.jpg"> &nbsp;&nbsp;&nbsp;',
-			d: ' #<img src="../imagens/tablets.jpg"> '
-		},
-		correctAnswer: 'a'
-	},
-	
-];
-
-var quizContainer = document.getElementById('quiz');
-var resultsContainer = document.getElementById('results');
-var submitButton = document.getElementById('submit');
-
-generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
-
-function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
-
-	function showQuestions(questions, quizContainer){
-		// precisaremos de um lugar para armazenar a saída e as opções de resposta
-		var output = [];
-		var answers; // poderia ter dado outro nome, alem do mais, eu mesmo me confundi :/
-
-		// para cada questão
-		for(var i=0; i<questions.length; i++){
-			
-			// mas, primeiro resetamos a lista de questões
-			answers = [];
-
-			// e aqui faremos para cada resposta na questão.
-			for(letter in questions[i].answers){
-
-				// Aqui será escrito para html para usar o Radio.
-				answers.push(
-					'<label>'
-						+ '<input type="radio" name="question'+i+'" value="'+letter+'">'
-					//	+ letter + ') ' vou deixar a letra comentada, porque achei melhor assim
-						+ questions[i].answers[letter]
-					+ '</label>'
-				);
-			}
-
-			// add this question and its answers to the output
-			output.push(
-				'<div class="question">' + questions[i].question + '</div>'
-				+ '<div class="answers">' + answers.join('') + '</div>'
-			);
-		}
-
-		// finally combine our output list into one string of html and put it on the page
-		quizContainer.innerHTML = output.join('');
-	}
-
-
-	function showResults(questions, quizContainer, resultsContainer){
-			
-		
-		var answerContainers = quizContainer.querySelectorAll('.answers');
-		
-		
-		var userAnswer = '';
-		var numCorrect = 0;
-		
-		
-		for(var i=0; i<questions.length; i++){
-
-			// agora ele vai virar a letra que esta marcada.
-			userAnswer = (answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value;
-			
-			
-			
-			if(userAnswer===questions[i].correctAnswer){
-				
-				numCorrect++;
-				
-				
-				answerContainers[i].style.color = 'lightgreen';
-			}
-			
-			else{
-				
-				answerContainers[i].style.color = 'red';
-			}
-		}
-
-			
-			resultsContainer.innerHTML = numCorrect + ' de ' + questions.length;
-		}
-
-	// show questions right away
-	showQuestions(questions, quizContainer);
-
-	// on submit, show results
-	
-	submitButton.onclick = function(){
-		showResults(questions, quizContainer, resultsContainer);
-		
-	}
-	
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
 }
 
-		</script>
+.container {
+    max-width: 700px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
 
-	</body>
+h1{
+    color: transparent;
+}
 
+img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.opcao-img {
+    border: 4px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    background: #eee;
+    padding: 10px;
+}
+
+.opcao-img.correta {
+    border-color: #2e7d32; /* verde */
+    background: #e8f5e9;
+}
+
+.opcao-img.errada {
+    border-color: #c62828; /* vermelho */
+    background: #fdecea;
+}
+
+.opcao-img.desativada {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.opcoes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.opcao-img {
+    border: 3px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    background: #eee;
+    padding: 10px;
+}
+
+.opcao-img img {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+}
+
+.opcao-img:hover {
+    border-color: #2196f3;
+}
+
+
+.status {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.error-message {
+    color: red;
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+.btn-proximo {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 25px;
+    font-size: 18px;
+    background-color: #1976d2;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.btn-proximo:hover {
+    background-color: #0d47a1;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- STATUS -->
+    <div class="status">
+        <div>⭐ Pontos: <span id="pontos">0</span></div>
+        <div>⏱ Tempo: <span id="tempo">15</span>s</div>
+    </div>
+
+    <!-- IMAGEM -->
+    <h1 id="titulo"></h1>
+
+    <!-- PERGUNTA -->
+    <h2 id="pergunta"></h2>
+
+    <!-- OPÇÕES -->
+    <div class="opcoes" id="opcoes"></div>
+
+    <p id="erro" class="error-message"></p>
+
+</div>
+
+<script>
+const TEMPO_MAX = 10;
+
+
+const enigmas = [
+    {
+        titulo: "MONITOR",
+        pergunta: "1- Onde podemos ver todas as informações que passamos para o computador?",
+        opcoes: [
+            { valor: "SOFTWARE", img: "imagens/software.jpg" },
+            { valor: "HARDWARE", img: "imagens/hardware.jpg" },
+            { valor: "INTERNET", img: "imagens/estabilizador.jpg" },
+            { valor: "MONITOR", img: "imagens/monitor.jpg" }
+        ],
+        correta: "MONITOR"
+    },
+    {
+        titulo: "GABINETE",
+        pergunta: "2- Oque tem o formato de uma caixa e nele estão vários peças e circuitos que fazem o computador funcionar?",
+        opcoes: [
+            { valor: "GABINETE", img: "imagens/gabinete.jpg" },
+            { valor: "TECLADO", img: "imagens/monitor.jpg" },
+            { valor: "MOUSE", img: "imagens/mouse.jpg" },
+            { valor: "CAIXA DE SOM", img: "imagens/memoria.jpg" }
+        ],
+        correta: "GABINETE"
+    },
+    {
+        titulo: "MOUSE",
+        pergunta: "3- Com ele é possível desenhar, abrir e fechar as janelas e os programas!",
+        opcoes: [
+            { valor: "GABINETE", img: "imagens/computador1.jpg" },
+            { valor: "TECLADO", img: "imagens/teclado.jpg" },
+            { valor: "GABINETE", img: "imagens/gabinete.jpg" },
+            { valor: "MOUSE", img: "imagens/mouse1.jpg" }
+        ],
+        correta: "MOUSE"
+    },
+    {
+        titulo: "IMPRESSORA",
+        pergunta: "4- Existem vários modelos, mas todos têm a mesma função: a impressão de informações de dentro do computador.",
+        opcoes: [
+            { valor: "PEN DRIVE", img: "imagens/pendrive.jpg" },
+            { valor: "TECLADO", img: "imagens/gabinete.jpg" },
+            { valor: "IMPRESSORA", img: "imagens/impressora.jpg" },
+            { valor: "MOUSE", img: "imagens/mouse.jpg" }
+        ],
+        correta: "IMPRESSORA"
+    },
+    {
+        titulo: "TECLADO",
+        pergunta: "5- É um dispositivo que possui uma série de botões e teclas.",
+        opcoes: [
+            { valor: "COMPUTADOR", img: "imagens/computador.jpg" },
+            { valor: "TECLADO", img: "imagens/teclado.jpg" },
+            { valor: "MONITOR", img: "imagens/monitor.jpg" },
+            { valor: "NOTEBOOK", img: "imagens/notebook.jpg" }
+        ],
+        correta: "TECLADO"
+    },
+    {
+        titulo: "PEN DRIVE",
+        pergunta: "6- É um dispositivo de memória flash que serve para você transformar dados de um micro para o outro!",
+        opcoes: [
+            { valor: "GABINETE", img: "imagens/gabinete.jpg" },
+            { valor: "PLACA MÃE", img: "imagens/placamae.jpg" },
+            { valor: "PENDRIVE", img: "imagens/pendrive.jpg" },
+            { valor: "HD", img: "imagens/hd.jpg" }
+        ],
+        correta: "PENDRIVE"
+    },
+    {
+        titulo: "COMPUTADOR",
+        pergunta: "7- É um equipamento inventado pelo homem para facilitar nossa vida.",
+        opcoes: [
+            { valor: "COMPUTADOR", img: "imagens/computador.jpg" },
+            { valor: "NOTEBOOK", img: "imagens/notebook.jpg" },
+            { valor: "GABINETE", img: "imagens/gabinete.jpg" },
+            { valor: "HD", img: "imagens/hd.jpg" }
+        ],
+        correta: "COMPUTADOR"
+    },
+    {
+        titulo: "TABLET",
+        pergunta: "8- É um dispositivo pessoal em formato de uma prancheta que pode ser usado para acesso à Internet.",
+        opcoes: [
+            { valor: "GABINENTE", img: "imagens/gabinete.jpg" },
+            { valor: "TABLET", img: "imagens/tablet.jpg" },
+            { valor: "MEMORIA", img: "imagens/memoria.jpg" },
+            { valor: "MONITOR", img: "imagens/monitor.jpg" }
+        ],
+        correta: "TABLET"
+    },
+    {
+        titulo: "NOTEBOOK",
+        pergunta: "9- É um computador portátil, leve, projetado para ser transportado e utilizado em diferentes lugares.",
+        opcoes: [
+            { valor: "PLACAMAE", img: "imagens/placamae.jpg" },
+            { valor: "PENDRIVE", img: "imagens/pendrive.jpg" },
+            { valor: "NOTEBOOK", img: "imagens/notebook.jpg" },
+            { valor: "MOUSE", img: "imagens/mouse.jpg" }
+        ],
+        correta: "NOTEBOOK"
+    },
+    {
+        titulo: "WEBCAM",
+        pergunta: "10- É uma câmera de vídeo de baixo custo que capta imagens e as transfere para um computador.",
+        opcoes: [
+            { valor: "ESTABILIZADOR", img: "imagens/estabilizador.jpg" },
+            { valor: "WEBCAM", img: "imagens/webcam.jpg" },
+            { valor: "TECLADO", img: "imagens/teclado.jpg" },
+            { valor: "MONITOR", img: "imagens/monitor.jpg" }
+        ],
+        correta: "WEBCAM"
+    },
+    {
+        titulo: "CAIXASDESOM",
+        pergunta: "11- Por meio dela você pode ouvir sons e músicas.",
+        opcoes: [
+            { valor: "CXSOM", img: "imagens/cxsom.jpg" },
+            { valor: "TABLET", img: "imagens/tablet.jpg" },
+            { valor: "ESTABILIZADOR", img: "imagens/estabilizador.jpg" },
+            { valor: "GABINETE", img: "imagens/gabinete.jpg" }
+        ],
+        correta: "CXSOM"
+    },
+    {
+        titulo: "NOBREAK",
+        pergunta: "12- Qual destes aparelhos protege o computador da rede elétrica e não desliga quando acaba a energia?",
+        opcoes: [
+            { valor: "ESTABILIZADOR", img: "imagens/estabilizador.jpg" },
+            { valor: "MONITOR", img: "imagens/monitor.jpg" },
+            { valor: "PENDRIVE", img: "imagens/pendrive.jpg" },
+            { valor: "NOBREAK", img: "imagens/nobreak.jpg" }
+        ],
+        correta: "NOBREAK"
+    }
+    
+];
+
+
+let indiceAtual = 0;
+let pontos = 0;
+let acertos = 0;
+let tempo = TEMPO_MAX;
+let cronometro;
+
+const imagem = document.getElementById("imagemEnigma");
+const pergunta = document.getElementById("pergunta");
+const opcoesDiv = document.getElementById("opcoes");
+const erro = document.getElementById("erro");
+const pontosSpan = document.getElementById("pontos");
+const tempoSpan = document.getElementById("tempo");
+
+function iniciarTempo() {
+    tempo = TEMPO_MAX;
+    tempoSpan.innerText = tempo;
+
+    cronometro = setInterval(() => {
+        tempo--;
+        tempoSpan.innerText = tempo;
+
+        if (tempo <= 0) {
+            clearInterval(cronometro);
+            erro.innerText = "⏰ Tempo esgotado!";
+            proximaPergunta();
+        }
+    }, 1000);
+}
+
+function carregarEnigma() {
+    const enigma = enigmas[indiceAtual];
+
+    document.getElementById("titulo").innerText = enigma.titulo;
+    pergunta.innerText = enigma.pergunta;
+    erro.innerText = "";
+    opcoesDiv.innerHTML = "";
+
+    iniciarTempo();
+
+    enigma.opcoes.forEach(opcao => {
+    const div = document.createElement("div");
+    div.className = "opcao-img";
+
+    div.innerHTML = `<img src="${opcao.img}" alt="${opcao.valor}">`;
+
+    div.onclick = () => verificarResposta(opcao.valor, div);
+
+    opcoesDiv.appendChild(div);
+});
+
+}
+
+
+function verificarResposta(resposta, elementoClicado) {
+    clearInterval(cronometro);
+
+    // desativa todas as opções
+    document.querySelectorAll(".opcao-img").forEach(op => {
+        op.classList.add("desativada");
+    });
+
+    if (resposta === enigmas[indiceAtual].correta) {
+        pontos += 10;
+        acertos++;
+        pontosSpan.innerText = pontos;
+
+        elementoClicado.classList.add("correta");
+    } else {
+        erro.innerText = "❌ Resposta incorreta!";
+        elementoClicado.classList.add("errada");
+
+        // mostra a correta em verde
+        document.querySelectorAll(".opcao-img").forEach(op => {
+            const imgAlt = op.querySelector("img").alt;
+            if (imgAlt === enigmas[indiceAtual].correta) {
+                op.classList.add("correta");
+            }
+        });
+    }
+
+    setTimeout(proximaPergunta, 1200);
+}
+
+
+function proximaPergunta() {
+    indiceAtual++;
+
+    if (indiceAtual >= enigmas.length) {
+        mostrarResultadoFinal();
+        return;
+    }
+
+    carregarEnigma();
+}
+
+function mostrarResultadoFinal() {
+    document.getElementById("titulo").innerText = "🏁 Resultado Final";
+    opcoesDiv.innerHTML = "";
+    pergunta.innerHTML = `
+        ✔ Acertos: ${acertos} de ${enigmas.length}<br>
+        ⭐ Pontuação final: ${pontos} pontos<br>
+    `;
+   
+    if (acertos >= 7) {
+    pergunta.innerHTML += `
+        <a href="atividade3B.html" class="btn-proximo">➡ Próxima atividade</a>
+    `;
+} else {
+    pergunta.innerHTML += `
+        <p>Para ir para a próxima atividade faça 70 pontos ou mais.</p>
+        <p>⚠ Tente novamente!!!</p>
+        <a href="questionario2.html" class="btn-proximo">➡ Refazer</a>
+    `;
+}
+    tempoSpan.innerText = "0";
+}
+
+
+
+carregarEnigma();
+</script>
+
+</body>
 </html>

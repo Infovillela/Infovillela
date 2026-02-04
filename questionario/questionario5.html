@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+		<title>Questionário 5 - Múltipla Escolha</title>
+
+		<link rel="stylesheet" href="styleTxt.css">
+
+	</head>
+
+	<body>
+	
+	<h2>Questionário 05</h2>
+
+		<div id="quiz"></div>
+		<button id="submit">Finalizar</button>
+		<div id="results"></div>
+		<script>
+		var myQuestions = [
+	{
+		
+		question: "1- O que é informática?",
+		answers: {
+			a: ' O estudo dos organismos vivos<br>',
+			b: ' A ciência que estuda o armazenamento, processamento e transmissão de informações por meio de computadores.<br>',
+			c: ' Um conjunto de práticas agrícolas.<br>',
+			d: ' Uma técnica de fabricação de materiais.'
+		},
+		correctAnswer: 'b'
+	},
+	{
+		question: "2- Qual é a principal função do hardware em um computador?",
+		answers: {
+			a: ' Armazenar dados na nuvem.<br>',
+			b: ' Enviar mensagens instantâneas.<br>',
+			c: ' Fornecer a estrutura física necessária para o funcionamento do sistema computacional.<br>',
+			d: ' Gerenciar os programas instalados.'
+		},
+		correctAnswer: 'c'
+	},
+		{
+		question: "3- Qual é o nome do dispositivo responsável pelo processamento de dados no computador?",
+		answers: {
+			a: ' Monitor.<br>',
+			b: ' Teclado.<br>',
+			c: ' CPU (Unidade Central de Processamento).<br>',
+			d: ' Memória RAM.<br>'
+		},
+		correctAnswer: 'c'
+	},
+	{
+		question: "4- Qual é a função do sistema operacional em um computador?",
+		answers: {
+			a: ' Proteger o computador contra vírus.<br>',
+			b: ' Controlar os dispositivos de hardware e permitir que o usuário interaja com o computador.<br>',
+			c: ' Criar programas e jogos.<br>',
+			d: ' Monitorar o desempenho da internet.'
+		},
+		correctAnswer: 'b'
+	},
+	{
+		question: "5- Qual dos itens a seguir é um exemplo de software de aplicação?",
+		answers: {
+			a: ' Microsoft Excel.<br>',
+			b: ' Windows 10.<br>',
+			c: ' Placa-mãe.<br>',
+			d: ' BIOS.'
+		},
+		correctAnswer: 'a'
+	},
+	{
+		question: "6- O que é um dispositivo de entrada em informática?",
+		answers: {
+			a: ' Um equipamento que exibe informações processadas.<br>',
+			b: ' Um dispositivo que coleta dados e os envia ao computador para processamento.<br>',
+			c: ' Um software usado para criar planilhas.<br>',
+			d: ' Um hardware usado exclusivamente para impressão de documentos.'
+		},
+		correctAnswer: 'b'
+	},
+	{
+		question: "7- Qual das alternativas abaixo é considerada uma memória volátil?",
+		answers: {
+			a: ' HD (Disco Rígido).<br>',
+			b: ' SSD (Unidade de Estado Sólido).<br>',
+			c: ' RAM (Memória de Acesso Aleatório).<br>',
+			d: ' Pen Drive.'
+		},
+		correctAnswer: 'c'
+	},
+	{
+		question: "8- Qual é a principal função da memória ROM?",
+		answers: {
+			a: ' Armazenar informações essenciais e permanentes necessárias para inicializar o computador.<br>',
+			b: ' Armazenar temporariamente dados e programas em uso.<br>',
+			c: ' Aumentar a capacidade de processamento do computador.<br>',
+			d: ' Permitir acesso rápido a arquivos grandes.'
+		},
+		correctAnswer: 'a'
+	},
+	{
+		question: "9- Qual dos dispositivos abaixo é um exemplo de periférico de saída?",
+		answers: {
+			a: ' Mouse<br>',
+			b: ' Monitor<br>',
+			c: ' Scanner<br>',
+			d: ' Teclado'
+		},
+		correctAnswer: 'b'
+	},
+	{
+		question: "10- O que é a Internet?",
+		answers: {
+			a: ' Um programa usado para acessar e-mails.<br>',
+			b: ' Um software de edição de vídeos.<br>',
+			c: ' Um tipo específico de hardware usado em redes locais.<br>',
+			d: ' Um sistema interligado de redes de computadores que permite a troca de informações em escala global.'
+		},
+		correctAnswer: 'd'
+	},
+	
+	
+	
+];
+
+var quizContainer = document.getElementById('quiz');
+var resultsContainer = document.getElementById('results');
+var submitButton = document.getElementById('submit');
+
+generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
+
+function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
+
+	function showQuestions(questions, quizContainer){
+		// precisaremos de um lugar para armazenar a saída e as opções de resposta
+		var output = [];
+		var answers; // poderia ter dado outro nome, alem do mais, eu mesmo me confundi :/
+
+		// para cada questão
+		for(var i=0; i<questions.length; i++){
+			
+			// mas, primeiro resetamos a lista de questões
+			answers = [];
+
+			// e aqui faremos para cada resposta na questão.
+			for(letter in questions[i].answers){
+
+				// Aqui será escrito para html para usar o Radio.
+				answers.push(
+					'<label>'
+						+ '<input type="radio" name="question'+i+'" value="'+letter+'">'
+					//	+ letter + ') ' vou deixar a letra comentada, porque achei melhor assim
+						+ questions[i].answers[letter]
+					+ '</label>'
+				);
+			}
+
+			// add this question and its answers to the output
+			output.push(
+				'<div class="question">' + questions[i].question + '</div>'
+				+ '<div class="answers">' + answers.join('') + '</div>'
+			);
+		}
+
+		// finally combine our output list into one string of html and put it on the page
+		quizContainer.innerHTML = output.join('');
+	}
+
+
+	function showResults(questions, quizContainer, resultsContainer){
+			
+		
+		var answerContainers = quizContainer.querySelectorAll('.answers');
+		
+		
+		var userAnswer = '';
+		var numCorrect = 0;
+		
+		
+		for(var i=0; i<questions.length; i++){
+
+			// agora ele vai virar a letra que esta marcada.
+			userAnswer = (answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value;
+			
+			
+			
+			if(userAnswer===questions[i].correctAnswer){
+				
+				numCorrect++;
+				
+				
+				answerContainers[i].style.color = 'lightgreen';
+			}
+			
+			else{
+				
+				answerContainers[i].style.color = 'red';
+			}
+		}
+
+			
+			resultsContainer.innerHTML = numCorrect + ' de ' + questions.length;
+		}
+
+	// show questions right away
+	showQuestions(questions, quizContainer);
+
+	// on submit, show results
+	
+	submitButton.onclick = function(){
+		showResults(questions, quizContainer, resultsContainer);
+		
+	}
+	
+}
+
+		</script>
+
+	</body>
+
+</html>
