@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Questionário 11 - Múltipla Escolha</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.opcao-img {
+    border: 4px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    background: #eee;
+    padding: 10px;
+}
+
+.opcao-img.correta {
+    border-color: #2e7d32; /* verde */
+    background: #e8f5e9;
+}
+
+.opcao-img.errada {
+    border-color: #c62828; /* vermelho */
+    background: #fdecea;
+}
+
+.opcao-img.desativada {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.opcoes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.opcao-img {
+    border: 3px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    background: #eee;
+    padding: 10px;
+}
+
+.opcao-img img {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+}
+
+.opcao-img:hover {
+    border-color: #2196f3;
+}
+
+
+.status {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.error-message {
+    color: red;
+    font-size: 18px;
+    margin-top: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- STATUS -->
+    <div class="status">
+        <div>⭐ Pontos: <span id="pontos">0</span></div>
+        <div>⏱ Tempo: <span id="tempo">15</span>s</div>
+    </div>
+
+    <!-- IMAGEM -->
+    <h1 id="titulo"></h1>
+
+    <!-- PERGUNTA -->
+    <h2 id="pergunta"></h2>
+
+    <!-- OPÇÕES -->
+    <div class="opcoes" id="opcoes"></div>
+
+    <p id="erro" class="error-message"></p>
+
+</div>
+
+<script>
+const TEMPO_MAX = 15;
+/*
+const enigmas = [
+    {
+        imagem: "A1.jpg",
+        pergunta: "Como chamamos o conjunto de peças físicas do computador?",
+        opcoes: ["SOFTWARE", "HARDWARE", "INTERNET", "PROGRAMA"],
+        correta: "HARDWARE"
+    },
+    {
+        imagem: "A2.jpg",
+        pergunta: "Qual equipamento exibe as imagens do computador?",
+        opcoes: ["TECLADO", "MONITOR", "MOUSE", "CAIXA DE SOM"],
+        correta: "MONITOR"
+    },
+    {
+        imagem: "A3.jpg",
+        pergunta: "Qual dispositivo usamos para movimentar o cursor?",
+        opcoes: ["TECLADO", "MOUSE", "MONITOR", "IMPRESSORA"],
+        correta: "MOUSE"
+    },
+    {
+        imagem: "A4.jpg",
+        pergunta: "Qual equipamento usamos para digitar textos?",
+        opcoes: ["MOUSE", "TECLADO", "MONITOR", "PEN DRIVE"],
+        correta: "TECLADO"
+    }
+];*/
+
+const enigmas = [
+    {
+        titulo: "HARDWARE",
+        pergunta: "Como chamamos o conjunto de peças físicas do computador?",
+        opcoes: [
+            { valor: "SOFTWARE", img: "A1.png" },
+            { valor: "HARDWARE", img: "A2.jpg" },
+            { valor: "INTERNET", img: "A3.jpg" },
+            { valor: "PROGRAMA", img: "A4.jpg" }
+        ],
+        correta: "HARDWARE"
+    },
+    {
+        titulo: "MONITOR",
+        pergunta: "Qual equipamento exibe as imagens do computador?",
+        opcoes: [
+            { valor: "TECLADO", img: "teclado.png" },
+            { valor: "MONITOR", img: "monitor.png" },
+            { valor: "MOUSE", img: "mouse.png" },
+            { valor: "CAIXA DE SOM", img: "som.png" }
+        ],
+        correta: "MONITOR"
+    }
+];
+
+
+let indiceAtual = 0;
+let pontos = 0;
+let acertos = 0;
+let tempo = TEMPO_MAX;
+let cronometro;
+
+const imagem = document.getElementById("imagemEnigma");
+const pergunta = document.getElementById("pergunta");
+const opcoesDiv = document.getElementById("opcoes");
+const erro = document.getElementById("erro");
+const pontosSpan = document.getElementById("pontos");
+const tempoSpan = document.getElementById("tempo");
+
+function iniciarTempo() {
+    tempo = TEMPO_MAX;
+    tempoSpan.innerText = tempo;
+
+    cronometro = setInterval(() => {
+        tempo--;
+        tempoSpan.innerText = tempo;
+
+        if (tempo <= 0) {
+            clearInterval(cronometro);
+            erro.innerText = "⏰ Tempo esgotado!";
+            proximaPergunta();
+        }
+    }, 1000);
+}
+/*
+function carregarEnigma() {
+    const enigma = enigmas[indiceAtual];
+
+    imagem.src = enigma.imagem;
+    pergunta.innerText = enigma.pergunta;
+    erro.innerText = "";
+    opcoesDiv.innerHTML = "";
+
+    iniciarTempo();
+
+    enigma.opcoes.forEach(opcao => {
+        const botao = document.createElement("button");
+        botao.innerText = opcao;
+        botao.onclick = () => verificarResposta(opcao);
+        opcoesDiv.appendChild(botao);
+    });
+}*/
+function carregarEnigma() {
+    const enigma = enigmas[indiceAtual];
+
+    document.getElementById("titulo").innerText = enigma.titulo;
+    pergunta.innerText = enigma.pergunta;
+    erro.innerText = "";
+    opcoesDiv.innerHTML = "";
+
+    iniciarTempo();
+
+    enigma.opcoes.forEach(opcao => {
+    const div = document.createElement("div");
+    div.className = "opcao-img";
+
+    div.innerHTML = `<img src="${opcao.img}" alt="${opcao.valor}">`;
+
+    div.onclick = () => verificarResposta(opcao.valor, div);
+
+    opcoesDiv.appendChild(div);
+});
+
+}
+
+
+function verificarResposta(resposta, elementoClicado) {
+    clearInterval(cronometro);
+
+    // desativa todas as opções
+    document.querySelectorAll(".opcao-img").forEach(op => {
+        op.classList.add("desativada");
+    });
+
+    if (resposta === enigmas[indiceAtual].correta) {
+        pontos += 10;
+        acertos++;
+        pontosSpan.innerText = pontos;
+
+        elementoClicado.classList.add("correta");
+    } else {
+        erro.innerText = "❌ Resposta incorreta!";
+        elementoClicado.classList.add("errada");
+
+        // mostra a correta em verde
+        document.querySelectorAll(".opcao-img").forEach(op => {
+            const imgAlt = op.querySelector("img").alt;
+            if (imgAlt === enigmas[indiceAtual].correta) {
+                op.classList.add("correta");
+            }
+        });
+    }
+
+    setTimeout(proximaPergunta, 1200);
+}
+
+
+function proximaPergunta() {
+    indiceAtual++;
+
+    if (indiceAtual >= enigmas.length) {
+        mostrarResultadoFinal();
+        return;
+    }
+
+    carregarEnigma();
+}
+/*
+function mostrarResultadoFinal() {
+    imagem.style.display = "none";
+    opcoesDiv.innerHTML = "";
+    pergunta.innerHTML = `
+        <h2>🏁 Resultado Final</h2>
+        <p>✔ Acertos: ${acertos} de ${enigmas.length}</p>
+        <p>⭐ Pontuação final: ${pontos} pontos</p>
+    `;
+    tempoSpan.innerText = "0";
+}*/
+function mostrarResultadoFinal() {
+    document.getElementById("titulo").innerText = "🏁 Resultado Final";
+    opcoesDiv.innerHTML = "";
+    pergunta.innerHTML = `
+        ✔ Acertos: ${acertos} de ${enigmas.length}<br>
+        ⭐ Pontuação final: ${pontos} pontos
+    `;
+    tempoSpan.innerText = "0";
+}
+
+
+
+carregarEnigma();
+</script>
+
+</body>
+</html>

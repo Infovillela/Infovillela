@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade 05 - Múltipla Escolha</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .opcoes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .opcoes button {
+            padding: 15px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 8px;
+            border: none;
+            background-color: #e0e0e0;
+        }
+
+        .opcoes button:hover {
+            background-color: #cfd8dc;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 18px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Imagem -->
+    <img id="imagemEnigma" src="A1.jpg">
+
+    <!-- Pergunta -->
+    <h2 id="pergunta">
+        Qual é o nome deste componente do computador?
+    </h2>
+
+    <!-- Botões -->
+    <div class="opcoes" id="opcoes"></div>
+
+    <p id="erro" class="error-message"></p>
+
+</div>
+
+<script>
+const enigmas = [
+    {
+        imagem: "A1.jpg",
+        pergunta: "Qual é o nome deste conjunto de peças do computador?",
+        opcoes: ["SOFTWARE", "HARDWARE", "INTERNET", "PROGRAMA"],
+        correta: "HARDWARE"
+    },
+    {
+        imagem: "A2.jpg",
+        pergunta: "Qual é o nome deste equipamento?",
+        opcoes: ["TECLADO", "MONITOR", "MOUSE", "CAIXA DE SOM"],
+        correta: "MONITOR"
+    },
+    {
+        imagem: "A3.jpg",
+        pergunta: "Qual dispositivo usamos para mover o cursor?",
+        opcoes: ["TECLADO", "MOUSE", "MONITOR", "IMPRESSORA"],
+        correta: "MOUSE"
+    },
+    {
+        imagem: "A4.jpg",
+        pergunta: "Qual equipamento usamos para digitar textos?",
+        opcoes: ["MOUSE", "TECLADO", "MONITOR", "PEN DRIVE"],
+        correta: "TECLADO"
+    }
+    // Continue os outros aqui...
+];
+
+let indiceAtual = 0;
+
+const imagem = document.getElementById("imagemEnigma");
+const pergunta = document.getElementById("pergunta");
+const opcoesDiv = document.getElementById("opcoes");
+const erro = document.getElementById("erro");
+
+function carregarEnigma() {
+    const enigma = enigmas[indiceAtual];
+
+    imagem.src = enigma.imagem;
+    pergunta.innerText = enigma.pergunta;
+    erro.innerText = "";
+    opcoesDiv.innerHTML = "";
+
+    enigma.opcoes.forEach(opcao => {
+        const botao = document.createElement("button");
+        botao.innerText = opcao;
+        botao.onclick = () => verificarResposta(opcao);
+        opcoesDiv.appendChild(botao);
+    });
+}
+
+function verificarResposta(resposta) {
+    if (resposta === enigmas[indiceAtual].correta) {
+        indiceAtual++;
+
+        if (indiceAtual >= enigmas.length) {
+            alert("Parabéns! Atividade concluída 🎉");
+            opcoesDiv.innerHTML = "";
+            pergunta.innerText = "Fim da atividade!";
+            imagem.style.display = "none";
+            return;
+        }
+
+        carregarEnigma();
+    } else {
+        erro.innerText = "Resposta incorreta. Tente novamente.";
+    }
+}
+
+// Inicializa
+carregarEnigma();
+</script>
+
+</body>
+</html>

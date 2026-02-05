@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Atividade 05 - Inclusão Digital</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+}
+
+.container {
+    max-width: 720px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+    margin-bottom: 15px;
+}
+
+.status {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.opcoes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.opcoes button {
+    padding: 18px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: #e0e0e0;
+    transition: 0.3s;
+}
+
+.opcoes button.correct {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.opcoes button.wrong {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.modo {
+    margin-bottom: 15px;
+}
+
+.modo button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 5px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- SELEÇÃO DE MODO -->
+    <div class="modo">
+        <strong>Escolha o modo:</strong><br>
+        <button onclick="selecionarModo('iniciante')">🟢 Iniciante</button>
+        <button onclick="selecionarModo('avancado')">🔵 Avançado</button>
+    </div>
+
+    <!-- STATUS -->
+    <div class="status">
+        <div>⭐ Pontos: <span id="pontos">0</span></div>
+        <div id="tempoBox">⏱ Tempo: <span id="tempo">0</span>s</div>
+    </div>
+
+    <!-- CONTEÚDO -->
+    <img id="imagemEnigma">
+    <h2 id="pergunta"></h2>
+    <div class="opcoes" id="opcoes"></div>
+
+</div>
+
+<script>
+/*const enigmas = [
+    {
+        imagem: "A1.jpg",
+        pergunta: "Como chamamos as partes físicas do computador?",
+        opcoes: ["SOFTWARE", "HARDWARE", "INTERNET", "PROGRAMA"],
+        correta: "HARDWARE"
+    },
+    {
+        imagem: "A2.jpg",
+        pergunta: "Qual equipamento mostra as imagens?",
+        opcoes: ["TECLADO", "MONITOR", "MOUSE", "CAIXA DE SOM"],
+        correta: "MONITOR"
+    },
+    {
+        imagem: "A3.jpg",
+        pergunta: "Qual usamos para mover o cursor?",
+        opcoes: ["MOUSE", "TECLADO", "IMPRESSORA", "MONITOR"],
+        correta: "MOUSE"
+    }
+];*/
+
+let enigmas =[];
+
+let modo = null;
+let tempoMax = 0;
+let tempo = 0;
+let timer = null;
+
+let indiceAtual = 0;
+let pontos = 0;
+
+const imagem = document.getElementById("imagemEnigma");
+const pergunta = document.getElementById("pergunta");
+const opcoesDiv = document.getElementById("opcoes");
+const pontosSpan = document.getElementById("pontos");
+const tempoSpan = document.getElementById("tempo");
+const tempoBox = document.getElementById("tempoBox");
+
+function selecionarModo(m) {
+    modo = m;
+    tempoMax = (modo === "avancado") ? 8 : 0;
+    tempoBox.style.display = (modo === "iniciante") ? "none" : "block";
+
+    indiceAtual = 0;
+    pontos = 0;
+    pontosSpan.innerText = 0;
+
+    carregarPergunta();
+}
+
+function iniciarTempo() {
+    if (modo === "iniciante") return;
+
+    tempo = tempoMax;
+    tempoSpan.innerText = tempo;
+
+    timer = setInterval(() => {
+        tempo--;
+        tempoSpan.innerText = tempo;
+
+        if (tempo <= 0) {
+            clearInterval(timer);
+            proximaPergunta();
+        }
+    }, 1000);
+}
+
+function carregarPergunta() {
+    const e = enigmas[indiceAtual];
+
+    imagem.src = e.imagem;
+    pergunta.innerText = e.pergunta;
+    opcoesDiv.innerHTML = "";
+
+    iniciarTempo();
+
+    e.opcoes.forEach(opcao => {
+        const btn = document.createElement("button");
+        btn.innerText = opcao;
+
+        btn.onclick = () => verificarResposta(btn, opcao);
+        opcoesDiv.appendChild(btn);
+    });
+}
+
+function verificarResposta(botao, resposta) {
+    clearInterval(timer);
+
+    const correta = enigmas[indiceAtual].correta;
+
+    const botoes = document.querySelectorAll(".opcoes button");
+    botoes.forEach(b => b.disabled = true);
+
+    if (resposta === correta) {
+        botao.classList.add("correct");
+        pontos += 10;
+        pontosSpan.innerText = pontos;
+    } else {
+        botao.classList.add("wrong");
+
+        botoes.forEach(b => {
+            if (b.innerText === correta) {
+                b.classList.add("correct");
+            }
+        });
+    }
+
+    setTimeout(proximaPergunta, 1000);
+}
+
+function proximaPergunta() {
+    indiceAtual++;
+
+    if (indiceAtual >= enigmas.length) {
+        mostrarResultado();
+        return;
+    }
+
+    carregarPergunta();
+}
+
+function mostrarResultado() {
+    imagem.style.display = "none";
+    opcoesDiv.innerHTML = "";
+    pergunta.innerHTML = `
+        🏁 <strong>Resultado Final</strong><br><br>
+        ⭐ Pontuação: ${pontos} pontos<br>
+        ✔ Questões: ${enigmas.length}
+    `;
+    tempoBox.style.display = "none";
+}
+
+fetch("perguntas.json")
+    .then(resposta => resposta.json())
+    .then(dados => {
+        enigmas = dados;
+    })
+    .catch(erro => {
+        alert("Erro ao carregar perguntas!");
+        console.error(erro);
+    });
+
+</script>
+
+
+
+</body>
+</html>

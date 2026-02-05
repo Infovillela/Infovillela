@@ -1,0 +1,26 @@
+[
+  {
+    "imagem": "A1.jpg",
+    "pergunta": "Como chamamos as partes físicas do computador?",
+    "opcoes": ["SOFTWARE", "HARDWARE", "INTERNET", "PROGRAMA"],
+    "correta": "HARDWARE"
+  },
+  {
+    "imagem": "A2.jpg",
+    "pergunta": "Qual equipamento mostra as imagens do computador?",
+    "opcoes": ["TECLADO", "MONITOR", "MOUSE", "CAIXA DE SOM"],
+    "correta": "MONITOR"
+  },
+  {
+    "imagem": "A3.jpg",
+    "pergunta": "Qual dispositivo usamos para mover o cursor?",
+    "opcoes": ["MOUSE", "TECLADO", "IMPRESSORA", "MONITOR"],
+    "correta": "MOUSE"
+  },
+   {
+    "imagem": "A4.jpg",
+    "pergunta": "Qual dispositivo?",
+    "opcoes": ["MOUSE", "TECLADO", "IMPRESSORA", "MONITOR"],
+    "correta": "TECLADO"
+  }
+]
