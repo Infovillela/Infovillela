@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade de Digitação 05</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Imagem do enigma -->
+    <img id="imagemEnigma" src="inicio.jpg">
+
+    <!-- Texto correto (oculto, como você já faz) -->
+    <h1 id="textoCorreto">HARDWARE</h1>
+    <h2>Vamos ver se você conhece todos as peças (Hardware) do computador?</h2>
+
+    <form onsubmit="verificar(); return false;">
+        <input 
+            type="text" 
+            id="entrada" 
+            placeholder="Digite a frase"
+            autocomplete="off"
+        >
+        <input type="submit" value="Próximo">
+    </form>
+
+    <p id="erro" class="error-message"></p>
+
+</div>
+
+<script>
+    // Lista de enigmas
+    const enigmas = [
+        { imagem: "A1.jpg", resposta: "HARDWARE" },
+        { imagem: "A2.jpg", resposta: "MONITOR" },
+        { imagem: "A3.jpg", resposta: "MOUSE" },
+        { imagem: "A4.jpg", resposta: "TECLADO" },
+        { imagem: "A5.jpg", resposta: "PEN DRIVE" },
+        { imagem: "A6.jpg", resposta: "CAIXAS DE SOM" },
+        { imagem: "A7.jpg", resposta: "GABINETE" },
+        { imagem: "A8.jpg", resposta: "IMPRESSORA" },
+        { imagem: "A9.jpg", resposta: "WEB CAM" },
+        { imagem: "A10.jpg", resposta: "NOTEBOOK" },
+        { imagem: "A11.jpg", resposta: "TABLET" },
+        { imagem: "A12.jpg", resposta: "HD" },
+        { imagem: "A13.jpg", resposta: "PLACA MÃE" },
+        { imagem: "A14.jpg", resposta: "COMPUTADOR" },
+        { imagem: "A15.png", resposta: "SOFTWARE" }
+        
+    ];
+
+    
+
+    let indiceAtual = 0;
+
+    const imagem = document.getElementById("imagemEnigma");
+    const textoCorreto = document.getElementById("textoCorreto");
+    const entrada = document.getElementById("entrada");
+    const erro = document.getElementById("erro");
+
+    // Força letras maiúsculas
+    entrada.addEventListener("input", () => {
+        entrada.value = entrada.value.toUpperCase();
+    });
+
+    function verificar() {
+        if (entrada.value === enigmas[indiceAtual].resposta) {
+            indiceAtual++;
+
+            // Fim dos enigmas
+            if (indiceAtual >= enigmas.length) {
+                erro.innerText = "";
+                alert("Parabéns! Atividade concluída 🎉");
+                entrada.disabled = true;
+                return;
+            }
+
+            // Atualiza enigma
+            imagem.src = enigmas[indiceAtual].imagem;
+            textoCorreto.innerText = enigmas[indiceAtual].resposta;
+            entrada.value = "";
+            erro.innerText = "";
+
+        } else {
+            erro.innerText = "Algo está errado! Tente novamente.";
+        }
+    }
+</script>
+
+</body>
+</html>
