@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Oração Creio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Imagem do enigma -->
+    <img id="imagemEnigma" src="inicio.png">
+
+    <!-- Texto correto (oculto, como você já faz) -->
+    <h1 id="textoCorreto">PEDRO</h1>
+
+    <form onsubmit="verificar(); return false;">
+        <input 
+            type="text" 
+            id="entrada" 
+            placeholder="Digite a frase"
+            autocomplete="off"
+        >
+        <input type="submit" value="Próximo">
+    </form>
+
+    <p id="erro" class="error-message"></p>
+
+</div>
+
+<script>
+    // Lista de enigmas
+    const enigmas = [
+
+        { imagem: "inicio.png", resposta: "CREIO" },
+        { imagem: "A1.png", resposta: "CREIO EM DEUS, PAI TODO-PODEROSO, CRIADOR DO CÉU E DA TERRA," },
+        { imagem: "A2.png", resposta: "E EM JESUS CRISTO, SEU ÚNICO FILHO, NOSSO SENHOR," },
+        { imagem: "A3.png", resposta: "QUE FOI CONCEBIDO PELO PODER DO ESPIRITO SANTO," },
+        { imagem: "A4.png", resposta: "NASCEU DA VIRGEM MARIA;" },
+        { imagem: "A5.png", resposta: "PADECEU SOB PÔCIO PILATOS," },
+        { imagem: "A6.png", resposta: "FOI CRUCIFICADO, MORTO E SEPULTADO," },
+        { imagem: "A7.png", resposta: "DESCEU À MANSÃO DOS MORTOS; RESSUCITOU AO TERCEIRO DIA;" },
+        { imagem: "A8.png", resposta: "SUBIU AOS CÉUS;" },
+        { imagem: "A9.png", resposta: "ESTÁ SENTAOD À DIREITA DE DEUS PAI TODO-PODEROSO, DE ONDE HÁ DE VIR A JULGAR OS VISO E OS MORTOS," },
+        { imagem: "A10.png", resposta: "CREIO NO ESPIRITO SANTO; NA SANTA IGREJA CATÓLICA;" },
+        { imagem: "A11.png", resposta: "NA COMUNHÃO DOS SANTOS;" },
+        { imagem: "A12.png", resposta: "NA REMISSÃO DOS PECADOS;" },
+        { imagem: "A13.png", resposta: "NA RESSUREIÇÃO DA CARNE; NA VIDA ETERNA." },
+        { imagem: "A14.png", resposta: "AMÉM." }
+       
+    ];
+
+    
+
+    let indiceAtual = 0;
+
+    const imagem = document.getElementById("imagemEnigma");
+    const textoCorreto = document.getElementById("textoCorreto");
+    const entrada = document.getElementById("entrada");
+    const erro = document.getElementById("erro");
+
+    // Força letras maiúsculas
+    entrada.addEventListener("input", () => {
+        entrada.value = entrada.value.toUpperCase();
+    });
+
+    function verificar() {
+        if (entrada.value === enigmas[indiceAtual].resposta) {
+            indiceAtual++;
+
+            // Fim dos enigmas
+            if (indiceAtual >= enigmas.length) {
+                erro.innerText = "";
+                alert("Parabéns! Atividade concluída 🎉");
+                entrada.disabled = true;
+                return;
+            }
+
+            // Atualiza enigma
+            imagem.src = enigmas[indiceAtual].imagem;
+            textoCorreto.innerText = enigmas[indiceAtual].resposta;
+            entrada.value = "";
+            erro.innerText = "";
+
+        } else {
+            erro.innerText = "Algo está errado! Tente novamente.";
+        }
+    }
+</script>
+
+</body>
+</html>

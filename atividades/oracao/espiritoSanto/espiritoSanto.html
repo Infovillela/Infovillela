@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Oração Espírito Santo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Imagem do enigma -->
+    <img id="imagemEnigma" src="inicio.jpg">
+
+    <!-- Texto correto (oculto, como você já faz) -->
+    <h1 id="textoCorreto">PEDRO</h1>
+
+    <form onsubmit="verificar(); return false;">
+        <input 
+            type="text" 
+            id="entrada" 
+            placeholder="Digite a frase"
+            autocomplete="off"
+        >
+        <input type="submit" value="Próximo">
+    </form>
+
+    <p id="erro" class="error-message"></p>
+
+</div>
+
+<script>
+    // Lista de enigmas
+    const enigmas = [
+
+        { imagem: "inicio.jpg", resposta: "ESPIRITO SANTO" },
+        { imagem: "A1.png", resposta: "VINDE, ESPÍRITO SANTO, ENCHEI OS CORAÇÕES DOS VOSSOS FIÉIS." },
+        { imagem: "A2.png", resposta: "E ACENDEI NELES O FOGO DO VOSSO AMOR." },
+        { imagem: "A3.png", resposta: "ENVIAI, SENHOR, O VOSSO ESPÍRITO." },
+        { imagem: "A4.png", resposta: "E TUDO SERÁ CRIADO, E RENOVAREIS A FACE DA TERRA." },
+        { imagem: "A5.png", resposta: "OREMOS!" },
+        { imagem: "A6.png", resposta: "Ó DEUS, QUE INSTRUÍSTE OS CORAÇÃO DOS VOSSOS FIÉIS COM A LUZ DO ESPÍRITO SANTO." },
+        { imagem: "A7.png", resposta: "FAZEI QUE APRECIEMOS TODAS AS COISAS SEGUNDO O MESMO ESPÍRITO." },
+        { imagem: "A8.png", resposta: "E GOZEMOS DA SUA CONSOLAÇÃO. POR CRISTO, NOSSO SENHOR." },
+        { imagem: "A9.png", resposta: "AMÉM." }
+       
+    ];
+
+    
+
+    let indiceAtual = 0;
+
+    const imagem = document.getElementById("imagemEnigma");
+    const textoCorreto = document.getElementById("textoCorreto");
+    const entrada = document.getElementById("entrada");
+    const erro = document.getElementById("erro");
+
+    // Força letras maiúsculas
+    entrada.addEventListener("input", () => {
+        entrada.value = entrada.value.toUpperCase();
+    });
+
+    function verificar() {
+        if (entrada.value === enigmas[indiceAtual].resposta) {
+            indiceAtual++;
+
+            // Fim dos enigmas
+            if (indiceAtual >= enigmas.length) {
+                erro.innerText = "";
+                alert("Parabéns! Atividade concluída 🎉");
+                entrada.disabled = true;
+                return;
+            }
+
+            // Atualiza enigma
+            imagem.src = enigmas[indiceAtual].imagem;
+            textoCorreto.innerText = enigmas[indiceAtual].resposta;
+            entrada.value = "";
+            erro.innerText = "";
+
+        } else {
+            erro.innerText = "Algo está errado! Tente novamente.";
+        }
+    }
+</script>
+
+</body>
+</html>
