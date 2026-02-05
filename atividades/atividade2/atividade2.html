@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade de Digitação 02</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Imagem do enigma -->
+    <img id="imagemEnigma" src="A1.jpg">
+
+    <!-- Texto correto (oculto, como você já faz) -->
+    <h1 id="textoCorreto">PEDRO</h1>
+
+    <form onsubmit="verificar(); return false;">
+        <input 
+            type="text" 
+            id="entrada" 
+            placeholder="Digite a frase"
+            autocomplete="off"
+        >
+        <input type="submit" value="Próximo">
+    </form>
+
+    <p id="erro" class="error-message"></p>
+
+</div>
+
+<script>
+    // Lista de enigmas
+    const enigmas = [
+        { imagem: "A1.jpg", resposta: "ENIGMA" },
+        { imagem: "A2.jpg", resposta: "PORQUE" },
+        { imagem: "A3.jpg", resposta: "DEUS" },
+        { imagem: "A4.jpg", resposta: "AMOU" },
+        { imagem: "A5.jpg", resposta: "O MUNDO" },
+        { imagem: "A6.jpg", resposta: "DE" },
+        { imagem: "A7.jpg", resposta: "TAL" },
+        { imagem: "A8.jpg", resposta: "MANEIRA" },
+        { imagem: "A9.jpg", resposta: "QUE" },
+        { imagem: "A10A.jpg", resposta: "DEU" },
+        { imagem: "A10.jpg", resposta: "O SEU" },
+        { imagem: "A11.jpg", resposta: "FILHO" },
+        { imagem: "A12.jpg", resposta: "UNIGÊNITO," },
+        { imagem: "A13.jpg", resposta: "PARA" },
+        { imagem: "A14.jpg", resposta: "QUE" },
+        { imagem: "A15.jpg", resposta: "TODO" },
+        { imagem: "A16.jpg", resposta: "O QUE" },
+        { imagem: "A17.jpg", resposta: "NELE" },
+        { imagem: "A18.jpg", resposta: "CRÊ" },
+        { imagem: "A19.jpg", resposta: "NÃO" },
+        { imagem: "A20.jpg", resposta: "PEREÇA," },
+        { imagem: "A21.jpg", resposta: "MAS" },
+        { imagem: "A22.jpg", resposta: "TENHA" },
+        { imagem: "A23.jpg", resposta: "A VIDA" },
+        { imagem: "A24.jpg", resposta: "ETERNA." }
+    ];
+
+    
+
+    let indiceAtual = 0;
+
+    const imagem = document.getElementById("imagemEnigma");
+    const textoCorreto = document.getElementById("textoCorreto");
+    const entrada = document.getElementById("entrada");
+    const erro = document.getElementById("erro");
+
+    // Força letras maiúsculas
+    entrada.addEventListener("input", () => {
+        entrada.value = entrada.value.toUpperCase();
+    });
+
+    function verificar() {
+        if (entrada.value === enigmas[indiceAtual].resposta) {
+            indiceAtual++;
+
+            // Fim dos enigmas
+            if (indiceAtual >= enigmas.length) {
+                erro.innerText = "";
+                alert("Parabéns! Atividade concluída 🎉");
+                entrada.disabled = true;
+                return;
+            }
+
+            // Atualiza enigma
+            imagem.src = enigmas[indiceAtual].imagem;
+            textoCorreto.innerText = enigmas[indiceAtual].resposta;
+            entrada.value = "";
+            erro.innerText = "";
+
+        } else {
+            erro.innerText = "Algo está errado! Tente novamente.";
+        }
+    }
+</script>
+
+</body>
+</html>
