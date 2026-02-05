@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Treino de Digitação</title>
+    <link rel="stylesheet" href="styles.css">
+
+   
+</head>
+<body>
+
+<div class="container">
+
+    <!-- PROGRESSO -->
+    <div class="progresso" id="progresso"></div>
+
+    <!-- TEMPO -->
+    <div class="timer">
+        ⏱ Tempo: <span id="tempo">0</span> s
+    </div>
+
+    <!-- IMAGEM -->
+    <img id="imagemEnigma" src="A1.jpg" height="450">
+
+    <!-- TEXTO OCULTO -->
+    <h1 id="textoCorreto">PEDRO</h1>
+
+    <!-- FORM -->
+    <form onsubmit="verificar(); return false;">
+        <input type="text" id="entrada" placeholder="Digite exatamente como aparece" autocomplete="off">
+        <input type="submit" value="Confirmar">
+    </form>
+
+    <p id="mensagem"></p>
+
+</div>
+
+<!-- SONS -->
+<audio id="somAcerto" src="acerto.mp3"></audio>
+<audio id="somErro" src="erro.mp3"></audio>
+
+<script>
+/* ==============================
+   DADOS DOS ENIGMAS
+================================ */
+const enigmas = [
+        { imagem: "A1.jpg", resposta: "CARTA" },
+        { imagem: "A2.jpg", resposta: "PAI," },
+        { imagem: "A3.jpg", resposta: "MINHA BOLA BATEU NA JANELA DA" },
+        { imagem: "A4.jpg", resposta: "CASA DE DONA LAURA E QUEBROU" },
+        { imagem: "A5.jpg", resposta: "A VIDRAÇA. NÃO FOI POR QUERER!" },
+        { imagem: "A6.jpg", resposta: "VOCÊ ME DÁ O DINHEIRO PARA" },
+        { imagem: "A7.jpg", resposta: "PAGAR DONA LAURA?" }
+
+    ];
+    
+
+let indice = 0;
+let tempo = 0;
+
+/* ==============================
+   ELEMENTOS
+================================ */
+const imagem = document.getElementById("imagemEnigma");
+const texto = document.getElementById("textoCorreto");
+const entrada = document.getElementById("entrada");
+const mensagem = document.getElementById("mensagem");
+const progresso = document.getElementById("progresso");
+const tempoSpan = document.getElementById("tempo");
+
+const somAcerto = document.getElementById("somAcerto");
+const somErro = document.getElementById("somErro");
+
+/* ==============================
+   MAIÚSCULAS AUTOMÁTICO
+================================ */
+entrada.addEventListener("input", () => {
+    entrada.value = entrada.value.toUpperCase();
+});
+
+/* ==============================
+   CRONÔMETRO
+================================ */
+setInterval(() => {
+    tempo++;
+    tempoSpan.innerText = tempo;
+}, 1000);
+
+/* ==============================
+   INICIALIZAÇÃO
+================================ */
+atualizarTela();
+
+/* ==============================
+   FUNÇÕES
+================================ */
+function atualizarTela() {
+    imagem.src = enigmas[indice].imagem;
+    texto.innerText = enigmas[indice].resposta;
+    progresso.innerText = `Exercício ${indice + 1} de ${enigmas.length}`;
+    entrada.value = "";
+    entrada.focus();
+}
+
+function verificar() {
+    if (entrada.value === enigmas[indice].resposta) {
+        mensagem.innerText = "✔ Correto!";
+        mensagem.className = "acerto";
+        somAcerto.play();
+
+        indice++;
+
+        if (indice >= enigmas.length) {
+            finalizar();
+            return;
+        }
+
+        setTimeout(atualizarTela, 800);
+    } else {
+        mensagem.innerText = "✖ Tente novamente";
+        mensagem.className = "erro";
+        somErro.play();
+    }
+}
+
+function finalizar() {
+    imagem.style.display = "none";
+    entrada.style.display = "none";
+
+    progresso.innerText = "🎉 Atividade Concluída!";
+    mensagem.className = "acerto";
+    mensagem.innerHTML = `
+        Você finalizou todos os exercícios.<br>
+        ⏱ Tempo total: <strong>${tempo} segundos</strong>
+    `;
+}
+</script>
+
+</body>
+</html>
+
+ 
